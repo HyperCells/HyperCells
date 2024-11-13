@@ -18,7 +18,7 @@ If you use this package, please cite at least one of the above references in
 addition to the package itself:
 - P. M. Lenggenhager, J. Maciejko, and T. Bzdušek,
   **HyperCells: A GAP package for constructing primitive cells and supercells of
-  hyperbolic lattices**, <URL>https://github.com/patrick-lenggenhager/HyperCells</URL> (2023)
+  hyperbolic lattices**, <URL>https://github.com/HyperCells/HyperCells</URL> (2023)
 
 and the list of quotient groups:
 - M. Conder, **Quotients of triangle groups acting on surfaces of genus 2 to 101** (2007)

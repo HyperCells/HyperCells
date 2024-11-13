@@ -48,11 +48,11 @@ Persons := [
 
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/patrick-lenggenhager/HyperCells",
+    URL := "https://github.com/HyperCells/HyperCells",
 ),
 GithubWWW       := ~.SourceRepository.URL,
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://patrick-lenggenhager.github.io/HyperCells/",
+PackageWWWHome  := "https://HyperCells.github.io/HyperCells/",
 PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,

@@ -1,6 +1,7 @@
 # The GAP package HyperCells
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10782370.svg)](https://doi.org/10.5281/zenodo.10782370)
+
 **Warning**: Note the potential breaking changes in version 0.9.1-beta if edge tags are
 explicitly referred to. The edge tag format for nearest-neighbor edges constructed using
 `TGCellModelGraph`, `TessellationModelGraph`, and `KagomeModelGraph` has been changed from
@@ -25,7 +26,7 @@ If you use this package, please cite at least one of the above references in
 addition to the package itself:
 > P. M. Lenggenhager, J. Maciejko, and T. Bzdušek,
   *HyperCells: A GAP package for constructing primitive cells and supercells of
-  hyperbolic lattices*, [https://github.com/patrick-lenggenhager/HyperCells](https://github.com/patrick-lenggenhager/HyperCells),
+  hyperbolic lattices*, [https://github.com/HyperCells/HyperCells](https://github.com/HyperCells/HyperCells),
   [10.5281/zenodo.10222598](https://doi.org/10.5281/zenodo.10222598) (2023)
 
 and the list of quotient groups:
@@ -34,7 +35,7 @@ and the list of quotient groups:
 
 
 A getting-started guide for this and its sister package
-([HyperBloch](https://github.com/patrick-lenggenhager/HyperBloch)) can be found
+([HyperBloch](https://github.com/HyperCells/HyperBloch)) can be found
 [here](https://patrick-lenggenhager.github.io/software/2024/01/10/HyperGuide.html).
 
 
@@ -42,14 +43,18 @@ Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) on how you can contribute to
 the development of this package.
 
 #### Table of Contents  
-- [Authors and developers](#authors-and-developers)
-- [Installation](#installation)
-- [Documentation](#documentation)
-- [Limitations](#limitations)
-- [HyperBloch package](#hyperbloch-package)
-- [How to cite](#how-to-cite)
-- [Contact](#contact)
-- [License and copyright](#license-and-copyright)
+- [The GAP package HyperCells](#the-gap-package-hypercells)
+      - [Table of Contents](#table-of-contents)
+  - [Authors and developers](#authors-and-developers)
+  - [Installation](#installation)
+    - [Extensions (optional)](#extensions-optional)
+  - [Documentation](#documentation)
+  - [Limitations](#limitations)
+    - [Known limitations](#known-limitations)
+  - [HyperBloch package](#hyperbloch-package)
+  - [How to cite](#how-to-cite)
+  - [Contact](#contact)
+  - [License and copyright](#license-and-copyright)
 
 ## Authors and developers
 
@@ -138,7 +143,7 @@ The HyperBloch package is a companion package to HyperCells for Mathematica.
 It allows to study the band structure of hyperbolic lattices by applying hyperbolic
 band theory and the supercell method. Additionally, it provides many functions
 to visualize the output of HyperCells. It is available on Github at
-> [https://github.com/patrick-lenggenhager/HyperBloch](https://github.com/patrick-lenggenhager/HyperBloch)
+> [https://github.com/HyperCells/HyperBloch](https://github.com/HyperCells/HyperBloch)
 
 
 ## How to cite
@@ -150,7 +155,7 @@ If you use this package, please cite the package itself
   author          = {Lenggenhager, Patrick M. and Maciejko, Joseph and Bzdu\v{s}ek, Tom\'{a}\v{s}},
   year            = {2023},
   doi             = {10.5281/zenodo.10222598},
-  note            = {\url{https://github.com/patrick-lenggenhager/HyperCells}}
+  note            = {\url{https://github.com/HyperCells/HyperCells}}
 }
 ```
 and at least one of the following references:
@@ -191,7 +196,7 @@ with normal subgroups:
 ## Contact
 
 To report issues, please use the issue tracker at
-[https://github.com/patrick-lenggenhager/HyperCells/issues](https://github.com/patrick-lenggenhager/HyperCells/issues).
+[https://github.com/HyperCells/HyperCells/issues](https://github.com/HyperCells/HyperCells/issues).
 
 Maintainer:\
 &ensp;&ensp;**Patrick M. Lenggenhager**\
