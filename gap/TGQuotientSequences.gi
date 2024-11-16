@@ -429,72 +429,72 @@ function(sequence)
 end );
 
 
-# Type TGQuotientSequencesAdjacencyMatrix
-DeclareRepresentation("IsTGQuotientSequencesAdjacencyMatrixComponentRep", IsComponentObjectRep,
+# Type TGQuotientSequencesStructure
+DeclareRepresentation("IsTGQuotientSequencesStructureComponentRep", IsComponentObjectRep,
 	[ "signature", "boundByGenus", "lstTGQuotients", "lstMirrorSymmetries", "sparse", "adjMatrix" ]
 );
 
 
 InstallMethod( \=, [
-    IsTGQuotientSequencesAdjacencyMatrixObj and IsTGQuotientSequencesAdjacencyMatrixComponentRep,
-    IsTGQuotientSequencesAdjacencyMatrixObj and IsTGQuotientSequencesAdjacencyMatrixComponentRep ], 
-function(tgQSAdjMat1, tgQSAdjMat2)
-	return 	Signature(tgQSAdjMat1) = Signature(tgQSAdjMat2) and
-		BoundByGenus(tgQSAdjMat1) = BoundByGenus(tgQSAdjMat2) and
-		GetListTGQuotients(tgQSAdjMat1) = GetListTGQuotients(tgQSAdjMat2) and
-		MirrorSymmetries(tgQSAdjMat1) = MirrorSymmetries(tgQSAdjMat2) and
-		AdjacencyMatrix(tgQSAdjMat1) = AdjacencyMatrix(tgQSAdjMat2);
+    IsTGQuotientSequencesStructureObj and IsTGQuotientSequencesStructureComponentRep,
+    IsTGQuotientSequencesStructureObj and IsTGQuotientSequencesStructureComponentRep ], 
+function(tgQSS1, tgQSS2)
+	return 	Signature(tgQSS1) = Signature(tgQSS2) and
+		BoundByGenus(tgQSS1) = BoundByGenus(tgQSS2) and
+		GetListTGQuotients(tgQSS1) = GetListTGQuotients(tgQSS2) and
+		MirrorSymmetries(tgQSS1) = MirrorSymmetries(tgQSS2) and
+		AdjacencyMatrix(tgQSS1) = AdjacencyMatrix(tgQSS2);
 end );
 
 
 
-InstallMethod( Signature, [ IsTGQuotientSequencesAdjacencyMatrixObj and IsTGQuotientSequencesAdjacencyMatrixComponentRep ], 
-function(tgQSAdjMat)
-	return tgQSAdjMat!.signature;
+InstallMethod( Signature, [ IsTGQuotientSequencesStructureObj and IsTGQuotientSequencesStructureComponentRep ], 
+function(tgQSS)
+	return tgQSS!.signature;
 end );
 
-InstallMethod( BoundByGenus, [ IsTGQuotientSequencesAdjacencyMatrixObj and IsTGQuotientSequencesAdjacencyMatrixComponentRep ], 
-function(tgQSAdjMat)
-	return tgQSAdjMat!.boundByGenus;
+InstallMethod( BoundByGenus, [ IsTGQuotientSequencesStructureObj and IsTGQuotientSequencesStructureComponentRep ], 
+function(tgQSS)
+	return tgQSS!.boundByGenus;
 end );
 
-InstallMethod( GetListTGQuotients, [ IsTGQuotientSequencesAdjacencyMatrixObj and IsTGQuotientSequencesAdjacencyMatrixComponentRep ], 
-function(tgQSAdjMat)
-	return tgQSAdjMat!.lstTGQuotients;
+InstallMethod( GetListTGQuotients, [ IsTGQuotientSequencesStructureObj and IsTGQuotientSequencesStructureComponentRep ], 
+function(tgQSS)
+	return tgQSS!.lstTGQuotients;
 end );
 
-InstallMethod( MirrorSymmetries, [ IsTGQuotientSequencesAdjacencyMatrixObj and IsTGQuotientSequencesAdjacencyMatrixComponentRep ], 
-function(tgQSAdjMat)
-	return tgQSAdjMat!.lstMirrorSymmetries;
+InstallMethod( MirrorSymmetries, [ IsTGQuotientSequencesStructureObj and IsTGQuotientSequencesStructureComponentRep ], 
+function(tgQSS)
+	return tgQSS!.lstMirrorSymmetries;
 end );
 
-InstallMethod( IsSparse, [ IsTGQuotientSequencesAdjacencyMatrixObj and IsTGQuotientSequencesAdjacencyMatrixComponentRep ], 
-function(tgQSAdjMat)
-	return tgQSAdjMat!.sparse;
+InstallMethod( IsSparse, [ IsTGQuotientSequencesStructureObj and IsTGQuotientSequencesStructureComponentRep ], 
+function(tgQSS)
+	return tgQSS!.sparse;
 end );
 
-InstallMethod( AdjacencyMatrix, [ IsTGQuotientSequencesAdjacencyMatrixObj and IsTGQuotientSequencesAdjacencyMatrixComponentRep ], 
-function(tgQSAdjMat)
-	return tgQSAdjMat!.adjMatrix;
+InstallMethod( AdjacencyMatrix, [ IsTGQuotientSequencesStructureObj and IsTGQuotientSequencesStructureComponentRep ], 
+function(tgQSS)
+	return tgQSS!.adjMatrix;
 end );
 
 
 
-InstallMethod( PrintString, [ IsTGQuotientSequencesAdjacencyMatrixObj and IsTGQuotientSequencesAdjacencyMatrixComponentRep ], 
-function(tgQSAdjMat)
-	return Concatenation( "TGQuotientSequencesAdjacencyMatrix( ", 
-		PrintString(Signature(tgQSAdjMat)), ", ",
-		"boundByGenus = ", PrintString(BoundByGenus(tgQSAdjMat)), ", ",
-		"ListTGQuotients = ", PrintString(GetListTGQuotients(tgQSAdjMat)), ", ",
-		"MirrorSymmetries = ", PrintString(MirrorSymmetries(tgQSAdjMat)), ", ",
-		"sparse = ", PrintString(IsSparse(tgQSAdjMat)), ", ",
-		"adjMatrix = ", PrintString(AdjacencyMatrix(tgQSAdjMat)), 
+InstallMethod( PrintString, [ IsTGQuotientSequencesStructureObj and IsTGQuotientSequencesStructureComponentRep ], 
+function(tgQSS)
+	return Concatenation( "TGQuotientSequencesStructure( ", 
+		PrintString(Signature(tgQSS)), ", ",
+		"boundByGenus = ", PrintString(BoundByGenus(tgQSS)), ", ",
+		"ListTGQuotients = ", PrintString(GetListTGQuotients(tgQSS)), ", ",
+		"MirrorSymmetries = ", PrintString(MirrorSymmetries(tgQSS)), ", ",
+		"sparse = ", PrintString(IsSparse(tgQSS)), ", ",
+		"adjMatrix = ", PrintString(AdjacencyMatrix(tgQSS)), 
 	")" );
 end );
 
-InstallMethod( PrintObj, [ IsTGQuotientSequencesAdjacencyMatrixObj and IsTGQuotientSequencesAdjacencyMatrixComponentRep ], 
-function(tgQSAdjMat)
-	Print(PrintString(tgQSAdjMat));
+InstallMethod( PrintObj, [ IsTGQuotientSequencesStructureObj and IsTGQuotientSequencesStructureComponentRep ], 
+function(tgQSS)
+	Print(PrintString(tgQSS));
 end );
 
 
@@ -510,7 +510,7 @@ toIndex@ := function(IndexLst)
 	return Int(JoinStringsWithSeparator(List(IndexLst, x -> String(x)),""));
 end;
 
-InstallGlobalFunction( TGQuotientSequencesAdjacencyMatrix,
+InstallGlobalFunction( TGQuotientSequencesStructure,
 function(tg)
 	local signature, conderIndexLst, boundByGenus, lenConder, adjMat, i, j, k, l, 
          Quot1, Quot2, genus1, genus2, switch1, switch2, GAMMA1, GAMMA2, sparse, F, 
@@ -538,13 +538,13 @@ function(tg)
 	# upper bound of triangle group quotients genus
 	boundByGenus := ValueOption("boundByGenus");
 	if boundByGenus = fail then
-		boundByGenus := 102; # Max. in Conder's list 101.
+		boundByGenus := 66; # Max. in Conder's list 101.
 	elif not IsPosInt(boundByGenus) then
 		Error(StringFormatted("boundByGenus {} is not a positive integer.", boundByGenus));
 	        return fail;
 	elif boundByGenus > 102 then
-		Print(StringFormatted("boundByGenus {} exceeded the upper bound 102, the default value 102 was used instead.", boundByGenus));
-		boundByGenus := 102; # Max. in Conder's list 101.
+		Print(StringFormatted("boundByGenus {} exceeded the upper bound 102, the default value 66 was used instead.", boundByGenus));
+		boundByGenus := 66; # Max. in Conder's list 101.
 	fi;
 
 	# condition for sparse rep. of adjacency matrix
@@ -626,7 +626,7 @@ function(tg)
 				Quot1 := TGQuotient(conderIndexLst[i]);
 				genus1 := TGQuotientGenus(Quot1);
 				
-				# check Rieman-Hurwitz formula 
+				# check Riemann-Hurwitz formula 
 				if IsInt((genus2 - 1)/(genus1 - 1)) and genus2 > genus1 then
 
 					switch2 := 0;
@@ -700,7 +700,7 @@ function(tg)
 				Quot1 := TGQuotient(conderIndexLst[i]);
 				genus1 := TGQuotientGenus(Quot1);
 
-				# check Rieman-Hurwitz formula 
+				# check Riemann-Hurwitz formula 
 				if IsInt((genus2 - 1)/(genus1 - 1)) and genus2 > genus1 then
 
 					switch2 := 0;
@@ -730,8 +730,8 @@ function(tg)
 	 	od;
 	 fi;
     
-	F := NewFamily( "TGQuotientSequencesAdjacencyMatrix", IsTGQuotientSequencesAdjacencyMatrixObj );
-    	return Objectify( NewType( F, IsTGQuotientSequencesAdjacencyMatrixObj and IsTGQuotientSequencesAdjacencyMatrixComponentRep ), rec(
+	F := NewFamily( "TGQuotientSequencesStructure", IsTGQuotientSequencesStructureObj );
+    	return Objectify( NewType( F, IsTGQuotientSequencesStructureObj and IsTGQuotientSequencesStructureComponentRep ), rec(
 		signature := MakeImmutable(signature),
 		boundByGenus := MakeImmutable(boundByGenus),
 		lstTGQuotients := MakeImmutable(conderIndexLst),
@@ -793,15 +793,15 @@ sparseMatSubtract@ := function(mat1, mat2)
 end;
 
 
-InstallMethod( NearestNeighborAdjacencyMatrix, [ IsTGQuotientSequencesAdjacencyMatrixObj and IsTGQuotientSequencesAdjacencyMatrixComponentRep ], 
-function(tgQSAdjMat)
+InstallMethod( NearestNeighborAdjacencyMatrix, [ IsTGQuotientSequencesStructureObj and IsTGQuotientSequencesStructureComponentRep ], 
+function(tgQSS)
 	local adjMat, NNadjMat;
 	
 	# get the adjacency matrix
-	adjMat := AdjacencyMatrix(tgQSAdjMat);
+	adjMat := AdjacencyMatrix(tgQSS);
 
 	# check for sparsity and subtract the signed matrix 2nd matrix power of adjMat from adjMat
-	if IsSparse(tgQSAdjMat) then	
+	if IsSparse(tgQSS) then	
 		NNadjMat := sparseMatSubtract@(adjMat,sparseMatMultiply@(adjMat,adjMat : signed := true));
 	else 
 		NNadjMat := adjMat - signMatrix@(adjMat*adjMat);
@@ -829,18 +829,18 @@ dfs@ := function(quotient, adjLst, idxLst, visited)
 end;
 
 
-InstallMethod( LongestSequence, [ IsTGQuotientSequencesAdjacencyMatrixObj and IsTGQuotientSequencesAdjacencyMatrixComponentRep ], 
-function(tgQSAdjMat)
+InstallMethod( LongestSequence, [ IsTGQuotientSequencesStructureObj and IsTGQuotientSequencesStructureComponentRep ], 
+function(tgQSS)
 	local adjMat, NNadjMat, quotient, lstTGQuotients, sparse, adjLst, idxLst, 
 	 visited, N, i, j, entry, mspLst, nonMirrorSymmetric;
 
 	# Needed objects:
 	# ---------------
 
-	adjMat := NearestNeighborAdjacencyMatrix(tgQSAdjMat); 
-	lstTGQuotients := GetListTGQuotients(tgQSAdjMat); 
-	mspLst := MirrorSymmetries(tgQSAdjMat);
-	sparse := IsSparse(tgQSAdjMat);
+	adjMat := NearestNeighborAdjacencyMatrix(tgQSS); 
+	lstTGQuotients := GetListTGQuotients(tgQSS); 
+	mspLst := MirrorSymmetries(tgQSS);
+	sparse := IsSparse(tgQSS);
 	N := Length(lstTGQuotients);
 
 	# --------
@@ -861,7 +861,7 @@ function(tgQSAdjMat)
 			Error(StringFormatted("Quotient {} is not an element in {}.", quotient, lstTGQuotients));
         		return fail;
 		else
-			quotient := Position(GetListTGQuotients(tgQSAdjMat), quotient);
+			quotient := Position(GetListTGQuotients(tgQSS), quotient);
 		fi;
 	elif not quotient <= Length(lstTGQuotients) and not quotient = 0 then
 		Error(StringFormatted("Quotient {} exceeds the number of elements {} in the list of quotient.", quotient, Length(lstTGQuotients)));
@@ -881,7 +881,7 @@ function(tgQSAdjMat)
 	# quotients having mirror symmetries are included, an error will be raised
 	if not nonMirrorSymmetric and not quotient = 0 then
 		if mspLst[quotient] = 0 then
-			Error("This quotinet does not have mirror symmetries.\n");
+			Error("This quotient does not have mirror symmetries.\n");
 			Print("Set option nonMirrorSymmetric to true if you want to include quotients without mirror symmetries.");
 			return fail;
 		fi;
@@ -946,8 +946,8 @@ function(tgQSAdjMat)
 end );
 
 
-InstallMethod( Export, [  IsTGQuotientSequencesAdjacencyMatrixObj, IsOutputTextStream ],
-function(tgQSAdjMat, output)
+InstallMethod( Export, [  IsTGQuotientSequencesStructureObj, IsOutputTextStream ],
+function(tgQSS, output)
 
     SetPrintFormattingStatus(output, false);
     
@@ -956,37 +956,37 @@ function(tgQSAdjMat, output)
 	AppendTo(output, "\n");
 
     # write: triangle group, genus bound, list of quotients
-	AppendTo(output, Signature(tgQSAdjMat));
+	AppendTo(output, Signature(tgQSS));
 	AppendTo(output, "\n");
-	AppendTo(output, BoundByGenus(tgQSAdjMat));
+	AppendTo(output, BoundByGenus(tgQSS));
 	AppendTo(output, "\n");
-	AppendTo(output, GetListTGQuotients(tgQSAdjMat));
+	AppendTo(output, GetListTGQuotients(tgQSS));
 	AppendTo(output, "\n");
-	AppendTo(output, MirrorSymmetries(tgQSAdjMat));
+	AppendTo(output, MirrorSymmetries(tgQSS));
 	AppendTo(output, "\n");
-	AppendTo(output, IsSparse(tgQSAdjMat));
+	AppendTo(output, IsSparse(tgQSS));
 	AppendTo(output, "\n");
 
     # write: adjacency matrix
-	AppendTo(output, AdjacencyMatrix(tgQSAdjMat));
+	AppendTo(output, AdjacencyMatrix(tgQSS));
 end );
 
-InstallMethod( Export, [ IsTGQuotientSequencesAdjacencyMatrixObj, IsString ],
-function(tgQSAdjMat, path)
+InstallMethod( Export, [ IsTGQuotientSequencesStructureObj, IsString ],
+function(tgQSS, path)
     local output;
 
     # open file
     output := OutputTextFile(path, false);
 
-    Export(tgQSAdjMat, output);
+    Export(tgQSS, output);
 
     # close file
     CloseStream(output);
 end );
 
 
-InstallMethod( ExportString, [ IsTGQuotientSequencesAdjacencyMatrixObj ],
-function(tgQSAdjMat)
+InstallMethod( ExportString, [ IsTGQuotientSequencesStructureObj ],
+function(tgQSS)
 	local str, output;
 
 	# open string stream
@@ -994,7 +994,7 @@ function(tgQSAdjMat)
 	output := OutputTextString(str, false);
 	
 	# export to stream
-	Export(tgQSAdjMat, output);
+	Export(tgQSS, output);
 
 	# close
 	CloseStream(output);
@@ -1005,7 +1005,7 @@ end );
 
 
 
-InstallGlobalFunction( ImportTGQuotientSequencesAdjacencyMatrix,
+InstallGlobalFunction( ImportTGQuotientSequencesStructure,
 function(input)
     local version, signature, boundByGenus, conderIndexLst, mspLst, 
      sparse, adjMat, F;
@@ -1027,8 +1027,8 @@ function(input)
 	adjMat := EvalString(ReadAllLine(input));
 	
 
-	F := NewFamily( "TGQuotientSequencesAdjacencyMatrix", IsTGQuotientSequencesAdjacencyMatrixObj );
-    	return Objectify( NewType( F, IsTGQuotientSequencesAdjacencyMatrixObj and IsTGQuotientSequencesAdjacencyMatrixComponentRep ), rec(
+	F := NewFamily( "TGQuotientSequencesStructure", IsTGQuotientSequencesStructureObj );
+    	return Objectify( NewType( F, IsTGQuotientSequencesStructureObj and IsTGQuotientSequencesStructureComponentRep ), rec(
 		signature := MakeImmutable(signature),
 		boundByGenus := MakeImmutable(boundByGenus),
 		lstTGQuotients := MakeImmutable(conderIndexLst),
@@ -1039,26 +1039,26 @@ function(input)
 end );
 
 
-InstallGlobalFunction( ImportTGQuotientSequencesAdjacencyMatrixFromFile,
+InstallGlobalFunction( ImportTGQuotientSequencesStructureFromFile,
 function(path)
-	local input, tgQSAdjMat;
+	local input, tgQSS;
 
 	# open input stream
 	input := InputTextFile(path);
 
 	# import
-	tgQSAdjMat := CallFuncList(ImportTGQuotientSequencesAdjacencyMatrix, [input]);
+	tgQSS := CallFuncList(ImportTGQuotientSequencesStructure, [input]);
 
 	# close stream
 	CloseStream(input);
 
-	return tgQSAdjMat;
+	return tgQSS;
 end );
 
 
-InstallGlobalFunction( ImportTGQuotientSequencesAdjacencyMatrixFromString,
+InstallGlobalFunction( ImportTGQuotientSequencesStructureFromString,
 function(string)
-	local input, tgQSAdjMat;
+	local input, tgQSS;
 
 	# check arguments
 	if not IsString(string) then
@@ -1070,12 +1070,12 @@ function(string)
 	input := InputTextString(string);
 	
 	# import
-	tgQSAdjMat := CallFuncList(ImportTGQuotientSequencesAdjacencyMatrix, [input]);
+	tgQSS := CallFuncList(ImportTGQuotientSequencesStructure, [input]);
 
 	# close stream
 	CloseStream(input);
 
-	return tgQSAdjMat;
+	return tgQSS;
 end );
 
 

@@ -430,18 +430,18 @@ HyperCells HCS version 1.0
 @SectionLabel FileFormatHyperCellsExtensions
 
 In addition, the following file formats are introduced by the HyperCells package:
-- **HyperCell adjacency matrix** (`*.hcqs`) for storing the adjacency matrices, i.e.,
-   `TGQuotientSequencesAdjacencyMatrix` objects (see <Ref Sect='Section_TGQuotientSequencesAdjacencyMatrix'/>)
+- **HyperCell quotient sequences structure** (`*.hcqs`) for storing the adjacency matrices, i.e.,
+   `TGQuotientSequencesStructure` objects (see <Ref Sect='Section_TGQuotientSequencesStructure'/>)
 - **HyperCell point-group matrices** (`*.hcpgm`) for storing the point-group matrices, i.e.,
    `PGMatrices` objects (see <Ref Sect='Section_PGMatrices'/>)
 
 These file formats are described in detail below.
 
 
-@Subsection HyperCell adjacency matrix (*.hcqs)
-@SubsectionLabel FileFormatTGQuotientSequencesAdjacencyMatrix
+@Subsection HyperCell quotient sequences structure (*.hcqs)
+@SubsectionLabel FileFormatTGQuotientSequencesStructure
 
-The basic file structure of a HyperCell adjacency matrix file is as follows
+The basic file structure of a HyperCell quotient sequences structure file is as follows
 (with placeholders marked by `&lt;...&gt;`):
 
 @BeginLogSession
@@ -465,7 +465,7 @@ an ordered binary list of ones and zeros, 1 if quotients in `&lt;quotients&gt;` 
 The sixth line `&lt;sparse&gt;` specifies if line seven, the adjacency matrix `&lt;adjacency matrix&gt;`, is sparsly
 represented `true`, or dense `false`.
 
-The full file structure of a HyperCell adjacency matrix file thus is as follows:
+The full file structure of a HyperCell quotient sequences structure file thus is as follows:
 
 @BeginLogSession
 HyperCells HCQS version 1.0
@@ -477,7 +477,7 @@ HyperCells HCQS version 1.0
 [ entry1, entry2, ... ]
 @EndLogSession
 
-A complete example for a dense adjacency matrix for the 
+A complete example for a quotient sequences structure with a dense adjacency matrix for the 
 $\Delta(2,8,8)$ triangle group and triangle group quotients with genus smaller than 12
 is given below:
 @BeginLogSession
@@ -504,7 +504,7 @@ false
   [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] ])
 @EndLogSession
 
-A complete example for a sparse representation of the adjacency matrix for the 
+A complete example for a sparse representation of the adjacency matrix in the quotient sequences structure for the 
 $\Delta(2,8,8)$ triangle group and triangle group quotients with genus smaller than 12
 is given below:
 @BeginLogSession
@@ -542,7 +542,7 @@ HyperCells HCPGM version 1.0
 The first line specifies the file format and its version. The second line gives the signature $(r,q,p)$ of the underlying 
 triangle group $\Delta(r,q,p)$ and the third line gives the triangle group quotient. The forth line `&lt;sparse&gt;` specifies
 if line five and six containing the point-group matrices `&lt;abcPGMats&gt;` and `&lt;symPGMats&gt;`, respectively, are 
-sparsly represented `true`, or dense `false`.
+sparsely represented `true`, or dense `false`.
 
 The full file structure of a HyperCell point-group matrices file thus is as follows:
 

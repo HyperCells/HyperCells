@@ -27,8 +27,8 @@ gap> tg := ProperTriangleGroup(sign);;
 gap> boundByGenus := 34;;
 
 gap> sparse := false;;
-gap> tgQSAdjMat := TGQuotientSequencesAdjacencyMatrix(tg : sparse := sparse, boundByGenus := boundByGenus );
-TGQuotientSequencesAdjacencyMatrix( [ 2, 4, 6 ], boundByGenus = 34, ListTGQuotients = [ [ 2, 2 ], [ 3, 4 ], [ 4, 3 ], \
+gap> tgQSS := TGQuotientSequencesStructure(tg : sparse := sparse, boundByGenus := boundByGenus );
+TGQuotientSequencesStructure( [ 2, 4, 6 ], boundByGenus = 34, ListTGQuotients = [ [ 2, 2 ], [ 3, 4 ], [ 4, 3 ], \
 [ 5, 4 ], [ 6, 2 ], [ 9, 3 ], [ 9, 4 ], [ 10, 8 ], [ 10, 9 ], [ 11, 1 ], [ 15, 5 ], [ 17, 4 ], [ 17, 5 ], [ 17, 6 ], [\
  17, 7 ], [ 21, 3 ], [ 28, 8 ], [ 29, 1 ], [ 31, 3 ], [ 33, 6 ], [ 33, 7 ], [ 33, 8 ], [ 33, 9 ], [ 33, 10 ], [ 33, 11\
  ] ], MirrorSymmetries = [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1 ], sparse = false\
@@ -51,8 +51,8 @@ TGQuotientSequencesAdjacencyMatrix( [ 2, 4, 6 ], boundByGenus = 34, ListTGQuotie
  0, 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] ])
 
 gap> sparse := true;;
-gap> tgQSAdjMatSparse := TGQuotientSequencesAdjacencyMatrix(tg : sparse := sparse, boundByGenus := boundByGenus );
-TGQuotientSequencesAdjacencyMatrix( [ 2, 4, 6 ], boundByGenus = 34, ListTGQuotients = [ [ 2, 2 ], [ 3, 4 ], [ 4, 3 ], \
+gap> tgQSSSparse := TGQuotientSequencesStructure(tg : sparse := sparse, boundByGenus := boundByGenus );
+TGQuotientSequencesStructure( [ 2, 4, 6 ], boundByGenus = 34, ListTGQuotients = [ [ 2, 2 ], [ 3, 4 ], [ 4, 3 ], \
 [ 5, 4 ], [ 6, 2 ], [ 9, 3 ], [ 9, 4 ], [ 10, 8 ], [ 10, 9 ], [ 11, 1 ], [ 15, 5 ], [ 17, 4 ], [ 17, 5 ], [ 17, 6 ], [\
  17, 7 ], [ 21, 3 ], [ 28, 8 ], [ 29, 1 ], [ 31, 3 ], [ 33, 6 ], [ 33, 7 ], [ 33, 8 ], [ 33, 9 ], [ 33, 10 ], [ 33, 11\
  ] ], MirrorSymmetries = [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1 ], sparse = true,\
@@ -67,31 +67,31 @@ TGQuotientSequencesAdjacencyMatrix( [ 2, 4, 6 ], boundByGenus = 34, ListTGQuotie
 , [ [ 13, 20 ], 1 ], [ [ 13, 23 ], 1 ], [ [ 14, 23 ], 1 ], [ [ 15, 23 ], 1 ], [ [ 15, 24 ], 1 ], [ [ 15, 25 ], 1 ] ])
 
 # Test basic properties
-gap> Signature(tgQSAdjMat);
+gap> Signature(tgQSS);
 [2, 4, 6]
-gap> Signature(tgQSAdjMatSparse);
+gap> Signature(tgQSSSparse);
 [2, 4, 6]
-gap> BoundByGenus(tgQSAdjMat);
+gap> BoundByGenus(tgQSS);
 34
-gap> BoundByGenus(tgQSAdjMatSparse);
+gap> BoundByGenus(tgQSSSparse);
 34
-gap> GetListTGQuotients(tgQSAdjMat);
+gap> GetListTGQuotients(tgQSS);
 [ [ 2, 2 ], [ 3, 4 ], [ 4, 3 ], [ 5, 4 ], [ 6, 2 ], [ 9, 3 ], [ 9, 4 ], [ 10, 8 ], [ 10, 9 ], [ 11, 1 ], [ 15, 5 ],
   [ 17, 4 ], [ 17, 5 ], [ 17, 6 ], [ 17, 7 ], [ 21, 3 ], [ 28, 8 ], [ 29, 1 ], [ 31, 3 ], [ 33, 6 ], [ 33, 7 ],
   [ 33, 8 ], [ 33, 9 ], [ 33, 10 ], [ 33, 11 ] ]
-gap> GetListTGQuotients(tgQSAdjMatSparse);
+gap> GetListTGQuotients(tgQSSSparse);
 [ [ 2, 2 ], [ 3, 4 ], [ 4, 3 ], [ 5, 4 ], [ 6, 2 ], [ 9, 3 ], [ 9, 4 ], [ 10, 8 ], [ 10, 9 ], [ 11, 1 ], [ 15, 5 ],
   [ 17, 4 ], [ 17, 5 ], [ 17, 6 ], [ 17, 7 ], [ 21, 3 ], [ 28, 8 ], [ 29, 1 ], [ 31, 3 ], [ 33, 6 ], [ 33, 7 ],
   [ 33, 8 ], [ 33, 9 ], [ 33, 10 ], [ 33, 11 ] ]
-gap> MirrorSymmetries(tgQSAdjMat);
+gap> MirrorSymmetries(tgQSS);
 [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1 ]
-gap> MirrorSymmetries(tgQSAdjMatSparse);
+gap> MirrorSymmetries(tgQSSSparse);
 [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1 ]
-gap> IsSparse(tgQSAdjMat);
+gap> IsSparse(tgQSS);
 false
-gap> IsSparse(tgQSAdjMatSparse);
+gap> IsSparse(tgQSSSparse);
 true
-gap> adjMat := AdjacencyMatrix(tgQSAdjMat);
+gap> adjMat := AdjacencyMatrix(tgQSS);
 [ [ 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 1, 1 ],
   [ 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1 ],
   [ 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 ],
@@ -117,7 +117,7 @@ gap> adjMat := AdjacencyMatrix(tgQSAdjMat);
   [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
   [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
   [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] ]
-gap> adjMatSparse := AdjacencyMatrix(tgQSAdjMatSparse);
+gap> adjMatSparse := AdjacencyMatrix(tgQSSSparse);
 [ [ [ 1, 4 ], 1 ], [ [ 1, 6 ], 1 ], [ [ 1, 9 ], 1 ], [ [ 1, 12 ], 1 ], [ [ 1, 15 ], 1 ], [ [ 1, 17 ], 1 ],
   [ [ 1, 21 ], 1 ], [ [ 1, 23 ], 1 ], [ [ 1, 24 ], 1 ], [ [ 1, 25 ], 1 ], [ [ 2, 4 ], 1 ], [ [ 2, 6 ], 1 ],
   [ [ 2, 7 ], 1 ], [ [ 2, 12 ], 1 ], [ [ 2, 13 ], 1 ], [ [ 2, 14 ], 1 ], [ [ 2, 15 ], 1 ], [ [ 2, 20 ], 1 ],
@@ -130,7 +130,7 @@ gap> adjMatSparse := AdjacencyMatrix(tgQSAdjMatSparse);
   [ [ 14, 23 ], 1 ], [ [ 15, 23 ], 1 ], [ [ 15, 24 ], 1 ], [ [ 15, 25 ], 1 ] ]
 
 # Nearest-neighbor adjacency matrix (test sparse multiplication and subtraction)
-gap> NearestNeighborAdjacencyMatrix(tgQSAdjMat);
+gap> NearestNeighborAdjacencyMatrix(tgQSS);
 [ [ 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
   [ 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
   [ 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
@@ -156,7 +156,7 @@ gap> NearestNeighborAdjacencyMatrix(tgQSAdjMat);
   [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
   [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
   [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] ]
-gap> NearestNeighborAdjacencyMatrix(tgQSAdjMatSparse);
+gap> NearestNeighborAdjacencyMatrix(tgQSSSparse);
 [ [ [ 1, 4 ], 1 ], [ [ 1, 9 ], 1 ], [ [ 2, 4 ], 1 ], [ [ 2, 7 ], 1 ], [ [ 3, 8 ], 1 ], [ [ 3, 9 ], 1 ],
   [ [ 4, 6 ], 1 ], [ [ 4, 12 ], 1 ], [ [ 4, 15 ], 1 ], [ [ 5, 10 ], 1 ], [ [ 6, 21 ], 1 ], [ [ 6, 25 ], 1 ],
   [ [ 7, 13 ], 1 ], [ [ 7, 14 ], 1 ], [ [ 7, 15 ], 1 ], [ [ 7, 22 ], 1 ], [ [ 8, 17 ], 1 ], [ [ 9, 17 ], 1 ],
@@ -164,23 +164,23 @@ gap> NearestNeighborAdjacencyMatrix(tgQSAdjMatSparse);
   [ [ 14, 23 ], 1 ], [ [ 15, 23 ], 1 ], [ [ 15, 24 ], 1 ], [ [ 15, 25 ], 1 ] ]
 
 # Test depth first algorithm
-gap> LongestSequence(tgQSAdjMat);
+gap> LongestSequence(tgQSS);
 [ [ 2, 2 ], [ 5, 4 ], [ 9, 3 ], [ 33, 11 ] ]
-gap> LongestSequence(tgQSAdjMatSparse);
+gap> LongestSequence(tgQSSSparse);
 [ [ 2, 2 ], [ 5, 4 ], [ 9, 3 ], [ 33, 11 ] ]
-gap> LongestSequence(tgQSAdjMat : quotient := [17,5]);
+gap> LongestSequence(tgQSS : quotient := [17,5]);
 [ [ 17, 5 ], [ 33, 9 ] ]
-gap> LongestSequence(tgQSAdjMatSparse : quotient := [17,5]);
+gap> LongestSequence(tgQSSSparse : quotient := [17,5]);
 [ [ 17, 5 ], [ 33, 9 ] ]
-gap> LongestSequence(tgQSAdjMat : quotient := [17,5], nonMirrorSymmetric := true);
+gap> LongestSequence(tgQSS : quotient := [17,5], nonMirrorSymmetric := true);
 [ [ 17, 5 ], [ 33, 6 ] ]
-gap> LongestSequence(tgQSAdjMatSparse : quotient := [17,5], nonMirrorSymmetric := true);
+gap> LongestSequence(tgQSSSparse : quotient := [17,5], nonMirrorSymmetric := true);
 [ [ 17, 5 ], [ 33, 6 ] ]
 
 # Test export/import
 gap> str := "";;
 gap> output := OutputTextString(str, false);;
-gap> Export(tgQSAdjMat, output);;
+gap> Export(tgQSS, output);;
 gap> CloseStream(output);;
 gap> Print(str);
 HyperCells HCQS version 1.0
@@ -210,8 +210,8 @@ false
 , 0, 0 ], [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] ]
 
 gap> input := InputTextString(str);;
-gap> tgQSAdjMat2 := ImportTGQuotientSequencesAdjacencyMatrix(input);
-TGQuotientSequencesAdjacencyMatrix( [ 2, 4, 6 ], boundByGenus = 34, ListTGQuotients = [ [ 2, 2 ], [ 3, 4 ], [ 4, 3 ], \
+gap> tgQSS2 := ImportTGQuotientSequencesStructure(input);
+TGQuotientSequencesStructure( [ 2, 4, 6 ], boundByGenus = 34, ListTGQuotients = [ [ 2, 2 ], [ 3, 4 ], [ 4, 3 ], \
 [ 5, 4 ], [ 6, 2 ], [ 9, 3 ], [ 9, 4 ], [ 10, 8 ], [ 10, 9 ], [ 11, 1 ], [ 15, 5 ], [ 17, 4 ], [ 17, 5 ], [ 17, 6 ], [\
  17, 7 ], [ 21, 3 ], [ 28, 8 ], [ 29, 1 ], [ 31, 3 ], [ 33, 6 ], [ 33, 7 ], [ 33, 8 ], [ 33, 9 ], [ 33, 10 ], [ 33, 11\
  ] ], MirrorSymmetries = [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1 ], sparse = false\
@@ -232,13 +232,13 @@ TGQuotientSequencesAdjacencyMatrix( [ 2, 4, 6 ], boundByGenus = 34, ListTGQuotie
 0, 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0,\
  0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,\
  0, 0, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] ])
-gap> tgQSAdjMat = tgQSAdjMat2;
+gap> tgQSS = tgQSS2;
 true
 
 # Test export/import (sparse)
 gap> str := "";;
 gap> output := OutputTextString(str, false);;
-gap> Export(tgQSAdjMatSparse, output);;
+gap> Export(tgQSSSparse, output);;
 gap> CloseStream(output);;
 gap> Print(str);
 HyperCells HCQS version 1.0
@@ -260,8 +260,8 @@ true
 ], 1 ], [ [ 13, 23 ], 1 ], [ [ 14, 23 ], 1 ], [ [ 15, 23 ], 1 ], [ [ 15, 24 ], 1 ], [ [ 15, 25 ], 1 ] ]
 
 gap> input := InputTextString(str);;
-gap> tgQSAdjMatSparse2 := ImportTGQuotientSequencesAdjacencyMatrix(input);
-TGQuotientSequencesAdjacencyMatrix( [ 2, 4, 6 ], boundByGenus = 34, ListTGQuotients = [ [ 2, 2 ], [ 3, 4 ], [ 4, 3 ], \
+gap> tgQSSSparse2 := ImportTGQuotientSequencesStructure(input);
+TGQuotientSequencesStructure( [ 2, 4, 6 ], boundByGenus = 34, ListTGQuotients = [ [ 2, 2 ], [ 3, 4 ], [ 4, 3 ], \
 [ 5, 4 ], [ 6, 2 ], [ 9, 3 ], [ 9, 4 ], [ 10, 8 ], [ 10, 9 ], [ 11, 1 ], [ 15, 5 ], [ 17, 4 ], [ 17, 5 ], [ 17, 6 ], [\
  17, 7 ], [ 21, 3 ], [ 28, 8 ], [ 29, 1 ], [ 31, 3 ], [ 33, 6 ], [ 33, 7 ], [ 33, 8 ], [ 33, 9 ], [ 33, 10 ], [ 33, 11\
  ] ], MirrorSymmetries = [ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1 ], sparse = true,\
@@ -274,7 +274,7 @@ TGQuotientSequencesAdjacencyMatrix( [ 2, 4, 6 ], boundByGenus = 34, ListTGQuotie
 [ [ 7, 14 ], 1 ], [ [ 7, 15 ], 1 ], [ [ 7, 20 ], 1 ], [ [ 7, 22 ], 1 ], [ [ 7, 23 ], 1 ], [ [ 7, 24 ], 1 ], [ [ 7, 25 \
 ], 1 ], [ [ 8, 17 ], 1 ], [ [ 9, 17 ], 1 ], [ [ 10, 16 ], 1 ], [ [ 10, 19 ], 1 ], [ [ 11, 18 ], 1 ], [ [ 12, 21 ], 1 ]\
 , [ [ 13, 20 ], 1 ], [ [ 13, 23 ], 1 ], [ [ 14, 23 ], 1 ], [ [ 15, 23 ], 1 ], [ [ 15, 24 ], 1 ], [ [ 15, 25 ], 1 ] ])
-gap> tgQSAdjMatSparse = tgQSAdjMatSparse2;
+gap> tgQSSSparse = tgQSSSparse2;
 true
 
 # Test internal (cache) functions
