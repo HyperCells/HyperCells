@@ -92,13 +92,13 @@ DeclareGlobalFunction( "TGQuotientSequencesStructure" );
 DeclareOperation( "Signature", [ IsTGQuotientSequencesStructureObj ] );
 
 #! @Description
-#!   returns the upper bound used to generate the adjacency matrix in the quotient sequences structure <A>tgQSS</A>.
+#!   returns the upper bound used to generate the adjacency matrix of the quotient sequences structure <A>tgQSS</A>.
 #! @Arguments tgQSS
 #! @Label for TGQuotientSequencesStructure
 DeclareOperation( "BoundByGenus", [ IsTGQuotientSequencesStructureObj ] );
 
 #! @Description
-#!   returns the list of quotients used to generate the adjacency matrix in the quotient sequences structure<A>tgQSS</A>.
+#!   returns the list of quotients used to generate the adjacency matrix of the quotient sequences structure<A>tgQSS</A>.
 #!   If the option `boundByGenus` was used in the generation of <A>tgQSS</A>, a corresponding 
 #!   reduced list will be returned. The default is `ListTGQuotients(Signature(<A>tgQSS</A>))`.
 #! @Arguments tgQSS

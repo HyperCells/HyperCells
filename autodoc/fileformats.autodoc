@@ -504,7 +504,7 @@ false
   [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] ])
 @EndLogSession
 
-A complete example for a sparse representation of the adjacency matrix in the quotient sequences structure for the 
+A complete example for a sparse representation of the adjacency matrix of the quotient sequences structure for the 
 $\Delta(2,8,8)$ triangle group and triangle group quotients with genus smaller than 12
 is given below:
 @BeginLogSession
