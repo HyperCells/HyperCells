@@ -196,13 +196,19 @@ The following model types are currently implemented:
 - **Tessellation graph**: tessellation model graph derived from a cell graph of a triangle
   group. The model type is given as
   `[ "TESS", [ p, q ], [ "VEF", [ [ 2 ], [ 1 ], [ 3 ] ] ] ]` for the $\{p,q\}$
-  tessellation and as `[ "TESS", [ p, q ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ]`
+  tessellation and as `[ "TESS", [ q, p ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ]`
   for the (dual) $\{q,p\}$ tessellation.
   See <Ref Func='TessellationModelGraph'/> for details.
 - **Kagome graph**: kagome model graph derived from a cell graph of a triangle
   group. The model type is given as
   `[ "KAGOME", p, [ "VEF", [ [ 1 ], [ 2 ], [ 2, 3 ] ] ] ]`.
   See <Ref Func='KagomeModelGraph'/> for details.
+- **Lieb graph**: Lieb model graph derived from a cell graph of a triangle
+  group. The model type is given as
+  `[ "LIEB", [ p, q ], [ "VEF", [ [ 1, 2 ], [  ], [ 3 ] ] ] ]` for the $\{p,q\}$
+  tessellation and as `[ "LIEB", [ q, p ], [ "VEF", [ [ 1, 3 ], [  ], [ 2 ] ] ] ]`
+  for the (dual) $\{q,p\}$ tessellation.
+  See <Ref Func='LiebModelGraph'/> for details.
 
 Lines eight to eleven specify the vertices, edges, edge translations and faces of the cell:
 - The vertices are given as a list `&lt;vertices&gt;` with entries of the form
@@ -334,13 +340,19 @@ The following model types are currently implemented:
 - **Tessellation graph**: tessellation model graph derived from a cell graph of a triangle
   group. The model type is given as
   `[ "TESS", [ p, q ], [ "VEF", [ [ 2 ], [ 1 ], [ 3 ] ] ] ]` for the $\{p,q\}$
-  tessellation and as `[ "TESS", [ p, q ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ]`
+  tessellation and as `[ "TESS", [ q, p ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ]`
   for the (dual) $\{q,p\}$ tessellation.
   See <Ref Func='TessellationModelGraph'/> for details.
 - **Kagome graph**: kagome model graph derived from a cell graph of a triangle
   group. The model type is given as
   `[ "KAGOME", p, [ "VEF", [ [ 1 ], [ 2 ], [ 2, 3 ] ] ] ]`.
   See <Ref Func='KagomeModelGraph'/> for details.
+- **Lieb graph**: Lieb model graph derived from a cell graph of a triangle
+  group. The model type is given as
+  `[ "LIEB", [ p, q ], [ "VEF", [ [ 1, 2 ], [  ], [ 3 ] ] ] ]` for the $\{p,q\}$
+  tessellation and as `[ "LIEB", [ p, q ], [ "VEF", [ [ 1, 3 ], [  ], [ 2 ] ] ] ]`
+  for the (dual) $\{q,p\}$ tessellation.
+  See <Ref Func='LiebModelGraph'/> for details.
 
 Lines thirteen to sixteen specify the vertices, edges, edge translations and faces of the cell:
 - The vertices are given as a list `&lt;vertices&gt;` with entries of the form
@@ -462,7 +474,7 @@ considered.
 Line five, `&lt;mirror symmetries&gt;`, specifies
 an ordered binary list of ones and zeros, 1 if quotients in `&lt;quotients&gt;` have mirror symmetries 0 otherwise.
 
-The sixth line `&lt;sparse&gt;` specifies if line seven, the adjacency matrix `&lt;adjacency matrix&gt;`, is sparsly
+The sixth line `&lt;sparse&gt;` specifies if line seven, the adjacency matrix `&lt;adjacency matrix&gt;`, is sparsely
 represented `true`, or dense `false`.
 
 The full file structure of a HyperCell quotient sequences structure file thus is as follows:
