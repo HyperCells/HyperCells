@@ -78,7 +78,7 @@ rwsFunc@ := MemoizePosIntFunction(function(ID)
 		# error due to missing configurations in the package kbmag occurred 
 		# (or (highly unlikely) possibly due to exceeding 65535 number of generators)
 		else
-			Print("#WARNING: maximal number of genartors have been exceeded; non-simplified words will be used.\n");
+			Print("#WARNING: maximal number of generators have been exceeded; non-simplified words will be used.\n");
 			Print("Please follow the instructions in the chapter Introduction, section Simplify extension (optional) in the HyperCells reference manual.\n");
 		fi;
 		return catch;
@@ -171,7 +171,7 @@ SimplifyWord@ := function(G, w, lmax)
 	# -----------------------
 	# this makes it unlikely that rewriting systems
 	# for the same group are generated multiple times 
-	# and that the choosen options in rwsFunc@ do not 
+	# and that the chosen options in rwsFunc@ do not 
 	# lead to unintended errors (or at least it seems rather stable)
 	if lmax < Length(gens) then 
 		lmax := Length(gens);

@@ -176,7 +176,7 @@ DeclareCategory( "IsPGMatricesObj", IsObject );
 #!   If `symNames` is not specified, the words in <A>symmetries</A> will used as labels instead.
 #!   
 #!   If  the option `sparse` was used in the construction of <A>pgMatsGs</A>, the point-group 
-#!   matrices will be sparsly represented as well and will be of the form `[ [ [ rowIdx, colIdx ], entry ], ... ]`, 
+#!   matrices will be sparsely represented as well and will be of the form `[ [ [ rowIdx, colIdx ], entry ], ... ]`, 
 #!   where `entry` is the corresponding matrix element at position `rowIdx` and `colIdx`, which represent
 #!   indices of the matrix rows and columns, respectively. 
 #! @Arguments symmetries, pgMatsGs
@@ -262,7 +262,7 @@ DeclareGlobalFunction( "ImportPGMatrices" );
 DeclareGlobalFunction( "ImportPGMatricesFromFile" );
 #!
 #! @Description
-#!   Alterantively, point-group matrices can be imported from the string <A>string</A>.
+#!   Alternatively, point-group matrices can be imported from the string <A>string</A>.
 #!   Optionally, the triangle group and the proper triangle group can be given as a TriangleGroup
 #!   object <A>fulltg</A> and a ProperTriangleGroup object <A>tg</A>, respectively, 
 #!   (see <Ref Sect="Section_TriangleGroups"/>).

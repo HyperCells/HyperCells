@@ -90,7 +90,7 @@ function(fulltg, tg, tgquotient)
     fi;
 
     if not IsProperTriangleGroupObj(tg) then
-        Error("The second argument must be a ProperTriangeGroup object.");
+        Error("The second argument must be a ProperTriangleGroup object.");
         return fail;
     fi;
 
@@ -100,7 +100,7 @@ function(fulltg, tg, tgquotient)
     fi;
 
     if not  Signature(fulltg) = Signature(tg) or not  Signature(tg) = TriangleGroupSignature(tgquotient) then
-        Error("The agruments must have the same signatures.");
+        Error("The arguments must have the same signatures.");
         return fail;
     fi;
 
@@ -167,14 +167,14 @@ function(fulltg, tg, tgquotient)
     GAMMA := AsTGSubgroup(cellGamma);
     gensGamma := GeneratorsOfGroup(GAMMA);	
 
-    # get transation op.'s in terms of reflection op.'s
-    # Note: I explicilty want these gnerators (in x, y, z) s.t. the 
-    # reassignement of GAMMA in terms of a, b, c stays consistent.
+    # get translation op.'s in terms of reflection op.'s
+    # Note: I explicitly want these generators (in x, y, z) s.t. the 
+    # reassignment of GAMMA in terms of a, b, c stays consistent.
     gensGammaABC := List(gensGamma, g -> Image(embDDELTA, g));
 
     # construct the translation group in terms of a, b, c
     homDeltaG := GroupHomomorphismByImagesNC(DELTA, G);
-    kernDeltaG := Kernel(homDeltaG); # tanslation group in terms of a, b, c
+    kernDeltaG := Kernel(homDeltaG); # translation group in terms of a, b, c
     isoGamma := IsomorphismFpGroupByGenerators(kernDeltaG, gensGammaABC, "g");
     fpGAMMA := Image(isoGamma);
     gensGammaFp := GeneratorsOfGroup(fpGAMMA);
@@ -203,7 +203,7 @@ function(fulltg, tg, tgquotient)
     homtemp := GroupHomomorphismByImagesNC(fpGAMMA, tempGroup, 
         gensGammaFp, GeneratorsOfGroup(tempGroup));
 
-    # reassigne generators
+    # reassign generators
     gensGammaFp := List(gensGammaFp, g -> Image(homtemp, g));
 
     PGMLst := [];

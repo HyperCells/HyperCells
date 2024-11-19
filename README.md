@@ -83,7 +83,7 @@ The HyperCells package has an integrated word simplification procedure for a sel
  of functions. Two methods are available: a default brute-force method, and a method based 
 on the Knuth-Bendix completion algorithm. The latter can only be used provided the 
 <a target="_blank" href="https://gap-packages.github.io/kbmag/doc/chap0_mj.html">kbmag</a> 
-package (verion 1.5.10+) is available. 
+package (version 1.5.10+) is available. 
 
 The default configuration of the kbmag package allows HyperCells to simplify words in groups 
 with a maximal number of generators of 127. However, this limit can manually be extended up to 
@@ -110,11 +110,11 @@ Once these changes are made, kbmag needs to be recompiled. This can be done in t
 where in the kbmag directory one needs to execute the command **make clean** and afterwards **make**.
 
 If these changes are not made while using the Knuth-Bendix completion algorithm based simplification 
-and unit cells compactified on Rieman surfaces with genus exceeding 63 are used, the procedure will 
-not be excecuted and a warning will be printed in GAP:
+and unit cells compactified on Riemann surfaces with genus exceeding 63 are used, the procedure will 
+not be executed and a warning will be printed in GAP:
 
 ```
-#WARNING: maximal number of genartors have been exceeded; non-simplified words 
+#WARNING: maximal number of generators have been exceeded; non-simplified words 
 will be used. Please follow the instructions in the chapter Introduction section
 Simplify extension (optional) in the HyperCells reference manual.
 ```
