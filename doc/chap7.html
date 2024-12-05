@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (HyperCells) - Chapter 7: File Formats</title>
+<title>GAP (HyperCells) - Chapter 7: Representations of point groups</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -15,388 +15,277 @@
 <body class="chap7"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
 
-<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapBib.html">[Next Chapter]</a>&nbsp;  </div>
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap8.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap7_mj.html">[MathJax on]</a></p>
-<p><a id="X8091CEE880E799B4" name="X8091CEE880E799B4"></a></p>
-<div class="ChapSects"><a href="chap7.html#X8091CEE880E799B4">7 <span class="Heading">File Formats</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X7CFBF28C7E45D68A">7.1 <span class="Heading">HyperCell cell graph (*.hcc)</span></a>
+<p><a id="X84982DAB84AFA590" name="X84982DAB84AFA590"></a></p>
+<div class="ChapSects"><a href="chap7.html#X84982DAB84AFA590">7 <span class="Heading">Representations of point groups</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X7A5EF6AC7C0051A7">7.1 <span class="Heading">Point-group matrices</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X8672A7E782E0D7F3">7.2 <span class="Heading">HyperCell model graph (*.hcm)</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X78C32C4F787BBEA8">7.2 <span class="Heading">PGMatricesOfGenerators</span></a>
 </span>
-</div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X79442B71791A7C60">7.3 <span class="Heading">HyperCell supercell graph (*.hcs)</span></a>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X78C32C4F787BBEA8">7.2-1 PGMatricesOfGenerators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X786ACF3281326823">7.2-2 Signature</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X853878E083197B98">7.2-3 GetTriangleGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X823135A1813D957E">7.2-4 GetProperTriangleGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X8149917B7AADD486">7.2-5 TGQuotientName</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X85B38D5E850CB6B4">7.2-6 GetTGQuotient</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X86A674CB78B9D9A1">7.2-7 IsSparse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X83B2DE91838C1843">7.2-8 TGGenerators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X783F4843877075D8">7.2-9 PGMatricesRec</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7EB13C2F8615FDC7">7.2-10 EvaluatePGMatrix</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X873EC38D7AD44D76">7.3 <span class="Heading">PGMatrices</span></a>
 </span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X873EC38D7AD44D76">7.3-1 PGMatrices</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X8662DE228057F77A">7.3-2 GetPGMatricesOfGenerators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X85CD1E1579BDE96B">7.3-3 Symmetries</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7BDD8665834E0878">7.3-4 SymmetryNames</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X793FA4BC81802B77">7.3-5 PGMatricesRec</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X8492C5B38700A475">7.4 <span class="Heading">Export and Import</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7FC93691823C2D4A">7.4-1 <span class="Heading">Exporting PGMatrices Objects</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7A652AED81DC17E9">7.4-2 <span class="Heading">Importing PGMatrices Objects</span></a>
+</span>
+</div></div>
 </div>
-</div>
 
-<h3>7 <span class="Heading">File Formats</span></h3>
+<h3>7 <span class="Heading">Representations of point groups</span></h3>
 
-<p>The following file formats are introduced by the HyperCells package:</p>
+<p><a id="X7A5EF6AC7C0051A7" name="X7A5EF6AC7C0051A7"></a></p>
 
+<h4>7.1 <span class="Heading">Point-group matrices</span></h4>
 
-<ul>
-<li><p><em>HyperCell cell graph</em> (<code class="code">*.hcc</code>) for storing the cell graphs, i.e., <code class="code">TGCellGraph</code> objects (see <a href="chap3.html#X7945E96B7A771F5A"><span class="RefLink">3.7</span></a>)</p>
+<p>Point-group matrices are representations of group elements in the point group <span class="Math">G\cong\Delta/\Gamma</span>. These matrices can efficiently be constructed. Given any symmetry <code class="code">g</code> in the point group <span class="Math">G</span> and a set <code class="code">I</code> of all translation generators <span class="Math">\gamma_i</span> of the translation group <span class="Math">\Gamma</span>, a corresponding point-group matrix can be determined through the set of the symmetry transformed elements <span class="Math">g \gamma_i g^{-1}</span> <a href="chapBib.html#biBChen:2023">[CGL+23]</a>. Point-group matrices enable the conduction of symmetry analysis on any given (supercell) model graph.</p>
 
-</li>
-<li><p><em>HyperCell model graph</em> (<code class="code">*.hcm</code>) for storing the model graphs, i.e., <code class="code">TGCellModelGraph</code> objects (see <a href="chap4.html#X87FE1AF37CFB0B86"><span class="RefLink">4.1</span></a>)</p>
+<p><a id="X78C32C4F787BBEA8" name="X78C32C4F787BBEA8"></a></p>
 
-</li>
-<li><p><em>HyperCell supercell graph</em> (<code class="code">*.hcs</code>) for storing the supercell model graphs, i.e., <code class="code">TGSuperCellModelGraph</code> objects (see <a href="chap5.html#X84E3E01A7C2274DF"><span class="RefLink">5.1</span></a>)</p>
-
-</li>
-</ul>
-<p>These file formats are described in detail below.</p>
-
-<p><a id="X7CFBF28C7E45D68A" name="X7CFBF28C7E45D68A"></a></p>
-
-<h4>7.1 <span class="Heading">HyperCell cell graph (*.hcc)</span></h4>
-
-<p>The basic file structure of a HyperCell cell graph file is as follows (with placeholders marked by <code class="code">&lt;...&gt;</code>):</p>
-
-
-<div class="example"><pre>
-HyperCells HCC version 1.0
-[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
-[ &lt;relators&gt; , &lt;center&gt; ]
-[ g1, g2, ... ] -&gt; &lt;generators&gt;
-&lt;TDGAMMA&gt;
-[ &lt;TGGx&gt;, &lt;TGGy&gt;, &lt;TGGz&gt; ]
-&lt;vertices&gt;
-&lt;edges&gt;
-&lt;edge translations&gt;
-&lt;faces&gt;
-&lt;boundary&gt;
-</pre></div>
-
-<p>The first line specifies the file format and its version.</p>
-
-<p>The second line gives the signature <span class="Math">(r,q,p)</span> of the underlying triangle group <span class="Math">\Delta(r,q,p)</span> and the third line specifies the triangle-group quotient <span class="Math">\Delta^+(r,q,p)/\Gamma</span> by the list of relators <code class="code">&lt;relators&gt;</code> given as elements of the proper triangle group <span class="Math">\Delta^+</span> with generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> and the center of the cell given as the integer <code class="code">&lt;center&gt;</code> with <code class="code">1</code>, <code class="code">2</code>, <code class="code">3</code> corresponding to the center lying at the vertex <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> of the fundamental Schwarz triangle, respectively.</p>
-
-<p>The fourth line specifies the generators of the translation group <span class="Math">\Gamma</span>. To the left of <code class="code">-&gt;</code> are the generators of the finitely presented group and to the right the list <code class="code">&lt;generators&gt;</code> of their images in the proper triangle group <span class="Math">\Delta^+</span> in terms of the generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span>.</p>
-
-<p>The fifth line gives the transversal <span class="Math">T_{\Delta^+}(\Gamma)</span> as a list <code class="code">&lt;TDGAMMA&gt;</code> of elements of the proper triangle group <span class="Math">\Delta^+</span> and the sixth line specifies the transversals <span class="Math">T_{G^+}(G_w^+)</span> as lists <code class="code">&lt;TGGw&gt;</code> with <span class="Math">w=x,y,z</span> (<code class="code">w=x,y,z</code>) of preimages of elements of the quotient group <span class="Math">G^+\cong\Delta^+/\Gamma</span> under the quotient homomorphism <span class="Math">\Delta^+\to G^+</span>, i.e., in terms of the generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span>.</p>
-
-<p>Lines seven to ten specify the vertices, edges, edge translations and faces of the cell:</p>
+<h4>7.2 <span class="Heading">PGMatricesOfGenerators</span></h4>
 
 
 <ul>
-<li><p>The vertices are given as a list <code class="code">&lt;vertices&gt;</code> with entries of the form <code class="code">[ w, gi ]</code>, where <code class="code">w</code> is <code class="code">1</code>, <code class="code">2</code>, <code class="code">3</code> corresponding to the vertex <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> of the fundamental Schwarz triangle and <code class="code">gi</code> is the position of the element in the transversal <span class="Math">T_{G^+}(G_w^+)</span>.</p>
+<li><p><code class="func">Signature</code> (<a href="chap7.html#X786ACF3281326823"><span class="RefLink">7.2-2</span></a>): signature of the underlying triangle group</p>
 
 </li>
-<li><p>The edges are given as a list <code class="code">&lt;edges&gt;</code> with entries of the form <code class="code">[ v1, v2, s ]</code>, where <code class="code">v1</code> and <code class="code">v2</code> are the positions of the vertices in <code class="code">&lt;vertices&gt;</code> connected by the edge, <code class="code">s</code> is the position of the element in <span class="Math">T_{\Delta^+}(\Gamma)</span> labeling the Schwarz triangle this edge is a part of.</p>
+<li><p><code class="func">GetTriangleGroup</code> (<a href="chap7.html#X853878E083197B98"><span class="RefLink">7.2-3</span></a>): the triangle group <span class="Math">\Delta</span></p>
 
 </li>
-<li><p>The edge translations, i.e., the translations relating the unit cell containing the first vertex (<code class="code">v1</code>) to the unit cell containing the second (<code class="code">v2</code>) are given as a list <code class="code">&lt;edge translations&gt;</code> of elements of the finitely presented group, i.e., in terms of the generators given to the left of <code class="code">-&gt;</code> in the third line. If <code class="code">v1</code> corresponds to the vertex <span class="Math">(w, [g_{u_w}]_w)</span> and <code class="code">v2</code> to the vertex <span class="Math">(w', [g_{\tilde{u}_{w'}}]_{w'})</span>, then <code class="code">gam</code> corresponds to the translation <span class="Math">\gamma</span> such that</p>
-
-<p class="pcenter">g_{\tilde{u}_{w'}} = g_{u_w}\gamma.</p>
+<li><p><code class="func">GetProperTriangleGroup</code> (<a href="chap7.html#X823135A1813D957E"><span class="RefLink">7.2-4</span></a>): the proper triangle group <span class="Math">\Delta^+</span></p>
 
 </li>
-<li><p>The faces are given as a list <code class="code">&lt;faces&gt;</code> with entries of the form <code class="code">[ edge, orientation ]</code>, where <code class="code">edge</code> is the position of the edge in <code class="code">&lt;edges&gt;</code> and <code class="code">orientation</code> is <code class="code">1</code> or <code class="code">-1</code> depending on whether the edge is traversed in the same or opposite direction as the edge given in <code class="code">&lt;edges&gt;</code>.</p>
+<li><p><code class="func">TGQuotientName</code> (<a href="chap7.html#X8149917B7AADD486"><span class="RefLink">7.2-5</span></a>): name of the triangle group quotient</p>
+
+</li>
+<li><p><code class="func">GetTGQuotient</code> (<a href="chap7.html#X85B38D5E850CB6B4"><span class="RefLink">7.2-6</span></a>): the triangle group quotient</p>
+
+</li>
+<li><p><code class="func">IsSparse</code> (<a href="chap7.html#X86A674CB78B9D9A1"><span class="RefLink">7.2-7</span></a>): boolean, if true the point-group matrices are sparsely represented</p>
+
+</li>
+<li><p><code class="func">TGGenerators</code> (<a href="chap7.html#X83B2DE91838C1843"><span class="RefLink">7.2-8</span></a>): list of triangle group generators <code class="code">a</code>, <code class="code">b</code> and <code class="code">c</code></p>
+
+</li>
+<li><p><code class="func">PGMatricesRec</code> (<a href="chap7.html#X783F4843877075D8"><span class="RefLink">7.2-9</span></a>): record of three point-group matrices for the generators <code class="code">a</code>, <code class="code">b</code> and <code class="code">c</code> of the triangle group <span class="Math">\Delta</span></p>
 
 </li>
 </ul>
-<p>Finally, the eleventh line specifies the boundary identifications of the cell as a list <code class="code">&lt;boundary&gt;</code> with entries of the form <code class="code">[ d1, d2, e, b, m, gam ]</code>, where <code class="code">d1</code>, <code class="code">d2</code> are elements of <span class="Math">T_{\Delta^+}(\Gamma)\subset\Delta^+</span> labeling the Schwarz triangles this edge is a part of, <code class="code">e</code> the position in <code class="code">&lt;edges&gt;</code>, <code class="code">b</code> a running integer index of the boundary (identical for identified boundaries), <code class="code">m</code> either <code class="code">0</code> or <code class="code">1</code> indicating the orientation of the triangle associated with this instance of the boundary (0 for gray and 1 for white Schwarz triangle), and <code class="code">gam</code> the translation relating the given to the identified boundary, as an element of the finitely presented group, i.e., in terms of the generators given to the left of <code class="code">-&gt;</code> in the third line.</p>
-
-<p>The full file structure of a HyperCell cell graph file thus is as follows:</p>
+<p>and is printed in the form</p>
 
 
 <div class="example"><pre>
-HyperCells HCC version 1.0
-[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
-[ [ &lt;rel1&gt;, &lt;rel2&gt;, ... ], &lt;center&gt; ]
-[ g1, g2, ... ] -&gt; [ &lt;generator1&gt;, &lt;generator2&gt;, ... ]
-[ &lt;d1&gt;, &lt;d2&gt;, ... ]
-[ [ &lt;gx1&gt;, &lt;gx2&gt;, ... ], [ &lt;gy1&gt;, &lt;gy2&gt;, ... ], [ &lt;gz1&gt;, &lt;gz2&gt;, ... ] ]
-[ [ w, gi ], ... ]
-[ [ v1, v2, s ], ... ]
-[ [ gam1, gam2, ... ], ... ]
-[ [ edge, orientation ], ... ]
-[ [ d1, d2, e, b, m, gam ], ... ]
+   PGMatricesOfGenerators(
+     TriangleGroup(...), 
+     ProperTriangleGroup(...),
+     TGQuotient(...),
+     sparse = bool,
+     generators = [ a, b, c ],
+     pgMatricesRec = rec( a := pgMatA, b := pgMatB, c := pgMatC )
+   )
 </pre></div>
 
-<p>A complete example for the cell graph of the quotient T2.6 of <span class="Math">\Delta(2,8,8)</span> is given below:</p>
+<p><a id="X78C32C4F787BBEA8" name="X78C32C4F787BBEA8"></a></p>
 
+<h5>7.2-1 PGMatricesOfGenerators</h5>
 
-<div class="example"><pre>
-HyperCells HCC version 1.0
-[ 2, 8, 8 ]
-[ [ x^2, x*y*z, x*z*y, y^3*z^-1 ], 3 ]
-[ g1, g2, g3, g4 ] -&gt; [ z^-1*x^-1*y*z^-1*y*z*y*x^-1, z^-1*x^-1*y*z^-1*y*z*y*
-  x^-1*y*x*z, z*y*(x^-1*z^-1)^2*y^3*x*z, y^-1*z*y^-1*x*z ]
-[ 1, y^-1*x^-1, (y^-1*x^-1)^2, (y^-1*x^-1)^3, (y^-1*x^-1)^4, (y^-1*x^-1)^5,
-  (y^-1*x^-1)^6, (y^-1*x^-1)^7 ]
-[ [ 1, (y^-1*x^-1)^3, y^-1*x^-1, (y^-1*x^-1)^2 ], [ 1 ], [ 1 ] ]
-[ [ 1, 1 ], [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 2, 1 ], [ 3, 1 ] ]
-[ [ 1, 6, 1 ], [ 5, 1, 1 ], [ 6, 5, 1 ], [ 3, 6, 2 ], [ 5, 3, 2 ], [ 6, 5, 2 ],
-  [ 4, 6, 3 ], [ 5, 4, 3 ], [ 6, 5, 3 ], [ 2, 6, 4 ], [ 5, 2, 4 ], [ 6, 5, 4 ],
-  [ 1, 6, 5 ], [ 5, 1, 5 ], [ 6, 5, 5 ], [ 3, 6, 6 ], [ 5, 3, 6 ], [ 6, 5, 6 ],
-  [ 4, 6, 7 ], [ 5, 4, 7 ], [ 6, 5, 7 ], [ 2, 6, 8 ], [ 5, 2, 8 ], [ 6, 5, 8 ] ]
-[ 1, 1, 1, 1, g2^-1*g3*g4^-1, g4*g3^-1*g2, 1, g2^-1*g1, g1^-1*g2, 1, g4^-1, g4,
-  g1, g2^-1*g3*g4^-1, g1^-1*g2*g3^-1*g4, g2, g2^-1*g1, g1^-1, g3, g4^-1,
-  g4*g3^-1, g4, g4^-1*g3*g2^-1*g1, g1^-1*g2*g3^-1 ]
-[ [ [ [ 1, 1 ], [ 3, 1 ], [ 18, -1 ], [ 13, -1 ] ], [ [ 4, 1 ], [ 6, 1 ],
-  [ 21, -1 ], [ 16, -1 ] ], [ [ 7, 1 ], [ 9, 1 ], [ 24, -1 ], [ 19, -1 ] ],
-  [ [ 10, 1 ], [ 12, 1 ], [ 3, -1 ], [ 22, -1 ] ], [ [ 13, 1 ], [ 15, 1 ],
-  [ 6, -1 ], [ 1, -1 ] ], [ [ 16, 1 ], [ 18, 1 ], [ 9, -1 ], [ 4, -1 ] ],
-  [ [ 19, 1 ], [ 21, 1 ], [ 12, -1 ], [ 7, -1 ] ], [ [ 22, 1 ], [ 24, 1 ],
-  [ 15, -1 ], [ 10, -1 ] ] ], [ [ [ 2, 1 ], [ 1, 1 ], [ 22, -1 ], [ 11, -1 ] ],
-  [ [ 5, 1 ], [ 4, 1 ], [ 1, -1 ], [ 14, -1 ] ], [ [ 8, 1 ], [ 7, 1 ], [ 4, -1 ],
-  [ 17, -1 ] ], [ [ 11, 1 ], [ 10, 1 ], [ 7, -1 ], [ 20, -1 ] ], [ [ 14, 1 ],
-  [ 13, 1 ], [ 10, -1 ], [ 23, -1 ] ], [ [ 17, 1 ], [ 16, 1 ], [ 13, -1 ],
-  [ 2, -1 ] ], [ [ 20, 1 ], [ 19, 1 ], [ 16, -1 ], [ 5, -1 ] ], [ [ 23, 1 ],
-  [ 22, 1 ], [ 19, -1 ], [ 8, -1 ] ] ], [ [ [ 3, 1 ], [ 2, 1 ], [ 14, -1 ],
-  [ 6, -1 ] ], [ [ 6, 1 ], [ 5, 1 ], [ 17, -1 ], [ 9, -1 ] ], [ [ 9, 1 ],
-  [ 8, 1 ], [ 20, -1 ], [ 12, -1 ] ], [ [ 12, 1 ], [ 11, 1 ], [ 23, -1 ],
-  [ 15, -1 ] ], [ [ 15, 1 ], [ 14, 1 ], [ 2, -1 ], [ 18, -1 ] ], [ [ 18, 1 ],
-  [ 17, 1 ], [ 5, -1 ], [ 21, -1 ] ], [ [ 21, 1 ], [ 20, 1 ], [ 8, -1 ],
-  [ 24, -1 ] ], [ [ 24, 1 ], [ 23, 1 ], [ 11, -1 ], [ 3, -1 ] ] ] ]
-[ [ 1, 1, 2, 1, 0, g1 ], [ (y*x)^3*y, (y*x)^3*y, 2, 1, 1, g1^-1 ], [ y^-1*x^-1,
-  y^-1*x^-1, 5, 2, 0, g2 ], [ (y*x)^2*y, (y*x)^2*y, 5, 2, 1, g2^-1 ],
-  [ (y^-1*x^-1)^2, (y^-1*x^-1)^2, 8, 3, 0, g3 ], [ y*x*y, y*x*y, 8, 3, 1, g3^-1 ],
-  [ (y^-1*x^-1)^3, (y^-1*x^-1)^3, 11, 4, 0, g4 ], [ y, y, 11, 4, 1, g4^-1 ],
-  [ (y^-1*x^-1)^4, (y^-1*x^-1)^4, 14, 1, 0, g1^-1 ], [ x^-1, x^-1, 14, 1, 1, g1 ],
-  [ (y^-1*x^-1)^5, (y^-1*x^-1)^5, 17, 2, 0, g2^-1 ], [ (y*x)^6*y, (y*x)^6*y, 17,
-  2, 1, g2 ], [ (y^-1*x^-1)^6, (y^-1*x^-1)^6, 20, 3, 0, g3^-1 ], [ (y*x)^5*y,
-  (y*x)^5*y, 20, 3, 1, g3 ], [ (y^-1*x^-1)^7, (y^-1*x^-1)^7, 23, 4, 0, g4^-1 ],
-  [ (y*x)^4*y, (y*x)^4*y, 23, 4, 1, g4 ] ]
-</pre></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PGMatricesOfGenerators</code>( <var class="Arg">fulltg</var>, <var class="Arg">tg</var>, <var class="Arg">tgquotient</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: the point-group matrices of the (full) triangle group generators <code class="code">a</code>, <code class="code">b</code> and <code class="code">c</code> as a <code class="code">PGMatricesOfGenerators</code> object.</p>
 
-<p><a id="X8672A7E782E0D7F3" name="X8672A7E782E0D7F3"></a></p>
+<p>Constructs the point-group matrices for the generators <code class="code">a</code>, <code class="code">b</code> and <code class="code">c</code> of the triangle group <span class="Math">\Delta</span> specified by the <code class="code">TriangleGroup</code> object <var class="Arg">fulltg</var> (see <a href="chap2.html#X8119885384F3B9B2"><span class="RefLink">2.1</span></a>), which define a representation of the point group <span class="Math">G\cong\Delta/\Gamma</span> specified by the triangle group quotient <var class="Arg">tgquotient</var>, a <code class="code">TGQuotient</code> object (see <a href="chap2.html#X85DCE333807E1400"><span class="RefLink">2.3-1</span></a>). They are constructed through the use of the embedding homomorphism from the proper triangle group <span class="Math">\Delta^+</span> to the triangle group <span class="Math">\Delta</span>, where the former is specified by the <code class="code">ProperTriangleGroup</code> object <var class="Arg">tg</var> (see <a href="chap2.html#X8119885384F3B9B2"><span class="RefLink">2.1</span></a>).</p>
 
-<h4>7.2 <span class="Heading">HyperCell model graph (*.hcm)</span></h4>
+<p>The option <code class="code">sparse</code>, which takes a boolean, can be used to generate a sparse representation of the point-group matrices. If <code class="code">sparse</code> is <code class="code">true</code>, the point-group matrices are of the form <code class="code">[ [ [ rowIdx, colIdx ], entry ], ... ]</code>, where <code class="code">entry</code> is the corresponding matrix element at position <code class="code">rowIdx</code> and <code class="code">colIdx</code>, which represent indices of the matrix rows and columns, respectively. The default is <code class="code">false</code>.</p>
 
-<p>The basic file structure of a HyperCell model graph file is as follows (with placeholders marked by <code class="code">&lt;...&gt;</code>):</p>
+<p><a id="X786ACF3281326823" name="X786ACF3281326823"></a></p>
 
+<h5>7.2-2 Signature</h5>
 
-<div class="example"><pre>
-HyperCells HCM version 1.0
-[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
-[ &lt;relators&gt; , &lt;center&gt; ]
-[ g1, g2, ... ] -&gt; &lt;generators&gt;
-&lt;TDGAMMA&gt;
-[ &lt;TGGx&gt;, &lt;TGGy&gt;, &lt;TGGz&gt; ]
-&lt;model type&gt;
-&lt;vertices&gt;
-&lt;edges&gt;
-&lt;edge translations&gt;
-&lt;faces&gt;
-</pre></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Signature</code>( <var class="Arg">pgMatsGs</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>returns the signature of the triangle group associated with <var class="Arg">pgMatGs</var>, <code class="code">[ r, q, p ]</code>.</p>
 
-<p>The first line specifies the file format and its version.</p>
+<p><a id="X853878E083197B98" name="X853878E083197B98"></a></p>
 
-<p>The second line gives the signature <span class="Math">(r,q,p)</span> of the underlying triangle group <span class="Math">\Delta(r,q,p)</span> and the third line specifies the triangle-group quotient <span class="Math">\Delta^+(r,q,p)/\Gamma</span> by the list of relators <code class="code">&lt;relators&gt;</code> given as elements of the proper triangle group <span class="Math">\Delta^+</span> with generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> and the center of the cell given as the integer <code class="code">&lt;center&gt;</code> with <code class="code">1</code>, <code class="code">2</code>, <code class="code">3</code> corresponding to the center lying at the vertex <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> of the fundamental Schwarz triangle, respectively.</p>
+<h5>7.2-3 GetTriangleGroup</h5>
 
-<p>The fourth line specifies the generators of the translation group <span class="Math">\Gamma</span>. To the left of <code class="code">-&gt;</code> are the generators of the finitely presented group and to the right the list <code class="code">&lt;generators&gt;</code> of their images in the proper triangle group <span class="Math">\Delta^+</span> in terms of the generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span>.</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GetTriangleGroup</code>( <var class="Arg">pgMatsGs</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>returns the triangle group on which the <code class="code">PGMatricesOfGenerators</code> <var class="Arg">pgMatsGs</var> is based as a <code class="code">TriangleGroup</code> object (see <a href="chap2.html#X8119885384F3B9B2"><span class="RefLink">2.1</span></a>).</p>
 
-<p>The fifth line gives the transversal <span class="Math">T_{\Delta^+}(\Gamma)</span> as a list <code class="code">&lt;TDGAMMA&gt;</code> of elements of the proper triangle group <span class="Math">\Delta^+</span> and the sixth line specifies the transversals <span class="Math">T_{G^+}(G_w^+)</span> as lists <code class="code">&lt;TGGw&gt;</code> with <span class="Math">w=x,y,z</span> (<code class="code">w=x,y,z</code>) of preimages of elements of the quotient group <span class="Math">G^+\cong\Delta^+/\Gamma</span> under the quotient homomorphism <span class="Math">\Delta^+\to G^+</span>, i.e., in terms of the generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span>.</p>
+<p><a id="X823135A1813D957E" name="X823135A1813D957E"></a></p>
 
-<p>The seventh line specifies the model type. The following model types are currently implemented:</p>
+<h5>7.2-4 GetProperTriangleGroup</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GetProperTriangleGroup</code>( <var class="Arg">pgMatsGs</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>returns the proper triangle group on which the <code class="code">PGMatricesOfGenerators</code> <var class="Arg">pgMatsGs</var> is based as a <code class="code">ProperTriangleGroup</code> object (see <a href="chap2.html#X8119885384F3B9B2"><span class="RefLink">2.1</span></a>).</p>
+
+<p><a id="X8149917B7AADD486" name="X8149917B7AADD486"></a></p>
+
+<h5>7.2-5 TGQuotientName</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TGQuotientName</code>( <var class="Arg">pgMatsGs</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>returns the name of the triangle group quotient. For quotients from the library, i.e., Conder’s list, this takes the form <code class="code">[genus, number]</code>, <code class="code">number</code> is a running index over all triangle groups for the given genus.</p>
+
+<p><a id="X85B38D5E850CB6B4" name="X85B38D5E850CB6B4"></a></p>
+
+<h5>7.2-6 GetTGQuotient</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GetTGQuotient</code>( <var class="Arg">pgMatsGs</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>returns the triangle group quotient on which the <code class="code">PGMatricesOfGenerators</code> <var class="Arg">pgMatsGs</var> is based as a <code class="code">TGQuotient</code> object (see <a href="chap2.html#X84E92102876317DE"><span class="RefLink">2.3</span></a>).</p>
+
+<p><a id="X86A674CB78B9D9A1" name="X86A674CB78B9D9A1"></a></p>
+
+<h5>7.2-7 IsSparse</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsSparse</code>( <var class="Arg">pgMatsGs</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>returns a boolean, <code class="code">true</code> if the point-group matrices in <var class="Arg">pgMatsGs</var> are sparse <code class="code">false</code> otherwise.</p>
+
+<p><a id="X83B2DE91838C1843" name="X83B2DE91838C1843"></a></p>
+
+<h5>7.2-8 TGGenerators</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TGGenerators</code>( <var class="Arg">pgMatsGs</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>returns the triangle group generators on which the <code class="code">PGMatricesOfGenerators</code> <var class="Arg">pgMatsGs</var> is based.</p>
+
+<p><a id="X783F4843877075D8" name="X783F4843877075D8"></a></p>
+
+<h5>7.2-9 PGMatricesRec</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PGMatricesRec</code>( <var class="Arg">pgMatsGs</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>returns a <code class="code">record</code> (see chapter Records in the <span class="URL"><a href="https://docs.gap-system.org/doc/ref/chap0_mj.html">GAP Reference Manual</a></span>) of three point-group matrices for the triangle group generators. Each component is of the form <code class="code">"tgGenerator" := pgMat</code>, where <code class="code">"tgGenerator"</code> is a string <code class="code">"a"</code>, <code class="code">"b"</code> or <code class="code">"c"</code> denoting one of the generators of the triangle group and <code class="code">pgMat</code> the corresponding point-group matrix.</p>
+
+<p><a id="X7EB13C2F8615FDC7" name="X7EB13C2F8615FDC7"></a></p>
+
+<h5>7.2-10 EvaluatePGMatrix</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EvaluatePGMatrix</code>( <var class="Arg">symmetry</var>, <var class="Arg">pgMatsGs</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>returns a point-group matrix for a symmetry element <var class="Arg">symmetry</var> in the triangle group or proper triangle group specified through <code class="code">fulltg</code> or <code class="code">tg</code>, respectively.</p>
+
+<p><a id="X873EC38D7AD44D76" name="X873EC38D7AD44D76"></a></p>
+
+<h4>7.3 <span class="Heading">PGMatrices</span></h4>
 
 
 <ul>
-<li><p><em>Derived graph</em>: general model graph with vertices, edges, and faces derived from the cell graph. The model type is given as <code class="code">[ "VEF", [ vfs, efs, ffs ] ]</code>, where <code class="code">vfs</code>, <code class="code">efs</code>, and <code class="code">ffs</code> are lists of integers between 1 and 3 indicating the vertex types, edge types, and face types, respectively. See <code class="func">TGCellModelGraph</code> (<a href="chap4.html#X7BA14A6582AE5C5E"><span class="RefLink">4.2-1</span></a>) for details.</p>
+<li><p><code class="func">GetPGMatricesOfGenerators</code> (<a href="chap7.html#X8662DE228057F77A"><span class="RefLink">7.3-2</span></a>): a <code class="code">PGMatricesOfGenerators</code> object for the point-group matrices corresponding of the (full) triangle group generators <code class="code">a</code>, <code class="code">b</code> and <code class="code">c</code></p>
 
 </li>
-<li><p><em>Tessellation graph</em>: tessellation model graph derived from a cell graph of a triangle group. The model type is given as <code class="code">[ "TESS", [ p, q ], [ "VEF", [ [ 2 ], [ 1 ], [ 3 ] ] ] ]</code> for the <span class="Math">\{p,q\}</span> tessellation and as <code class="code">[ "TESS", [ p, q ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ]</code> for the (dual) <span class="Math">\{q,p\}</span> tessellation. See <code class="func">TessellationModelGraph</code> (<a href="chap4.html#X81214D9683970055"><span class="RefLink">4.2-2</span></a>) for details.</p>
+<li><p><code class="func">Symmetries</code> (<a href="chap7.html#X85CD1E1579BDE96B"><span class="RefLink">7.3-3</span></a>): list of symmetry elements given as words in the triangle group <span class="Math">\Delta</span> or proper triangle group <span class="Math">\Delta^+</span></p>
 
 </li>
-<li><p><em>Kagome graph</em>: kagome model graph derived from a cell graph of a triangle group. The model type is given as <code class="code">[ "KAGOME", p, [ "VEF", [ [ 1 ], [ 2 ], [ 2, 3 ] ] ] ]</code>. See <code class="func">KagomeModelGraph</code> (<a href="chap4.html#X83338B0D7836C5F5"><span class="RefLink">4.2-4</span></a>) for details.</p>
+<li><p><code class="func">SymmetryNames</code> (<a href="chap7.html#X7BDD8665834E0878"><span class="RefLink">7.3-4</span></a>): list of names denoting the symmetry elements</p>
 
 </li>
-</ul>
-<p>Lines eight to eleven specify the vertices, edges, edge translations and faces of the cell:</p>
-
-
-<ul>
-<li><p>The vertices are given as a list <code class="code">&lt;vertices&gt;</code> with entries of the form <code class="code">[ w, gi ]</code>, where <code class="code">w</code> is <code class="code">1</code>, <code class="code">2</code>, <code class="code">3</code> corresponding to the vertex <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> of the fundamental Schwarz triangle and <code class="code">gi</code> is the position of the element in the transversal <span class="Math">T_{G^+}(G_w^+)</span>.</p>
-
-</li>
-<li><p>The edges are given as a list <code class="code">&lt;edges&gt;</code> with entries of the form <code class="code">[ v1, v2, tag ]</code>, where <code class="code">v1</code> and <code class="code">v2</code> are the positions of the vertices in <code class="code">&lt;vertices&gt;</code> connected by the edge, and <code class="code">tag</code> is a unique identifier of the edge. More details on the tags are given in the methods for constructing different models, see <a href="chap4.html#X815588F086D7AFC5"><span class="RefLink">4.2</span></a>.</p>
-
-</li>
-<li><p>The edge translations, i.e., the translations relating the unit cell containing the first vertex (<code class="code">v1</code>) to the unit cell containing the second (<code class="code">v2</code>) are given as a list <code class="code">&lt;edge translations&gt;</code> of elements of the finitely presented group, i.e., in terms of the generators given to the left of <code class="code">-&gt;</code> in the third line. If <code class="code">v1</code> corresponds to the vertex <span class="Math">(w, [g_{u_w}]_w)</span> and <code class="code">v2</code> to the vertex <span class="Math">(w', [g_{\tilde{u}_{w'}}]_{w'})</span>, then <code class="code">gam</code> corresponds to the translation <span class="Math">\gamma</span> such that</p>
-
-<p class="pcenter">g_{\tilde{u}_{w'}} = g_{u_w}\gamma.</p>
-
-</li>
-<li><p>The faces are given as a list <code class="code">&lt;faces&gt;</code> with entries of the form <code class="code">[ edge, orientation ]</code>, where <code class="code">edge</code> is the position of the edge in <code class="code">&lt;edges&gt;</code> and <code class="code">orientation</code> is <code class="code">1</code> or <code class="code">-1</code> depending on whether the edge is traversed in the same or opposite direction as the edge given in <code class="code">&lt;edges&gt;</code>.</p>
+<li><p><code class="func">PGMatricesRec</code> (<a href="chap7.html#X793FA4BC81802B77"><span class="RefLink">7.3-5</span></a>): record of point-group matrices for the symmetry elements in the triangle group <span class="Math">\Delta</span> or proper triangle group <span class="Math">\Delta^+</span></p>
 
 </li>
 </ul>
-<p>The full file structure of a HyperCell cell graph file thus is as follows:</p>
+<p>and is printed in the form</p>
 
 
 <div class="example"><pre>
-HyperCells HCM version 1.0
-[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
-[ [ &lt;rel1&gt;, &lt;rel2&gt;, ... ], &lt;center&gt; ]
-[ g1, g2, ... ] -&gt; [ &lt;generator1&gt;, &lt;generator2&gt;, ... ]
-[ &lt;d1&gt;, &lt;d2&gt;, ... ]
-[ [ &lt;gx1&gt;, &lt;gx2&gt;, ... ], [ &lt;gy1&gt;, &lt;gy2&gt;, ... ], [ &lt;gz1&gt;, &lt;gz2&gt;, ... ] ]
-&lt;model type&gt;
-[ [ w, gi ], ... ]
-[ [ v1, v2, tag ], ... ]
-[ [ gam1, gam2, ... ], ... ]
-[ [ edge, orientation ], ... ]
+   PGMatrices(
+     PGMatricesOfGenerators( ... ), 
+     symmetries = [ sym1, sym2, ... ],
+     symmetryNames = [ "symName1", "symName2", ... ],
+     pgMatricesRec = rec( symName1 := pgMat1, symName2 := pgMat2, ... )
+   )
 </pre></div>
 
-<p>A complete example for the <span class="Math">{8,8}</span> tessellation graph centered at the <span class="Math">z</span> vertex on the cell defined by the quotient T2.6 of <span class="Math">\Delta(2,8,8)</span> is given below:</p>
+<p><a id="X873EC38D7AD44D76" name="X873EC38D7AD44D76"></a></p>
+
+<h5>7.3-1 PGMatrices</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PGMatrices</code>( <var class="Arg">symmetries</var>, <var class="Arg">pgMatsGs</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: list of point-group matrices as a <code class="code">PGMatrices</code> object.</p>
+
+<p>Constructs point-group matrices for a single symmetry element or a list of symmetry elements given as words written in terms of the rotation generators <code class="code">a</code>, <code class="code">b</code>, <code class="code">c</code> of the triangle group <span class="Math">\Delta</span> or the reflection generators <code class="code">x</code>, <code class="code">y</code>, <code class="code">z</code> of the proper triangle group <span class="Math">\Delta^+</span>, specified by the <code class="code">TriangleGroup</code> object <code class="code">fulltg</code> and <code class="code">ProperTriangleGroup</code> object <code class="code">tg</code>, respectively (see <a href="chap2.html#X8119885384F3B9B2"><span class="RefLink">2.1</span></a>). Each point-group matrix is constructed through a sequence of matrix multiplications of the point-group matrices in <var class="Arg">pgMatsGs</var>, i.e., the point-group matrices of the generators <code class="code">a</code>, <code class="code">b</code> and <code class="code">c</code> of <span class="Math">\Delta</span>, which form representations of the point group previously specified by a corresponding triangle group quotient, <code class="code">fulltg</code> and <code class="code">tg</code>. The sequences are specified by the corresponding words in <var class="Arg">symmetries</var>.</p>
+
+<p>The option <code class="code">symNames</code> can be used to specify the names of the <var class="Arg">symmetries</var>. If a single symmetry is provided in the argument <var class="Arg">symmetries</var>, <code class="code">symNames</code> takes a single string, otherwise a list of strings with the same number of elements as in <var class="Arg">symmetries</var> must be provided. The names will be used to label the corresponding point-group matrices. If <code class="code">symNames</code> is not specified, the words in <var class="Arg">symmetries</var> will used as labels instead.</p>
+
+<p>If the option <code class="code">sparse</code> was used in the construction of <var class="Arg">pgMatsGs</var>, the point-group matrices will be sparsely represented as well and will be of the form <code class="code">[ [ [ rowIdx, colIdx ], entry ], ... ]</code>, where <code class="code">entry</code> is the corresponding matrix element at position <code class="code">rowIdx</code> and <code class="code">colIdx</code>, which represent indices of the matrix rows and columns, respectively.</p>
+
+<p><a id="X8662DE228057F77A" name="X8662DE228057F77A"></a></p>
+
+<h5>7.3-2 GetPGMatricesOfGenerators</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; GetPGMatricesOfGenerators</code>( <var class="Arg">pgMats</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>returns the point-group matrices of the (full) triangle group generators <code class="code">a</code>, <code class="code">b</code> and <code class="code">c</code> as a <code class="code">PGMatricesOfGenerators</code> object.</p>
+
+<p><a id="X85CD1E1579BDE96B" name="X85CD1E1579BDE96B"></a></p>
+
+<h5>7.3-3 Symmetries</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Symmetries</code>( <var class="Arg">pgMats</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>returns the symmetry elements of the (proper) triangle group on which the <code class="code">PGMatrices</code> <var class="Arg">pgMats</var> is based.</p>
+
+<p><a id="X7BDD8665834E0878" name="X7BDD8665834E0878"></a></p>
+
+<h5>7.3-4 SymmetryNames</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SymmetryNames</code>( <var class="Arg">pgMats</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>returns the names of the symmetry elements of the (proper) triangle group on which the <code class="code">PGMatrices</code> <var class="Arg">pgMats</var> is based.</p>
+
+<p><a id="X793FA4BC81802B77" name="X793FA4BC81802B77"></a></p>
+
+<h5>7.3-5 PGMatricesRec</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PGMatricesRec</code>( <var class="Arg">pgMats</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>returns a <code class="code">record</code> (see chapter Records in the <span class="URL"><a href="https://docs.gap-system.org/doc/ref/chap0_mj.html">GAP Reference Manual</a></span>) of point-group matrices for symmetry elements in the point group written in terms of (proper) triangle group generators. Each component is of the form <code class="code">SymmetryName := pgMat</code>, where <code class="code">SymmetryName</code> is a string denoting one of the symmetries used and <code class="code">pgMat</code> the corresponding point-group matrix.</p>
+
+<p><a id="X8492C5B38700A475" name="X8492C5B38700A475"></a></p>
+
+<h4>7.4 <span class="Heading">Export and Import</span></h4>
+
+<p><a id="X7FC93691823C2D4A" name="X7FC93691823C2D4A"></a></p>
+
+<h5>7.4-1 <span class="Heading">Exporting PGMatrices Objects</span></h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Export</code>( <var class="Arg">pgMats</var>, <var class="Arg">output-stream</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Export</code>( <var class="Arg">pgMats</var>, <var class="Arg">path</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ExportString</code>( <var class="Arg">pgMats</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Export point-group matrices <code class="code">PGMatrices</code> <var class="Arg">pgMats</var> to the <code class="code">OutputTextStream</code> <var class="Arg">output-stream</var> or to the file at the path given by the string <var class="Arg">path</var>. Alternatively, point-group matrices can be exported to a string.</p>
+
+<p><a id="X7A652AED81DC17E9" name="X7A652AED81DC17E9"></a></p>
+
+<h5>7.4-2 <span class="Heading">Importing PGMatrices Objects</span></h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImportPGMatrices</code>( <var class="Arg">input-stream</var>[, <var class="Arg">fulltg</var>, <var class="Arg">tg</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImportPGMatricesFromFile</code>( <var class="Arg">path</var>[, <var class="Arg">fulltg</var>, <var class="Arg">tg</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ImportPGMatricesFromString</code>( <var class="Arg">string</var>[, <var class="Arg">fulltg</var>, <var class="Arg">tg</var>] )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: point-group matrices as a <code class="code">PGMatrices</code> object (see <a href="chap7.html#X873EC38D7AD44D76"><span class="RefLink">7.3</span></a>).</p>
+
+<p>Import point-group matrices from the <code class="code">InputTextStream</code> <var class="Arg">input-stream</var> or from the file at the path given by the string <var class="Arg">path</var>. Alternatively, point-group matrices can be imported from the string <var class="Arg">string</var>. Optionally, the triangle group and the proper triangle group can be given as a TriangleGroup object <var class="Arg">fulltg</var> and a ProperTriangleGroup object <var class="Arg">tg</var>, respectively, (see <a href="chap2.html#X8119885384F3B9B2"><span class="RefLink">2.1</span></a>).</p>
 
 
-<div class="example"><pre>
-HyperCells HCM version 1.0
-[ 2, 8, 8 ]
-[ [ x^2, x*y*z, x*z*y, y^3*z^-1 ], 3 ]
-[ g1, g2, g3, g4 ] -&gt; [ z^-1*x^-1*y*z^-1*y*z*y*x^-1,
-  z^-1*x^-1*y*z^-1*y*z*y*x^-1*y*x*z, z*y*(x^-1*z^-1)^2*y^3*x*z, y^-1*z*y^-1*x*z ]
-[ 1, y^-1*x^-1, (y^-1*x^-1)^2, (y^-1*x^-1)^3, (y^-1*x^-1)^4, (y^-1*x^-1)^5,
-  (y^-1*x^-1)^6, (y^-1*x^-1)^7 ]
-[ [ 1, (y^-1*x^-1)^3, y^-1*x^-1, (y^-1*x^-1)^2 ], [ 1 ], [ 1 ] ]
-[ "TESS", [ 8, 8 ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ]
-[ [ 3, 1 ] ]
-[ [ 1, 1, [ 1, [ [ 1, 1 ], 1, 5 ] ] ], [ 1, 1, [ 1, [ [ 1, 2 ], 4, 8 ] ] ],
-  [ 1, 1, [ 1, [ [ 1, 3 ], 2, 6 ] ] ], [ 1, 1, [ 1, [ [ 1, 4 ], 3, 7 ] ] ] ]
-[ g1, g4, g2, g3 ]
-[ [ [ 1, -1 ], [ 2, -1 ], [ 4, 1 ], [ 3, -1 ], [ 1, 1 ], [ 2, 1 ], [ 4, -1 ],
-  [ 3, 1 ] ] ]
-</pre></div>
-
-<p><a id="X79442B71791A7C60" name="X79442B71791A7C60"></a></p>
-
-<h4>7.3 <span class="Heading">HyperCell supercell graph (*.hcs)</span></h4>
-
-<p>The basic file structure of a HyperCell supercell model graph file is as follows (with placeholders marked by <code class="code">&lt;...&gt;</code>):</p>
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap8.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="example"><pre>
-HyperCells HCS version 1.0
-[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
-[ &lt;primitive cell relators&gt; , &lt;supercell relators&gt;, &lt;center&gt; ]
-[ g1, g2, ... ] -&gt; &lt;pc generators&gt;
-&lt;TDGAMMApc&gt;
-[ &lt;TGpcGx&gt;, &lt;TGpcGy&gt;, &lt;TGpcGz&gt; ]
-[ g1, g2, ... ] -&gt; &lt;sc generators&gt;
-[ g1, g2, ... ] -&gt; &lt;sc generators in terms of pc generators&gt;
-&lt;TGAMMApcGAMMAsc&gt;
-&lt;TDGAMMAsc&gt;
-[ &lt;TGscGx&gt;, &lt;TGscGy&gt;, &lt;TGscGz&gt; ]
-&lt;model type&gt;
-&lt;vertices&gt;
-&lt;edges&gt;
-&lt;edge translations&gt;
-&lt;faces&gt;
-</pre></div>
-
-<p>The first line specifies the file format and its version.</p>
-
-<p>The second line gives the signature <span class="Math">(r,q,p)</span> of the underlying triangle group <span class="Math">\Delta(r,q,p)</span> and the third line specifies the triangle-group quotient <span class="Math">\Delta^+(r,q,p)/\Gamma_\mathrm{pc}</span> and <span class="Math">\Delta^+(r,q,p)/\Gamma_\mathrm{sc}</span> by the list of relators <code class="code">&lt;primitive cell relators&gt;</code> and <code class="code">&lt;supercell relators&gt;</code>, respectively, given as elements of the proper triangle group <span class="Math">\Delta^+</span> with generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> and the center of the cell given as the integer <code class="code">&lt;center&gt;</code> with <code class="code">1</code>, <code class="code">2</code>, <code class="code">3</code> corresponding to the center lying at the vertex <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> of the fundamental Schwarz triangle, respectively.</p>
-
-<p>The fourth line specifies the generators of the translation group <span class="Math">\Gamma_\mathrm{pc}</span> of the primitive cell. To the left of <code class="code">-&gt;</code> are the generators of the finitely presented group and to the right the list <code class="code">&lt;generators&gt;</code> of their images in the proper triangle group <span class="Math">\Delta^+</span> in terms of the generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span>.</p>
-
-<p>The fifth line gives the transversal <span class="Math">T_{\Delta^+}(\Gamma_\mathrm{pc})</span> as a list <code class="code">&lt;TDGAMMApc&gt;</code> of elements of the proper triangle group <span class="Math">\Delta^+</span> and the sixth line specifies the transversals <span class="Math">T_{G^+_\mathrm{pc}}(G_w^+)</span> as lists <code class="code">&lt;TGpcGw&gt;</code> with <span class="Math">w=x,y,z</span> (<code class="code">w=x,y,z</code>) of preimages of elements of the quotient group <span class="Math">G^+_\mathrm{pc}\cong\Delta^+/\Gamma_\mathrm{pc}</span> under the quotient homomorphism <span class="Math">\Delta^+\to G^+_\mathrm{pc}</span>, i.e., in terms of the generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span>.</p>
-
-<p>Lines seven, ten, and eleven give the same information as lines three, four, and five, respectively, but for the supercell (<span class="Math">G^+_\mathrm{sc}</span>, <span class="Math">\Gamma_\mathrm{sc}</span>) instead of the primitive cell. The eighth line specifies the homomorphism embedding the normal subgroup <span class="Math">\Gamma_\mathrm{sc}</span> in <span class="Math">\Gamma_\mathrm{pc}</span> with the generators of the finitely presented group <span class="Math">\Gamma_\mathrm{sc}</span> to the left of <code class="code">-&gt;</code> and their images in the finitely presented group <span class="Math">\Gamma_\mathrm{pc}</span> to the right. The ninth line gives the corresponding transversal <span class="Math">T_{\Gamma_\mathrm{pc}} (\Gamma_\mathrm{sc})</span> as a list <code class="code">&lt;TGAMMApcGAMMAsc&gt;</code> of elements of the triangle group <span class="Math">\Delta^+</span>.</p>
-
-<p>The twelfth line specifies the model type. The following model types are currently implemented:</p>
-
-
-<ul>
-<li><p><em>Derived graph</em>: general model graph with vertices, edges, and faces derived from the cell graph. The model type is given as <code class="code">[ "VEF", [ vfs, efs, ffs ] ]</code>, where <code class="code">vfs</code>, <code class="code">efs</code>, and <code class="code">ffs</code> are lists of integers between 1 and 3 indicating the vertex types, edge types, and face types, respectively. See <code class="func">TGCellModelGraph</code> (<a href="chap4.html#X7BA14A6582AE5C5E"><span class="RefLink">4.2-1</span></a>) for details.</p>
-
-</li>
-<li><p><em>Tessellation graph</em>: tessellation model graph derived from a cell graph of a triangle group. The model type is given as <code class="code">[ "TESS", [ p, q ], [ "VEF", [ [ 2 ], [ 1 ], [ 3 ] ] ] ]</code> for the <span class="Math">\{p,q\}</span> tessellation and as <code class="code">[ "TESS", [ p, q ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ]</code> for the (dual) <span class="Math">\{q,p\}</span> tessellation. See <code class="func">TessellationModelGraph</code> (<a href="chap4.html#X81214D9683970055"><span class="RefLink">4.2-2</span></a>) for details.</p>
-
-</li>
-<li><p><em>Kagome graph</em>: kagome model graph derived from a cell graph of a triangle group. The model type is given as <code class="code">[ "KAGOME", p, [ "VEF", [ [ 1 ], [ 2 ], [ 2, 3 ] ] ] ]</code>. See <code class="func">KagomeModelGraph</code> (<a href="chap4.html#X83338B0D7836C5F5"><span class="RefLink">4.2-4</span></a>) for details.</p>
-
-</li>
-</ul>
-<p>Lines thirteen to sixteen specify the vertices, edges, edge translations and faces of the cell:</p>
-
-
-<ul>
-<li><p>The vertices are given as a list <code class="code">&lt;vertices&gt;</code> with entries of the form <code class="code">[ w, gi ]</code>, where <code class="code">w</code> is <code class="code">1</code>, <code class="code">2</code>, <code class="code">3</code> corresponding to the vertex <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> of the fundamental Schwarz triangle and <code class="code">gi</code> is the position of the element in the transversal <span class="Math">T_{G^+}(G_w^+)</span>.</p>
-
-</li>
-<li><p>The edges are given as a list <code class="code">&lt;edges&gt;</code> with entries of the form <code class="code">[ v1, v2, tag ]</code>, where <code class="code">v1</code> and <code class="code">v2</code> are the positions of the vertices in <code class="code">&lt;vertices&gt;</code> connected by the edge, and <code class="code">tag</code> is a unique identifier of the edge. The tag <code class="code">tag</code> is of the form <code class="code">[ v1pc, v2pc, tagpc ]</code> with <code class="code">v1pc</code>, <code class="code">v2pc</code> the positions of the vertices in the primitive cell, and <code class="code">tagpc</code> the tag of the edge in the primitive cell (see <a href="chap4.html#X815588F086D7AFC5"><span class="RefLink">4.2</span></a>). Thus, <code class="code">tag</code> specifies (up to the translation) the edge in the primitive cell.</p>
-
-</li>
-<li><p>The edge translations, i.e., the translations relating the unit cell containing the first vertex (<code class="code">v1</code>) to the unit cell containing the second (<code class="code">v2</code>) are given as a list <code class="code">&lt;edge translations&gt;</code> of elements of the finitely presented group, i.e., in terms of the generators given to the left of <code class="code">-&gt;</code> in the third line. If <code class="code">v1</code> corresponds to the vertex <span class="Math">(w, [g_{u_w}]_w)</span> and <code class="code">v2</code> to the vertex <span class="Math">(w', [g_{\tilde{u}_{w'}}]_{w'})</span>, then <code class="code">gam</code> corresponds to the translation <span class="Math">\gamma</span> such that</p>
-
-<p class="pcenter">g_{\tilde{u}_{w'}} = g_{u_w}\gamma.</p>
-
-</li>
-<li><p>The faces are given as a list <code class="code">&lt;faces&gt;</code> with entries of the form <code class="code">[ edge, orientation ]</code>, where <code class="code">edge</code> is the position of the edge in <code class="code">&lt;edges&gt;</code> and <code class="code">orientation</code> is <code class="code">1</code> or <code class="code">-1</code> depending on whether the edge is traversed in the same or opposite direction as the edge given in <code class="code">&lt;edges&gt;</code>.</p>
-
-</li>
-</ul>
-<p>The full file structure of a HyperCell cell graph file thus is as follows:</p>
-
-
-<div class="example"><pre>
-HyperCells HCS version 1.0
-[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
-[ [ &lt;rel1&gt;, &lt;rel2&gt;, ... ], [ &lt;rel1&gt;, &lt;rel2&gt;, ... ], &lt;center&gt; ]
-[ g1, g2, ... ] -&gt; [ &lt;pc generator1&gt;, &lt;pc generator2&gt;, ... ]
-[ &lt;d1&gt;, &lt;d2&gt;, ... ]
-[ [ &lt;gx1&gt;, &lt;gx2&gt;, ... ], [ &lt;gy1&gt;, &lt;gy2&gt;, ... ], [ &lt;gz1&gt;, &lt;gz2&gt;, ... ] ]
-[ g1, g2, ... ] -&gt; [ &lt;sc generator1&gt;, &lt;sc generator2&gt;, ... ]
-[ eta1, eta2, ... ]
-[ &lt;dsc1&gt;, &lt;dsc2&gt;, ... ]
-[ [ &lt;gscx1&gt;, &lt;gscx2&gt;, ... ], [ &lt;gscy1&gt;, &lt;gscy2&gt;, ... ], ... ]
-&lt;model type&gt;
-[ [ w, gi ], ... ]
-[ [ v1, v2, s ], ... ]
-[ [ gam1, gam2, ... ], ... ]
-[ [ edge, orientation ], ... ]
-</pre></div>
-
-<p>A complete example for the <span class="Math">{8,8}</span> tessellation graph centered at the <span class="Math">z</span> vertex on the cell defined by the quotient T2.6 of <span class="Math">\Delta(2,8,8)</span> extended to the supercell defined by the quotient T3.11 is given below:</p>
-
-
-<div class="example"><pre>
-HyperCells HCS version 1.0
-[ 2, 8, 8 ]
-[ [ x^2, x*y*z, x*z*y, y^3*z^-1 ], [ x^2, x*y*z, x*z*y, y^-8 ], 3 ]
-[ g1, g2, g3, g4 ] -&gt; [ z^-1*x^-1*y*z^-1*y*z*y*x^-1,
-  z^-1*x^-1*y*z^-1*y*z*y*x^-1*y*x*z, z*y*(x^-1*z^-1)^2*y^3*x*z, y^-1*z*y^-1*x*z ]
-[ 1, y^-1*x^-1, (y^-1*x^-1)^2, (y^-1*x^-1)^3, (y^-1*x^-1)^4, (y^-1*x^-1)^5,
-  (y^-1*x^-1)^6, (y^-1*x^-1)^7 ]
-[ [ 1, (y^-1*x^-1)^3, y^-1*x^-1, (y^-1*x^-1)^2 ], [ 1 ], [ 1 ] ]
-[ g1, g2, g3, g4, g5, g6 ] -&gt; [ x*y^-1*z^-1, y*x*z, z*y^-1*z^-1*y, y^2*x*z*y^-1,
-  y^-1*z*y^-1*z^-1*y^2, y^3*x*z*y^-2 ]
-[ g1, g2, g3, g4, g5, g6 ] -&gt; [ g1^-1*g4^-1, g1^-1*g2, g3*g4^-1,
-  g1^-1*g2*g4^-1*g1^-1*g2*g3^-1*g4*g1*g2^-1*g1, g4*g1^-1*g4^-1*g3*g2^-1*g1,
-  g1^-1*g2*g3^-1*g4*g2^-1*g1 ]
-[ 1, y^3*z^-1 ]
-[ 1, x, y, y^-1, z, z^-1, y^2, y*z^-1, y^-2, y^-1*z, y^3, y^2*z^-1, y^-3, y^-2*z,
-  y^4, y^3*z^-1 ]
-[ [ 1, y, y^-1, y^2, y^-2, y^3, y^-3, y^4 ], [ 1, x ], [ 1, x ] ]
-[ "TESS", [ 8, 8 ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ]
-[ [ 3, 1, 1 ], [ 3, 1, 2 ] ]
-[ 1, x ]
-[ [ 1, 2, [ 1, 1, [ 1, [ [ 1, 1 ], 1, 5 ] ] ] ],
-  [ 1, 2, [ 1, 1, [ 1, [ [ 1, 2 ], 4, 8 ] ] ] ],
-  [ 1, 2, [ 1, 1, [ 1, [ [ 1, 3 ], 2, 6 ] ] ] ],
-  [ 1, 2, [ 1, 1, [ 1, [ [ 1, 4 ], 3, 7 ] ] ] ],
-  [ 2, 1, [ 1, 1, [ 1, [ [ 1, 1 ], 1, 5 ] ] ] ],
-  [ 2, 1, [ 1, 1, [ 1, [ [ 1, 2 ], 4, 8 ] ] ] ],
-  [ 2, 1, [ 1, 1, [ 1, [ [ 1, 3 ], 2, 6 ] ] ] ],
-  [ 2, 1, [ 1, 1, [ 1, [ [ 1, 4 ], 3, 7 ] ] ] ] ]
-[ 1, g4^-1*g6*g2, g2, g4^-1*g2, g3*g5^-1*g3^-1*g1^-1*g2^-1*g4^-1*g6^-1*g4, g1^-1,
-  g3*g5^-1*g1^-1, g3*g1^-1 ]
-[ ]
-</pre></div>
-
-
-<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap6.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapBib.html">[Next Chapter]</a>&nbsp;  </div>
-
-
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

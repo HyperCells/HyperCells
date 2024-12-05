@@ -19,7 +19,7 @@
   [30X    [33X[0;6Y[2XCellCenter[102X ([14X4.3-3[114X): the cell center of the model graph[133X
   
   [30X    [33X[0;6Y[2XModelType[102X   ([14X4.3-5[114X):   identifier   of   the   type  of  model,  e.g.,
-        tessellation, kagome etc.[133X
+        tessellation, kagome, Lieb etc.[133X
   
   [30X    [33X[0;6Y[2XCellVertices[102X ([14X4.3-7[114X): the vertices of the model graph, i.e., the sites
         of the tight-binding model[133X
@@ -63,14 +63,25 @@
   [30X    [33X[0;6Y[2XKagomeModelGraph[102X  ([14X4.2-4[114X): constructs a kagome graph from a cell graph
         of a triangle group.[133X
   
+  [30X    [33X[0;6Y[2XLiebModelGraph[102X ([14X4.2-5[114X): constructs a Lieb graph from a cell graph of a
+        triangle group.[133X
+  
   [33X[0;0YIn  all  of those functions, the option [10Xsimplify[110X, which takes a non-negative
   integer  as  argument, can be used to specify the level of simplification of
   words  in  the  translation  group,  both  for  the  translation  generators
   expressed  in  terms  of generators of the proper triangle group and for the
-  translations expressed as elements of the finitely presented group. As shown
-  in  [14X4.1[114X,  additional  information about the edges is given by edge tags. The
-  edge  tags  depend  on  the  particular  model  type,  but  follow the basic
-  structure[133X
+  translations  expressed  as  elements  of  the finitely presented group. The
+  additional  option  [10XsimplifyMethod[110X,  which  takes  a  string, can be used to
+  specify  the  method  of simplification. By default [10XsimplifyMethod[110X is set to
+  [10X"BruteForce"[110X.  If  the  package  kbmag  (see  kbmag  reference  manual kbmag
+  Reference  Manual ([7Xhttps://docs.gap-system.org/pkg/kbmag/doc/chap0_mj.html[107X))
+  is  loaded  it is possible to set [10XsimplifyMethod[110X to [10X"KnuthBendix"[110X, such that
+  the  Knuth-Bendix  completion  algorithm is used in the simplification. This
+  method  uses  the  available space in cache, which can be flushed by calling
+  [10XFlushCaches[110X  (see section Mutability and Copying in the GAP Reference Manual
+  ([7Xhttps://docs.gap-system.org/doc/ref/chap0_mj.html[107X)).   As   shown  in  [14X4.1[114X,
+  additional  information about the edges is given by edge tags. The edge tags
+  depend on the particular model type, but follow the basic structure[133X
   
   [4X[32X  Example  [32X[104X
     [4X[28X[ n, root ][128X[104X
@@ -161,7 +172,7 @@
   [33X[0;0Yfor the [23X\{p,q\}[123X tessellation and to[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X[ "TESS", [ p, q ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ][128X[104X
+    [4X[28X[ "TESS", [ q, p ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ][128X[104X
   [4X[32X[104X
   
   [33X[0;0Yfor  the [23X\{q,p\}[123X tessellation. The edge tags are given in the same format as
@@ -204,6 +215,31 @@
   [4X[32X[104X
   
   [33X[0;0YThe edge tags are given in the same format as in [2XTGCellModelGraph[102X ([14X4.2-1[114X).[133X
+  
+  [1X4.2-5 LiebModelGraph[101X
+  
+  [33X[1;0Y[29X[2XLiebModelGraph[102X( [3Xcellgraph[103X[, [3Xdual[103X] ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Ythe model graph as [10XTGCellModelGraph[110X object (see [14X4.1[114X).[133X
+  
+  [33X[0;0YConstructs  the  [23X\{p,q\}[123X-Lieb  model graph derived from the [10XTGCellGraph[110X (see
+  [14X3.7[114X)  [3Xcellgraph[103X  of the triangle group [23X(2,q,p)[123X associated with [3Xcellgraph[103X. If
+  the  optional  argument [3Xdual[103X is set to true, the [23X\{q,p\}[123X-Lieb is constructed
+  instead.[133X
+  
+  [33X[0;0YThe model type is set to[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[ "LIEB", [ p, q ], [ "VEF", [ [ 1, 2 ], [  ], [ 3 ] ] ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0Yfor the [23X\{p,q\}[123X tesselation and to[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[ "LIEB", [ q, p ], [ "VEF", [ [ 1, 3 ], [  ], [ 2 ] ] ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0Yfor  the  [23X\{q,p\}[123X tesselation. The edge tags are given in the same format as
+  in [2XTGCellModelGraph[102X ([14X4.2-1[114X).[133X
   
   
   [1X4.3 [33X[0;0YModel Properties[133X[101X
@@ -265,7 +301,7 @@
   [33X[0;0Yfor the [23X\{p,q\}[123X tessellation and as[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X[ "TESS", [ p, q ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ][128X[104X
+    [4X[28X[ "TESS", [ q, p ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ][128X[104X
   [4X[32X[104X
   
   [33X[0;0Yfor  the (dual) [23X\{q,p\}[123X tessellation. See [2XTessellationModelGraph[102X ([14X4.2-2[114X) for
@@ -280,6 +316,21 @@
   
   [33X[0;0YSee [2XKagomeModelGraph[102X ([14X4.2-4[114X) for details.[133X
   
+  [30X    [33X[0;6Y[13XLieb  graph[113X:  Lieb model graph derived from a cell graph of a triangle
+        group. The model type is given as[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[ "LIEB", [ p, q ], [ "VEF", [ [ 1, 2 ], [  ], [ 3 ] ] ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0Yfor the [23X\{p,q\}[123X tesselation and as[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[ "LIEB", [ q, p ], [ "VEF", [ [ 1, 3 ], [  ], [ 2 ] ] ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0Yfor the (dual) [23X\{q,p\}[123X tesselation. See [2XLiebModelGraph[102X ([14X4.2-5[114X) for details.[133X
+  
   [1X4.3-6 ModelName[101X
   
   [33X[1;0Y[29X[2XModelName[102X( [3Xmodel[103X ) [32X operation[133X
@@ -292,6 +343,8 @@
   [30X    [33X[0;6Y[13XTessellation graph[113X: [10X"{p,q}-tess"[110X[133X
   
   [30X    [33X[0;6Y[13XKagome graph[113X: [10X"p-kagome"[110X[133X
+  
+  [30X    [33X[0;6Y[13XLieb graph[113X: [10X"{p,q}-Lieb"[110X[133X
   
   [1X4.3-7 CellVertices[101X
   

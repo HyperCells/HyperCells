@@ -365,7 +365,16 @@
   group,  both for the translation generators expressed in terms of generators
   of  the proper triangle group and for the translations expressed as elements
   of             the            finitely            presented            group
-  [10XFpGroup(TGCellTranslationGroup(GetTGCell([110X[3Xcellgraph[103X[10X)))[110X.[133X
+  [10XFpGroup(TGCellTranslationGroup(GetTGCell([110X[3Xcellgraph[103X[10X)))[110X. The additional option
+  [10XsimplifyMethod[110X,  which  takes a string, can be used to specify the method of
+  simplification.  By  default  [10XsimplifyMethod[110X  is set to [10X"BruteForce"[110X. If the
+  package   kbmag   (see   kbmag   reference  manual  kbmag  Reference  Manual
+  ([7Xhttps://docs.gap-system.org/pkg/kbmag/doc/chap0_mj.html[107X))  is  loaded it is
+  possible  to set [10XsimplifyMethod[110X to [10X"KnuthBendix"[110X, such that the Knuth-Bendix
+  completion  algorithm  is  used  in the simplification. This method uses the
+  available  space  in cache, which can be flushed by calling [10XFlushCaches[110X (see
+  section    Mutability    and   Copying   in   the   GAP   Reference   Manual
+  ([7Xhttps://docs.gap-system.org/doc/ref/chap0_mj.html[107X)).[133X
   
   [1X3.7-2 GetProperTriangleGroup[101X
   

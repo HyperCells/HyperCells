@@ -2,6 +2,8 @@
   
   [1XReferences[101X
   
+  [[20XCGL+23[120X] [16XChen, A., Guan, Y., Lenggenhager, P. M., Maciejko, J., Boettcher, I. and Bzdu{\v{s}}ek, T.[116X, [17XSymmetry and topology of hyperbolic Haldane models[117X, [18XPhys. Rev. B[118X, American Physical Society, [19X\textbf{108}[119X (2023), 085114.
+  
   [[20XCon07[120X] [16XConder, M.[116X, [17XQuotients of triangle groups acting on surfaces of genus 2 to 101[117X (2007), https://www.math.auckland.ac.nz/~conder/TriangleGroupQuotients101.txt.
   
   [[20XLen23[120X] [16XLenggenhager, P. M.[116X, [17XEmerging avenues in band theory: multigap topology and hyperbolic lattices[117X, Ph.D. thesis, ETH Zurich (2023).

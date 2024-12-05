@@ -20,7 +20,7 @@
   
   [30X    [33X[0;6YP.  M.  Lenggenhager,  J.  Maciejko, and T. Bzdušek, [13XHyperCells: A GAP
         package  for constructing primitive cells and supercells of hyperbolic
-        lattices[113X, [7Xhttps://github.com/patrick-lenggenhager/HyperCells[107X (2023)[133X
+        lattices[113X, [7Xhttps://github.com/HyperCells/HyperCells[107X (2023)[133X
   
   [33X[0;0Yand the list of quotient groups:[133X
   
@@ -116,7 +116,7 @@
   another  are  stored  as  well.  See  [14X3.7[114X for more details the format of the
   vertices, edges, faces, and the boundary.[133X
   
-  [33X[0;0YThe  cell graph can be exported using the [2XExport[102X ([14X3.7-13[114X) operation, see [14X7.1[114X
+  [33X[0;0YThe  cell graph can be exported using the [2XExport[102X ([14X3.7-13[114X) operation, see [14X8.1[114X
   for  more  details  on  the  produced  file  format to import it using other
   software.[133X
   
@@ -140,7 +140,7 @@
   
   [33X[0;0YThe result is an object of category [10XTGCellModelGraph[110X (see [14X4.1[114X), which can be
   exported  using the [2XExport[102X ([14X4.4-1[114X) operation, producing a file in the format
-  described in [14X7.2[114X.[133X
+  described in [14X8.2[114X.[133X
   
   [33X[0;0YFinally,  the model graph defined on the primitive cell can be [13Xextended[113X to a
   [13Xsupercell[113X,    i.e.,   a   cell   specified   by   a   translation   subgroup
@@ -180,5 +180,98 @@
   
   [33X[0;0Ywhich  is  returned as an object of category [10XTGSuperCellModelGraph[110X (see [14X5.1[114X)
   and  can be exported using the [2XExport[102X ([14X5.5-1[114X) operation, producing a file in
-  the format described in [14X7.3[114X.[133X
+  the format described in [14X8.3[114X.[133X
+  
+  
+  [1X1.2 [33X[0;0YSimplify extension (optional)[133X[101X
+  
+  [33X[0;0YThe HyperCells package has an integrated word simplification procedure for a
+  selection  of  functions.  Two  methods are available: a default brute-force
+  method,  and  a  method  based on the Knuth-Bendix completion algorithm. The
+  latter      can      only      be      used      provided      the     kbmag
+  ([7Xhttps://gap-packages.github.io/kbmag/doc/chap0_mj.html[107X)   package   (verion
+  1.5.10+) is available.[133X
+  
+  [33X[0;0YThe default configuration of the kbmag package allows HyperCells to simplify
+  words  in  groups  with a maximal number of generators of 127. However, this
+  limit  can  manually  be extended up to 65535. The corresponding adjustments
+  are  laid  out in a README file in the kbmag package and can be found in the
+  folder  containing  GAP:  “…/gap/gap-[10X< version >[110X/pkg/kbmag/standalone”, with
+  the following instructions:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XNEW in Version 2.3: It is now possible to use kbmag with more than the[128X[104X
+    [4X[28Xprevious default number of 127 generators. To use up to 65535 generators,[128X[104X
+    [4X[28Xbefore making the package, edit the file "defs.h" in the lib directory,[128X[104X
+    [4X[28Xand change the two lines:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X#define MAXGEN MAXCHAR /* maximum number of generators */[128X[104X
+    [4X[28Xtypedef char gen; /* for generators of monoids and groups */[128X[104X
+    [4X[28X[128X[104X
+    [4X[28Xto[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X#define MAXGEN MAXUSHORT /* maximum number of generators */[128X[104X
+    [4X[28Xtypedef unsigned short gen; /* for generators of monoids and groups */[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YOnce  these changes are made, kbmag needs to be recompiled. This can be done
+  in  the  terminal,  where  in  the  kbmag directory one needs to execute the
+  command [10Xmake clean[110X and afterwards [10Xmake[110X.[133X
+  
+  [33X[0;0YIf  these  changes  are  not  made  while  using the Knuth-Bendix completion
+  algorithm  based  simplification  and  unit  cells  compactified  on  Rieman
+  surfaces  with  genus  exceeding  63  are  used,  the  procedure will not be
+  excecuted and a warning will be printed in GAP:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X#WARNING: maximal number of genartors have been exceeded; non-simplified words [128X[104X
+    [4X[28Xwill be used. Please follow the instructions in the chapter Introduction section[128X[104X
+    [4X[28XSimplify extension (optional) in the HyperCells reference manual.[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YLet  us  look  at  an example, provided kbmag is installed. We can apply the
+  Knuth-Bendix method by using the option [10XsimplifyMethod[110X specifying the method
+  of  simplification,  which  we  can  set  to  [10X"KnuthBendix"[110X  (the default is
+  [10X"BruteForce"[110X):[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xscmodel := TGSuperCellModelGraph( model, sc : simplify := 4*3, [127X[104X
+    [4X[25X>[125X [27X      simplifyMethod := "KnuthBendix");[127X[104X
+    [4X[28X#WARNING: system is not confluent, so reductions may not be to normal form.[128X[104X
+    [4X[28XTGSuperCellModelGraph([128X[104X
+    [4X[28X    primitive cell = TGCell( ProperTriangleGroup(2, 8, 8),[128X[104X
+    [4X[28X        [ x^2, x*y*z, x*z*y, y^3*z^-1 ] ),[128X[104X
+    [4X[28X    supercell = TGCell( ProperTriangleGroup(2, 8, 8),[128X[104X
+    [4X[28X        [ x^2, x*y*z, x*z*y, y^-8 ] ),[128X[104X
+    [4X[28X    cell embedding = TGCellEmbedding([128X[104X
+    [4X[28X        primitive cell = TGCellTranslationGroup( < g1, g2, g3, g4 |[128X[104X
+    [4X[28X            g2*g1^-1*g4^-1*g3*g2^-1*g1*g4*g3^-1 > ),[128X[104X
+    [4X[28X        supercell = TGCellTranslationGroup( < g1, g2, g3, g4, g5, g6 |[128X[104X
+    [4X[28X            g6*g4*g2*g1*g3*g5*g3^-1*g2^-1*g6^-1*g5^-1*g1^-1*g4^-1 > ),[128X[104X
+    [4X[28X        transversal = [ <identity ...>, (x^-1*y^-1)^4*x^-1 ],[128X[104X
+    [4X[28X        embedding = [ g1, g2, g3, g4, g5, g6 ] -> [ g1^-1*g4^-1, ... ][128X[104X
+    [4X[28X    ),[128X[104X
+    [4X[28X    center = 3,[128X[104X
+    [4X[28X    type = [ "TESS", [ 8, 8 ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ],[128X[104X
+    [4X[28X    vertices = [ [ 3, 1, 1 ], [ 3, 1, 2 ] ],[128X[104X
+    [4X[28X    edges = [ [ 1, 2, [ 1, 1, [ 1, [ 1, 1, 5 ] ] ], <identity ...> ], ... ],[128X[104X
+    [4X[28X    faces = [ ][128X[104X
+    [4X[28X)[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0Ywhere  we have set the option [10Xsimplify[110X to twice the number of generators (or
+  four  times  the  genus)  in  the  associated  translation  group.  A set of
+  equations,   denoted   as  rewriting  rules,  will  be  constructed  in  the
+  Knuth-Bendix  method.  In contrast to the brute-force method, the meaning of
+  the option [10Xsimplify[110X is slightly adjusted. [10Xsimplify[110X now specifies the maximal
+  length  of  those  rewriting  rules. Specifically, the left- and right- hand
+  sides  are  maximally  [10Xsimplify[110X  and 2*([10Xsimplify[110X + 1) long, respectively. If
+  [10Xsimplify[110X  is  smaller  than twice the number of generators in the associated
+  translation  group,  [10Xsimplify[110X  will  default  back  to  twice  the number of
+  generators, instead.[133X
+  
+  [33X[0;0YNote  that  in  general,  the  system  will  not  be  confluent,  i.e.,  the
+  simplification  might  not  yield  the  optimal  solution.  Nontheless,  the
+  application  of  the Knuth-Bendix method will still be able to simplify some
+  words, however, shorter words might be available.[133X
   

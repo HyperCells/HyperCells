@@ -1,15 +1,15 @@
 # The GAP package HyperCells
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10782370.svg)](https://doi.org/10.5281/zenodo.10782370)
-**Warning**: Note the potential breaking changes in version 0.9.1-beta if edge tags are
-explicitly referred to. The edge tag format for nearest-neighbor edges constructed using
-`TGCellModelGraph`, `TessellationModelGraph`, and `KagomeModelGraph` has been changed from
-`[ 1, [ gi, s1, s2 ] ]` to `[ 1, [ [ w, gi ], s1, s2 ] ]`.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14264499.svg)](https://doi.org/10.5281/zenodo.14264499)
+
 
 HyperCells is a [GAP](https://www.gap-system.org/) package that allows
 constructing primitive cells and supercells of hyperbolic lattices based on
 triangle groups and quotients with normal subgroups.
-An introduction to the underlying concepts can be found in the following preprint
+
+:book: We have a new website with detailed [instructions on the installation](https://www.hypercells.net/contents/Installation/installation.html) process, a [getting-started guide](https://www.hypercells.net/contents/GettingStarted/getting_started.html) and hands-on [tutorials](https://www.hypercells.net/contents/Tutorials/tutorials.html): https://www.hypercells.net.
+
+An introduction to the underlying concepts can be found in the following publication
 
 > P. M. Lenggenhager, J. Maciejko, and T. Bzdušek,
   *Non-Abelian hyperbolic band theory from supercells*,
@@ -25,7 +25,7 @@ If you use this package, please cite at least one of the above references in
 addition to the package itself:
 > P. M. Lenggenhager, J. Maciejko, and T. Bzdušek,
   *HyperCells: A GAP package for constructing primitive cells and supercells of
-  hyperbolic lattices*, [https://github.com/patrick-lenggenhager/HyperCells](https://github.com/patrick-lenggenhager/HyperCells),
+  hyperbolic lattices*, [https://github.com/HyperCells/HyperCells](https://github.com/HyperCells/HyperCells),
   [10.5281/zenodo.10222598](https://doi.org/10.5281/zenodo.10222598) (2023)
 
 and the list of quotient groups:
@@ -33,23 +33,22 @@ and the list of quotient groups:
   [https://www.math.auckland.ac.nz/~conder/TriangleGroupQuotients101.txt](https://www.math.auckland.ac.nz/~conder/TriangleGroupQuotients101.txt) (2007)
 
 
-A getting-started guide for this and its sister package
-([HyperBloch](https://github.com/patrick-lenggenhager/HyperBloch)) can be found
-[here](https://patrick-lenggenhager.github.io/software/2024/01/10/HyperGuide.html).
-
-
 Please refer to [CONTRIBUTING.md](CONTRIBUTING.md) on how you can contribute to
 the development of this package.
 
 #### Table of Contents  
-- [Authors and developers](#authors-and-developers)
-- [Installation](#installation)
-- [Documentation](#documentation)
-- [Limitations](#limitations)
-- [HyperBloch package](#hyperbloch-package)
-- [How to cite](#how-to-cite)
-- [Contact](#contact)
-- [License and copyright](#license-and-copyright)
+- [The GAP package HyperCells](#the-gap-package-hypercells)
+      - [Table of Contents](#table-of-contents)
+  - [Authors and developers](#authors-and-developers)
+  - [Installation](#installation)
+    - [Extensions (optional)](#extensions-optional)
+  - [Documentation](#documentation)
+  - [Limitations](#limitations)
+    - [Known limitations](#known-limitations)
+  - [HyperBloch package](#hyperbloch-package)
+  - [How to cite](#how-to-cite)
+  - [Contact](#contact)
+  - [License and copyright](#license-and-copyright)
 
 ## Authors and developers
 
@@ -62,6 +61,9 @@ Coauthors:\
 &ensp;&ensp;**Joseph Maciejko** (maciejko@ualberta.ca)\
 &ensp;&ensp;**Tomáš Bzdušek** (tomas.bzdusek@uzh.ch)
 
+Code contributers:\
+&ensp;&ensp;**Marcelo Looser** (marcelo.looser@outlook.com)
+
 ## Installation
 
 To install the HyperCells package, clone this repository in the `~/.gap/pkg/`
@@ -70,6 +72,48 @@ GAP should automatically detect the package and make it available for loading
 using the command
 ```GAP
 LoadPackage("HyperCells");
+```
+
+### Extensions (optional)
+
+The HyperCells package has an integrated word simplification procedure for a selection
+ of functions. Two methods are available: a default brute-force method, and a method based 
+on the Knuth-Bendix completion algorithm. The latter can only be used provided the 
+<a target="_blank" href="https://gap-packages.github.io/kbmag/doc/chap0_mj.html">kbmag</a> 
+package (version 1.5.10+) is available. 
+
+The default configuration of the kbmag package allows HyperCells to simplify words in groups 
+with a maximal number of generators of 127. However, this limit can manually be extended up to 
+65535. The corresponding adjustments are laid out in a README file in the kbmag package and can 
+be found in the folder containing GAP: “…/gap/gap-< version >/pkg/kbmag/standalone”, with the 
+following instructions:
+
+```
+NEW in Version 2.3: It is now possible to use kbmag with more than the
+previous default number of 127 generators. To use up to 65535 generators,
+before making the package, edit the file "defs.h" in the lib directory,
+and change the two lines:
+
+#define MAXGEN MAXCHAR /* maximum number of generators */
+typedef char gen; /* for generators of monoids and groups */
+
+to
+
+#define MAXGEN MAXUSHORT /* maximum number of generators */
+typedef unsigned short gen; /* for generators of monoids and groups */
+```
+
+Once these changes are made, kbmag needs to be recompiled. This can be done in the terminal, 
+where in the kbmag directory one needs to execute the command **make clean** and afterwards **make**.
+
+If these changes are not made while using the Knuth-Bendix completion algorithm based simplification 
+and unit cells compactified on Riemann surfaces with genus exceeding 63 are used, the procedure will 
+not be executed and a warning will be printed in GAP:
+
+```
+#WARNING: maximal number of generators have been exceeded; non-simplified words 
+will be used. Please follow the instructions in the chapter Introduction section
+Simplify extension (optional) in the HyperCells reference manual.
 ```
 
 ## Documentation
@@ -87,8 +131,6 @@ of the publication mentioned above.
 - `TGCellGraph` objects and symmetric `TGCell` objects cannot be produced for
   cells without mirror symmetries, i.e., for quotients that act "chirally" on
   the surface.
-- Faces of `TGCellGraph` objects have only been tested in the context of
-  `TGTessellationGraph` and `TGKagomeGraph` and might not work in general.
 
 ## HyperBloch package
 
@@ -96,7 +138,7 @@ The HyperBloch package is a companion package to HyperCells for Mathematica.
 It allows to study the band structure of hyperbolic lattices by applying hyperbolic
 band theory and the supercell method. Additionally, it provides many functions
 to visualize the output of HyperCells. It is available on Github at
-> [https://github.com/patrick-lenggenhager/HyperBloch](https://github.com/patrick-lenggenhager/HyperBloch)
+> [https://github.com/HyperCells/HyperBloch](https://github.com/HyperCells/HyperBloch)
 
 
 ## How to cite
@@ -108,7 +150,7 @@ If you use this package, please cite the package itself
   author          = {Lenggenhager, Patrick M. and Maciejko, Joseph and Bzdu\v{s}ek, Tom\'{a}\v{s}},
   year            = {2023},
   doi             = {10.5281/zenodo.10222598},
-  note            = {\url{https://github.com/patrick-lenggenhager/HyperCells}}
+  note            = {\url{https://github.com/HyperCells/HyperCells}}
 }
 ```
 and at least one of the following references:
@@ -149,7 +191,7 @@ with normal subgroups:
 ## Contact
 
 To report issues, please use the issue tracker at
-[https://github.com/patrick-lenggenhager/HyperCells/issues](https://github.com/patrick-lenggenhager/HyperCells/issues).
+[https://github.com/HyperCells/HyperCells/issues](https://github.com/HyperCells/HyperCells/issues).
 
 Maintainer:\
 &ensp;&ensp;**Patrick M. Lenggenhager**\
@@ -181,4 +223,4 @@ Under the following terms:
   No additional restrictions - You may not apply legal terms or technological
     measures that legally restrict others from doing anything the license permits.
 
-Copyright 2023 Patrick M. Lenggenhager
+&copy; 2023-2024 Patrick M. Lenggenhager

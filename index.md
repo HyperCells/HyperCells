@@ -7,9 +7,9 @@ layout: default
 {{site.data.package.abstract}}
 
 The current version of this package is version {{site.data.package.version}}, released on {{site.data.package.date}}.
-A getting-started guide for this and its sister package
-([HyperBloch](https://github.com/patrick-lenggenhager/HyperBloch)) can be found
-[here](https://patrick-lenggenhager.github.io/software/2024/01/10/HyperGuide.html).
+A getting-started guide, tutorials, and examples for this and its sister package
+([HyperBloch](https://github.com/HyperCells/HyperBloch)) can be found on on our website
+[www.hypercells.net](https://www.hypercells.net).
 For more information, please refer to the [README](README.html) file and the
 [the package manual]({{site.data.package.doc-html}}).
 

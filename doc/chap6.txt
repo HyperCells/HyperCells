@@ -19,7 +19,7 @@
   
   [33X[0;0YTo  check  whether  a  given  sequence of triangle-group quotients is valid,
   i.e., whether the corresponding translation groups form a normal sequence as
-  described above, the following functio can be used:[133X
+  described above, the following function can be used:[133X
   
   [1X6.1-1 IsTGQuotientSequence[101X
   
@@ -30,7 +30,153 @@
   corresponding translation groups form a normal sequence as described above.[133X
   
   
-  [1X6.2 [33X[0;0YExtending Quotient Sequences[133X[101X
+  [1X6.2 [33X[0;0YConstructing Sequences of Triangle-Group Quotients[133X[101X
+  
+  [33X[0;0YSequences  of  quotient  groups  can  efficiently  be identified through the
+  construction of adjacency matrices that capture the normal subgroup relation
+  between pairwise distinct translation groups of corresponding quotients.[133X
+  
+  [33X[0;0YThe  quotient  sequences  structure  is implemented as an object of category
+  [10XTGQuotientSequencesStructure[110X with the following components:[133X
+  
+  [30X    [33X[0;6Y[2XSignature[102X ([14X6.2-2[114X): signature of the underlying triangle group[133X
+  
+  [30X    [33X[0;6Y[2XBoundByGenus[102X ([14X6.2-3[114X): upper bound of the triangle group quotient genus[133X
+  
+  [30X    [33X[0;6Y[2XGetListTGQuotients[102X  ([14X6.2-4[114X): list of quotients with genus smaller than
+        upper bound of the triangle group quotient genus[133X
+  
+  [30X    [33X[0;6Y[2XMirrorSymmetries[102X  ([14X6.2-5[114X):  binary  list,  1  if quotients have mirror
+        symmetries 0 otherwise[133X
+  
+  [30X    [33X[0;6Y[2XIsSparse[102X  ([14X6.2-6[114X):  boolean,  if true the adjacency matrix is sparsely
+        represented[133X
+  
+  [30X    [33X[0;6Y[2XAdjacencyMatrix[102X   ([14X6.2-7[114X):   adjacency   matrix,  which  includes  all
+        quotients with and without mirror symmetries[133X
+  
+  [30X    [33X[0;6Y[2XNearestNeighborAdjacencyMatrix[102X  ([14X6.2-8[114X):  adjacency  matrix  of normal
+        subgroup   relation   between   consecutive   translation   groups  of
+        corresponding quotients[133X
+  
+  [30X    [33X[0;6Y[2XLongestSequence[102X  ([14X6.2-9[114X):  list of longest sequence of quotient groups
+        and is printed in the form[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X  TGQuotientSequencesStructure( [128X[104X
+    [4X[28X    [r, q, p], [128X[104X
+    [4X[28X    boundByGenus = int,[128X[104X
+    [4X[28X    lstTGQuotients = [[genus, number], ... ],[128X[104X
+    [4X[28X    lstMirrorSymmetries = [ 0 / 1 , ... ],[128X[104X
+    [4X[28X    sparse = bool,[128X[104X
+    [4X[28X    adjMatrix = [[ ... ], ... ][128X[104X
+    [4X[28X  )[128X[104X
+  [4X[32X[104X
+  
+  [1X6.2-1 TGQuotientSequencesStructure[101X
+  
+  [33X[1;0Y[29X[2XTGQuotientSequencesStructure[102X( [3Xtg[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yquotient   sequences   structure  as  [10XTGQuotientSequencesStructure[110X
+            object.[133X
+  
+  [33X[0;0YConstruct  the  quotient  sequences  structure  for  the  triangle  group [3Xtg[103X
+  ([23X\Delta^+[123X),  given  as  [10XProperTriangleGroup[110X  object (see [14X2.1[114X), for available
+  quotients from the library, i.e., Conder’s list.[133X
+  
+  [33X[0;0YThe  option  [10XboundByGenus[110X,  an  upper  bound,  can  be passed, which takes a
+  positive  integer below 102, limiting the number of quotients considered. If
+  a  positive  integer  below  102  is provided, triangle group quotients with
+  genus smaller than [10XboundByGenus[110X will be used, a value above 102 will default
+  back to 66. The default is 66. The option [10Xsparse[110X, which takes a boolean, can
+  be  used  to  generate  a  sparse representation of the adjacency matrix. If
+  sparse  is  true the adjacency matrix is of the form [10X[ [ [ rowIdx, colIdx ],
+  entry  ],  ...  ][110X, where [10Xentry[110X is the corresponding matrix entry at position
+  [10XrowIdx[110X  and  [10XcolIdx[110X, which represent indices of the matrix rows and columns,
+  respectively. The default is false.[133X
+  
+  [33X[0;0YThis  function  saves  constructed translation groups in cache, which can be
+  flushed  by  calling  [10XFlushCaches[110X (see section Mutability and Copying in the
+  GAP Reference Manual ([7Xhttps://docs.gap-system.org/doc/ref/chap0_mj.html[107X)).[133X
+  
+  [1X6.2-2 Signature[101X
+  
+  [33X[1;0Y[29X[2XSignature[102X( [3XtgQSS[103X ) [32X operation[133X
+  
+  [33X[0;0Yreturns  the  signature  of  the triangle group associated with the quotient
+  sequences structure [3XtgQSS[103X. [10X[ r, q, p ][110X.[133X
+  
+  [1X6.2-3 BoundByGenus[101X
+  
+  [33X[1;0Y[29X[2XBoundByGenus[102X( [3XtgQSS[103X ) [32X operation[133X
+  
+  [33X[0;0Yreturns  the  upper  bound  used  to  generate  the  adjacency matrix of the
+  quotient sequences structure [3XtgQSS[103X.[133X
+  
+  [1X6.2-4 GetListTGQuotients[101X
+  
+  [33X[1;0Y[29X[2XGetListTGQuotients[102X( [3XtgQSS[103X ) [32X operation[133X
+  
+  [33X[0;0Yreturns  the  list of quotients used to generate the adjacency matrix of the
+  quotient  sequences  structure[3XtgQSS[103X.  If the option [10XboundByGenus[110X was used in
+  the  generation of [3XtgQSS[103X, a corresponding reduced list will be returned. The
+  default is [10XListTGQuotients(Signature([3XtgQSS[103X[10X))[110X.[133X
+  
+  [1X6.2-5 MirrorSymmetries[101X
+  
+  [33X[1;0Y[29X[2XMirrorSymmetries[102X( [3XtgQSS[103X ) [32X operation[133X
+  
+  [33X[0;0Yreturns an ordered binary list of ones and zeros, [10X1[110X if quotients have mirror
+  symmetries  [10X0[110X  otherwise.  The  position  of  each  entry corresponds to the
+  position of quotients in the list [10XGetListTGQuotients([3XtgQSS[103X[10X)[110X.[133X
+  
+  [1X6.2-6 IsSparse[101X
+  
+  [33X[1;0Y[29X[2XIsSparse[102X( [3XtgQSS[103X ) [32X operation[133X
+  
+  [33X[0;0Yreturns  a  boolean,  [10Xtrue[110X  if the adjacency matrix in [3XtgQSS[103X is sparse [10Xfalse[110X
+  otherwise.[133X
+  
+  [1X6.2-7 AdjacencyMatrix[101X
+  
+  [33X[1;0Y[29X[2XAdjacencyMatrix[102X( [3XtgQSS[103X ) [32X operation[133X
+  
+  [33X[0;0Yreturns  the  adjacency  matrix  which captures the normal subgroup relation
+  between  pairwise distinct translation groups of corresponding quotients, of
+  dimension                 [10XLength(GetListTGQuotients([3XtgQSS[103X[10X))[110X                x
+  [10XLength(GetListTGQuotients([3XtgQSS[103X[10X))[110X. If [10XIsSparse([3XtgQSS[103X[10X)[110X is true, the adjacency
+  matrix  will be sparsely represented [10X[ [ [ rowIdx, colIdx ], entry ], ... ][110X,
+  where [10Xentry[110X is the corresponding matrix entry at position [10XrowIdx[110X and [10XcolIdx[110X,
+  which represent indices of the matrix rows and columns, respectively.[133X
+  
+  [1X6.2-8 NearestNeighborAdjacencyMatrix[101X
+  
+  [33X[1;0Y[29X[2XNearestNeighborAdjacencyMatrix[102X( [3XtgQSS[103X ) [32X operation[133X
+  
+  [33X[0;0Yreturns  the  adjacency  matrix  which captures the normal subgroup relation
+  between  consecutive  translation  groups  of  corresponding quotients, with
+  dimensions                [10XLength(GetListTGQuotients([3XtgQSS[103X[10X))[110X                x
+  [10XLength(GetListTGQuotients([3XtgQSS[103X[10X))[110X. If [10XIsSparse([3XtgQSS[103X[10X)[110X is true, the adjacency
+  matrix  will be sparsely represented [10X[ [ [ rowIdx, colIdx ], entry ], ... ][110X,
+  where [10Xentry[110X is the corresponding matrix entry at position [10XrowIdx[110X and [10XcolIdx[110X,
+  which represent indices of the matrix rows and columns, respectively.[133X
+  
+  [1X6.2-9 LongestSequence[101X
+  
+  [33X[1;0Y[29X[2XLongestSequence[102X( [3XtgQSS[103X ) [32X operation[133X
+  
+  [33X[0;0Yreturns  a  list  of  quotients of the form [10X[[genus, number], ... ][110X a normal
+  sequence  as  described  above.  The  returned  list  of  quotients  is  not
+  necessarily the only longest normal sequence of that length.[133X
+  
+  [33X[0;0YThe  option  [10Xquotient[110X  can be provided, specifying the first quotient in the
+  list.  This  is  either an integer giving the position in Conder’s list or a
+  list  of  the  form  [10X[genus, number][110X giving the genus and number in Conder’s
+  list  of  the quotient. The default is 0, i.e., no first quotient specified.
+  The  option [10XnonMirrorSymmetric[110X, which takes a boolean, enables that the list
+  of quotients includes quotients that have no mirror symmetries.[133X
+  
+  
+  [1X6.3 [33X[0;0YExtending Quotient Sequences[133X[101X
   
   [33X[0;0YWhile such sequences can be found in the library of triangle-group quotients
   described  in  [14X2.4[114X, an exhaustive search based on low-index normal subgroups
@@ -54,7 +200,7 @@
   [33X[0;0YThe   HyperCells  package  implements  the  following  functions  to  extend
   sequences:[133X
   
-  [1X6.2-1 ExtendTGQuotientSequence[101X
+  [1X6.3-1 ExtendTGQuotientSequence[101X
   
   [33X[1;0Y[29X[2XExtendTGQuotientSequence[102X( [3Xquotients[103X, [3Xsequence[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ysequence  of  triangle-group  quotients  as  a  list of [10XTGQuotient[110X
@@ -65,7 +211,7 @@
   Intersections   of   the  last  element  of  the  (extended)  sequences  are
   successively formed with the quotients in [3Xquotients[103X.[133X
   
-  [1X6.2-2 NextTGQuotientOptions[101X
+  [1X6.3-2 NextTGQuotientOptions[101X
   
   [33X[1;0Y[29X[2XNextTGQuotientOptions[102X( [3Xquotients[103X, [3XQ0[103X ) [32X function[133X
   [6XReturns:[106X  [33X[0;10Ylist  of viable options of quotients in the form [10X[ [ Q, ind ], ...
@@ -78,22 +224,48 @@
   given as [10XTGQuotient[110X objects (see [14X2.3[114X).[133X
   
   
-  [1X6.3 [33X[0;0YExport and Import[133X[101X
+  [1X6.4 [33X[0;0YExport and Import[133X[101X
   
-  [1X6.3-1 ExportTGQuotientList[101X
+  
+  [1X6.4-1 [33X[0;0YExporting TGQuotientSequencesStructure Objects[133X[101X
+  
+  [33X[1;0Y[29X[2XExport[102X( [3XtgQSS[103X, [3Xoutput-stream[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XExport[102X( [3XtgQSS[103X, [3Xpath[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XExportString[102X( [3XtgQSS[103X ) [32X operation[133X
+  
+  [33X[0;0YExport  the  quotient sequences structure [10XTGQuotientSequencesStructure[110X [3XtgQSS[103X
+  to  the  [10XOutputTextStream[110X  [3Xoutput-stream[103X or to the file at the path given by
+  the  string  [3Xpath[103X.  Alternatively,  the  quotient sequences structure can be
+  exported to a string with [10XExportString[110X, which returns said string.[133X
+  
+  
+  [1X6.4-2 [33X[0;0YImporting TGQuotientSequencesStructure Objects[133X[101X
+  
+  [33X[1;0Y[29X[2XImportTGQuotientSequencesStructure[102X( [3Xinput-stream[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XImportTGQuotientSequencesStructureFromFile[102X( [3Xpath[103X ) [32X function[133X
+  [33X[1;0Y[29X[2XImportTGQuotientSequencesStructureFromString[102X( [3Xstring[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yquotient  sequences structure as [10XTGQuotientSequencesStructure[110X (see
+            [14X6.2[114X).[133X
+  
+  [33X[0;0YImport   an  the  quotient  sequences  structure  from  the  [10XInputTextStream[110X
+  [3Xinput-stream[103X  or  from  the  file  at  the  path  given  by the string [3Xpath[103X.
+  Alternatively, the the quotient sequences structure can be imported from the
+  string [3Xstring[103X.[133X
+  
+  [1X6.4-3 ExportTGQuotientList[101X
   
   [33X[1;0Y[29X[2XExportTGQuotientList[102X( [3Xlist[103X, [3Xpath[103X ) [32X function[133X
   
   [33X[0;0YExports the given list of [10XTGQuotient[110X objects (see [14X2.3[114X) as a text file.[133X
   
-  [1X6.3-2 ExportTGQuotientSequences[101X
+  [1X6.4-4 ExportTGQuotientSequences[101X
   
   [33X[1;0Y[29X[2XExportTGQuotientSequences[102X( [3Xseqs[103X, [3Xpath[103X ) [32X function[133X
   
   [33X[0;0YExports  the given list of sequences, each a list of [10XTGQuotient[110X objects (see
   [14X2.3[114X) as a text file.[133X
   
-  [1X6.3-3 ImportTGQuotientList[101X
+  [1X6.4-5 ImportTGQuotientList[101X
   
   [33X[1;0Y[29X[2XImportTGQuotientList[102X( [3Xinput-stream[103X ) [32X function[133X
   [33X[1;0Y[29X[2XImportTGQuotientListFromFile[102X( [3Xpath[103X ) [32X function[133X
@@ -102,7 +274,7 @@
   [33X[0;0YImport  a  list  of  [10XTGQuotient[110X  objects  (see  [14X2.3[114X)  from  the input-stream
   [3Xinput-stream[103X or from a file at path [3Xpath[103X.[133X
   
-  [1X6.3-4 ImportTGQuotientSequences[101X
+  [1X6.4-6 ImportTGQuotientSequences[101X
   
   [33X[1;0Y[29X[2XImportTGQuotientSequences[102X( [3Xinput-stream[103X ) [32X function[133X
   [33X[1;0Y[29X[2XImportTGQuotientSequencesFromFile[102X( [3Xpath[103X ) [32X function[133X

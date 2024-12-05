@@ -18,7 +18,7 @@
 <body class="chap1"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
@@ -26,6 +26,9 @@
 <p><a id="X7DFB63A97E67C0A1" name="X7DFB63A97E67C0A1"></a></p>
 <div class="ChapSects"><a href="chap1_mj.html#X7DFB63A97E67C0A1">1 <span class="Heading">Introduction</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X85861B017AEEC50B">1.1 <span class="Heading">Example</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X7A5B9B2683208F8B">1.2 <span class="Heading">Simplify extension (optional)</span></a>
 </span>
 </div>
 </div>
@@ -52,7 +55,7 @@
 
 
 <ul>
-<li><p>P. M. Lenggenhager, J. Maciejko, and T. Bzdušek, <em>HyperCells: A GAP package for constructing primitive cells and supercells of hyperbolic lattices</em>, <span class="URL"><a href="https://github.com/patrick-lenggenhager/HyperCells">https://github.com/patrick-lenggenhager/HyperCells</a></span> (2023)</p>
+<li><p>P. M. Lenggenhager, J. Maciejko, and T. Bzdušek, <em>HyperCells: A GAP package for constructing primitive cells and supercells of hyperbolic lattices</em>, <span class="URL"><a href="https://github.com/HyperCells/HyperCells">https://github.com/HyperCells/HyperCells</a></span> (2023)</p>
 
 </li>
 </ul>
@@ -139,7 +142,7 @@ TGCellGraph(
 
 <p>The option <code class="code">simplify</code> specifies the maximum wordlength that should be checked for simplifying expressions in terms of the translation generators <code class="code">g1</code>, <code class="code">g2</code>, etc. The default value is <code class="code">0</code> which means that no simplification is performed. While the graph itself represents the compactified cell, potential translations associated with the edges crossing from one copy of the cell to another are stored as well. See <a href="chap3_mj.html#X7945E96B7A771F5A"><span class="RefLink">3.7</span></a> for more details the format of the vertices, edges, faces, and the boundary.</p>
 
-<p>The cell graph can be exported using the <code class="func">Export</code> (<a href="chap3_mj.html#X828F18497AE2A460"><span class="RefLink">3.7-13</span></a>) operation, see <a href="chap7_mj.html#X7CFBF28C7E45D68A"><span class="RefLink">7.1</span></a> for more details on the produced file format to import it using other software.</p>
+<p>The cell graph can be exported using the <code class="func">Export</code> (<a href="chap3_mj.html#X828F18497AE2A460"><span class="RefLink">3.7-13</span></a>) operation, see <a href="chap8_mj.html#X7CFBF28C7E45D68A"><span class="RefLink">8.1</span></a> for more details on the produced file format to import it using other software.</p>
 
 <p>With the cell graph at hand, we can derive a model graph, such as a tessellation graph, i.e., the nearest-neighbor graph of the <span class="SimpleMath">\(\{8,8\}\)</span> tessellation of the hyperbolic plane restricted to the primitive cell:</p>
 
@@ -158,7 +161,7 @@ TGCellModelGraph(
 )
 </pre></div>
 
-<p>The result is an object of category <code class="code">TGCellModelGraph</code> (see <a href="chap4_mj.html#X87FE1AF37CFB0B86"><span class="RefLink">4.1</span></a>), which can be exported using the <code class="func">Export</code> (<a href="chap4_mj.html#X7C1C17EF7A0F02BA"><span class="RefLink">4.4-1</span></a>) operation, producing a file in the format described in <a href="chap7_mj.html#X8672A7E782E0D7F3"><span class="RefLink">7.2</span></a>.</p>
+<p>The result is an object of category <code class="code">TGCellModelGraph</code> (see <a href="chap4_mj.html#X87FE1AF37CFB0B86"><span class="RefLink">4.1</span></a>), which can be exported using the <code class="func">Export</code> (<a href="chap4_mj.html#X7C1C17EF7A0F02BA"><span class="RefLink">4.4-1</span></a>) operation, producing a file in the format described in <a href="chap8_mj.html#X8672A7E782E0D7F3"><span class="RefLink">8.2</span></a>.</p>
 
 <p>Finally, the model graph defined on the primitive cell can be <em>extended</em> to a <em>supercell</em>, i.e., a cell specified by a translation subgroup <span class="SimpleMath">\(\Gamma'\triangleleft\Gamma\)</span> of the original translation group <span class="SimpleMath">\(\Gamma\)</span>. Here, we consider the one given by the quotient <code class="code">T3.11</code> and first construct the <em>symmetric</em> cell (but without simplifying the translation generators):</p>
 
@@ -194,13 +197,80 @@ TGSuperCellModelGraph(
 )
 </pre></div>
 
-<p>which is returned as an object of category <code class="code">TGSuperCellModelGraph</code> (see <a href="chap5_mj.html#X84E3E01A7C2274DF"><span class="RefLink">5.1</span></a>) and can be exported using the <code class="func">Export</code> (<a href="chap5_mj.html#X802566E77A19B02E"><span class="RefLink">5.5-1</span></a>) operation, producing a file in the format described in <a href="chap7_mj.html#X79442B71791A7C60"><span class="RefLink">7.3</span></a>.</p>
+<p>which is returned as an object of category <code class="code">TGSuperCellModelGraph</code> (see <a href="chap5_mj.html#X84E3E01A7C2274DF"><span class="RefLink">5.1</span></a>) and can be exported using the <code class="func">Export</code> (<a href="chap5_mj.html#X802566E77A19B02E"><span class="RefLink">5.5-1</span></a>) operation, producing a file in the format described in <a href="chap8_mj.html#X79442B71791A7C60"><span class="RefLink">8.3</span></a>.</p>
+
+<p><a id="X7A5B9B2683208F8B" name="X7A5B9B2683208F8B"></a></p>
+
+<h4>1.2 <span class="Heading">Simplify extension (optional)</span></h4>
+
+<p>The HyperCells package has an integrated word simplification procedure for a selection of functions. Two methods are available: a default brute-force method, and a method based on the Knuth-Bendix completion algorithm. The latter can only be used provided the <span class="URL"><a href="https://gap-packages.github.io/kbmag/doc/chap0_mj.html">kbmag</a></span> package (verion 1.5.10+) is available.</p>
+
+<p>The default configuration of the kbmag package allows HyperCells to simplify words in groups with a maximal number of generators of 127. However, this limit can manually be extended up to 65535. The corresponding adjustments are laid out in a README file in the kbmag package and can be found in the folder containing GAP: “…/gap/gap-<code class="code">&lt; version &gt;</code>/pkg/kbmag/standalone”, with the following instructions:</p>
+
+
+<div class="example"><pre>
+NEW in Version 2.3: It is now possible to use kbmag with more than the
+previous default number of 127 generators. To use up to 65535 generators,
+before making the package, edit the file "defs.h" in the lib directory,
+and change the two lines:
+
+#define MAXGEN MAXCHAR /* maximum number of generators */
+typedef char gen; /* for generators of monoids and groups */
+
+to
+
+#define MAXGEN MAXUSHORT /* maximum number of generators */
+typedef unsigned short gen; /* for generators of monoids and groups */
+</pre></div>
+
+<p>Once these changes are made, kbmag needs to be recompiled. This can be done in the terminal, where in the kbmag directory one needs to execute the command <code class="code">make clean</code> and afterwards <code class="code">make</code>.</p>
+
+<p>If these changes are not made while using the Knuth-Bendix completion algorithm based simplification and unit cells compactified on Rieman surfaces with genus exceeding 63 are used, the procedure will not be excecuted and a warning will be printed in GAP:</p>
+
+
+<div class="example"><pre>
+#WARNING: maximal number of genartors have been exceeded; non-simplified words 
+will be used. Please follow the instructions in the chapter Introduction section
+Simplify extension (optional) in the HyperCells reference manual.
+</pre></div>
+
+<p>Let us look at an example, provided kbmag is installed. We can apply the Knuth-Bendix method by using the option <code class="code">simplifyMethod</code> specifying the method of simplification, which we can set to <code class="code">"KnuthBendix"</code> (the default is <code class="code">"BruteForce"</code>):</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">scmodel := TGSuperCellModelGraph( model, sc : simplify := 4*3, </span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">      simplifyMethod := "KnuthBendix");</span>
+#WARNING: system is not confluent, so reductions may not be to normal form.
+TGSuperCellModelGraph(
+    primitive cell = TGCell( ProperTriangleGroup(2, 8, 8),
+        [ x^2, x*y*z, x*z*y, y^3*z^-1 ] ),
+    supercell = TGCell( ProperTriangleGroup(2, 8, 8),
+        [ x^2, x*y*z, x*z*y, y^-8 ] ),
+    cell embedding = TGCellEmbedding(
+        primitive cell = TGCellTranslationGroup( &lt; g1, g2, g3, g4 |
+            g2*g1^-1*g4^-1*g3*g2^-1*g1*g4*g3^-1 &gt; ),
+        supercell = TGCellTranslationGroup( &lt; g1, g2, g3, g4, g5, g6 |
+            g6*g4*g2*g1*g3*g5*g3^-1*g2^-1*g6^-1*g5^-1*g1^-1*g4^-1 &gt; ),
+        transversal = [ &lt;identity ...&gt;, (x^-1*y^-1)^4*x^-1 ],
+        embedding = [ g1, g2, g3, g4, g5, g6 ] -&gt; [ g1^-1*g4^-1, ... ]
+    ),
+    center = 3,
+    type = [ "TESS", [ 8, 8 ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ],
+    vertices = [ [ 3, 1, 1 ], [ 3, 1, 2 ] ],
+    edges = [ [ 1, 2, [ 1, 1, [ 1, [ 1, 1, 5 ] ] ], &lt;identity ...&gt; ], ... ],
+    faces = [ ]
+)
+</pre></div>
+
+<p>where we have set the option <code class="code">simplify</code> to twice the number of generators (or four times the genus) in the associated translation group. A set of equations, denoted as rewriting rules, will be constructed in the Knuth-Bendix method. In contrast to the brute-force method, the meaning of the option <code class="code">simplify</code> is slightly adjusted. <code class="code">simplify</code> now specifies the maximal length of those rewriting rules. Specifically, the left- and right- hand sides are maximally <code class="code">simplify</code> and 2*(<code class="code">simplify</code> + 1) long, respectively. If <code class="code">simplify</code> is smaller than twice the number of generators in the associated translation group, <code class="code">simplify</code> will default back to twice the number of generators, instead.</p>
+
+<p>Note that in general, the system will not be confluent, i.e., the simplification might not yield the optimal solution. Nontheless, the application of the Knuth-Bendix method will still be able to simplify some words, however, shorter words might be available.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "HyperCells",
 Subtitle := "A GAP package for constructing primitive cells and supercells of hyperbolic lattices",
-Version := "0.9.1-beta",
-Date := "05/03/2024", # dd/mm/yyyy format
+Version := "1.0.0",
+Date := "03/12/2024", # dd/mm/yyyy format
 License := "CC BY-SA 4.0",
 
 Persons := [
@@ -48,11 +48,11 @@ Persons := [
 
 SourceRepository := rec(
     Type := "git",
-    URL := "https://github.com/patrick-lenggenhager/HyperCells",
+    URL := "https://github.com/HyperCells/HyperCells",
 ),
 GithubWWW       := ~.SourceRepository.URL,
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://patrick-lenggenhager.github.io/HyperCells/",
+PackageWWWHome  := "https://HyperCells.github.io/HyperCells/",
 PackageInfoURL  := Concatenation( ~.PackageWWWHome, "PackageInfo.g" ),
 README_URL      := Concatenation( ~.PackageWWWHome, "README.md" ),
 ArchiveURL      := Concatenation( ~.SourceRepository.URL,
@@ -85,7 +85,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.11",
   NeededOtherPackages := [ ],
-  SuggestedOtherPackages := [ ],
+  SuggestedOtherPackages := [ ["kbmag", ">= 1.5.10"] ],
   ExternalConditions := [ ],
 ),
 
@@ -93,8 +93,6 @@ AvailabilityTest := ReturnTrue,
 
 TestFile := "tst/testall.g",
 
-Keywords := [ "hyperbolic lattices", "triangle groups" ],
-
+Keywords := [ "hyperbolic lattices", "triangle groups" ]
+ 
 ));
-
-

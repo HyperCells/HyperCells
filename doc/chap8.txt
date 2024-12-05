@@ -1,11 +1,672 @@
   
-  [1X8 [33X[0;0YReferences[133X[101X
+  [1X8 [33X[0;0YFile Formats[133X[101X
   
-  [33X[0;0Y[[3XLMB23[103X]  P.  M.  Lenggenhager,  J.  Maciejko,  and  T. Bzdušek, "[13XNon-Abelian
-  hyperbolic  band  theory  from  supercells[113X",  arXiv:2305.04945  (2023),  see
-  [7Xhttps://doi.org/10.48550/arXiv.2305.04945[107X.[133X
+  [33X[0;0YThe following file formats are introduced by the HyperCells package:[133X
   
-  [33X[0;0Y[[3XLP22[103X]  R.  Lux  and  E.  Prodan,  "[13XSpectral  and  combinatorial  aspects of
-  Cayley-crystals[113X",           arXiv:2212.10329           (2022),           see
-  [7Xhttps://doi.org/10.48550/arXiv.2212.10329[107X.[133X
+  [30X    [33X[0;6Y[13XHyperCell  cell  graph[113X  ([10X*.hcc[110X)  for  storing  the  cell graphs, i.e.,
+        [10XTGCellGraph[110X objects (see [14X3.7[114X)[133X
+  
+  [30X    [33X[0;6Y[13XHyperCell  model  graph[113X  ([10X*.hcm[110X)  for  storing the model graphs, i.e.,
+        [10XTGCellModelGraph[110X objects (see [14X4.1[114X)[133X
+  
+  [30X    [33X[0;6Y[13XHyperCell  supercell  graph[113X  ([10X*.hcs[110X)  for  storing the supercell model
+        graphs, i.e., [10XTGSuperCellModelGraph[110X objects (see [14X5.1[114X)[133X
+  
+  [33X[0;0YThese file formats are described in detail below.[133X
+  
+  
+  [1X8.1 [33X[0;0YHyperCell cell graph (*.hcc)[133X[101X
+  
+  [33X[0;0YThe  basic file structure of a HyperCell cell graph file is as follows (with
+  placeholders marked by [10X<...>[110X):[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCC version 1.0[128X[104X
+    [4X[28X[ <r>, <q>, <p> ][128X[104X
+    [4X[28X[ <relators> , <center> ][128X[104X
+    [4X[28X[ g1, g2, ... ] -> <generators>[128X[104X
+    [4X[28X<TDGAMMA>[128X[104X
+    [4X[28X[ <TGGx>, <TGGy>, <TGGz> ][128X[104X
+    [4X[28X<vertices>[128X[104X
+    [4X[28X<edges>[128X[104X
+    [4X[28X<edge translations>[128X[104X
+    [4X[28X<faces>[128X[104X
+    [4X[28X<boundary>[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe first line specifies the file format and its version.[133X
+  
+  [33X[0;0YThe second line gives the signature [23X(r,q,p)[123X of the underlying triangle group
+  [23X\Delta(r,q,p)[123X  and  the  third  line  specifies  the triangle-group quotient
+  [23X\Delta^+(r,q,p)/\Gamma[123X  by the list of relators [10X<relators>[110X given as elements
+  of the proper triangle group [23X\Delta^+[123X with generators [23Xx[123X, [23Xy[123X, [23Xz[123X and the center
+  of  the cell given as the integer [10X<center>[110X with [10X1[110X, [10X2[110X, [10X3[110X corresponding to the
+  center  lying  at  the  vertex  [23Xx[123X, [23Xy[123X, [23Xz[123X of the fundamental Schwarz triangle,
+  respectively.[133X
+  
+  [33X[0;0YThe fourth line specifies the generators of the translation group [23X\Gamma[123X. To
+  the left of [10X->[110X are the generators of the finitely presented group and to the
+  right  the  list  [10X<generators>[110X  of their images in the proper triangle group
+  [23X\Delta^+[123X in terms of the generators [23Xx[123X, [23Xy[123X, [23Xz[123X.[133X
+  
+  [33X[0;0YThe  fifth  line  gives  the  transversal  [23XT_{\Delta^+}(\Gamma)[123X  as  a  list
+  [10X<TDGAMMA>[110X  of  elements  of the proper triangle group [23X\Delta^+[123X and the sixth
+  line  specifies the transversals [23XT_{G^+}(G_w^+)[123X as lists [10X<TGGw>[110X with [23Xw=x,y,z[123X
+  ([10Xw=x,y,z[110X)    of    preimages    of    elements   of   the   quotient   group
+  [23XG^+\cong\Delta^+/\Gamma[123X  under  the  quotient  homomorphism [23X\Delta^+\to G^+[123X,
+  i.e., in terms of the generators [23Xx[123X, [23Xy[123X, [23Xz[123X.[133X
+  
+  [33X[0;0YLines  seven to ten specify the vertices, edges, edge translations and faces
+  of the cell:[133X
+  
+  [30X    [33X[0;6YThe vertices are given as a list [10X<vertices>[110X with entries of the form [10X[
+        w, gi ][110X, where [10Xw[110X is [10X1[110X, [10X2[110X, [10X3[110X corresponding to the vertex [23Xx[123X, [23Xy[123X, [23Xz[123X of the
+        fundamental  Schwarz triangle and [10Xgi[110X is the position of the element in
+        the transversal [23XT_{G^+}(G_w^+)[123X.[133X
+  
+  [30X    [33X[0;6YThe  edges  are given as a list [10X<edges>[110X with entries of the form [10X[ v1,
+        v2,  s  ][110X,  where  [10Xv1[110X  and  [10Xv2[110X  are  the  positions of the vertices in
+        [10X<vertices>[110X  connected by the edge, [10Xs[110X is the position of the element in
+        [23XT_{\Delta^+}(\Gamma)[123X labeling the Schwarz triangle this edge is a part
+        of.[133X
+  
+  [30X    [33X[0;6YThe  edge  translations, i.e., the translations relating the unit cell
+        containing  the  first  vertex  ([10Xv1[110X)  to  the unit cell containing the
+        second ([10Xv2[110X) are given as a list [10X<edge translations>[110X of elements of the
+        finitely  presented  group,  i.e., in terms of the generators given to
+        the  left of [10X->[110X in the third line. If [10Xv1[110X corresponds to the vertex [23X(w,
+        [g_{u_w}]_w)[123X  and  [10Xv2[110X  to  the vertex [23X(w', [g_{\tilde{u}_{w'}}]_{w'})[123X,
+        then [10Xgam[110X corresponds to the translation [23X\gamma[123X such that[133X
+  
+  
+  [24X      [33X[0;6Yg_{\tilde{u}_{w'}} = g_{u_w}\gamma.[133X
+  
+  [124X
+  
+  [30X    [33X[0;6YThe faces are given as a list [10X<faces>[110X with entries of the form [10X[ edge,
+        orientation  ][110X,  where [10Xedge[110X is the position of the edge in [10X<edges>[110X and
+        [10Xorientation[110X  is  [10X1[110X or [10X-1[110X depending on whether the edge is traversed in
+        the same or opposite direction as the edge given in [10X<edges>[110X.[133X
+  
+  [33X[0;0YFinally,  the  eleventh  line  specifies the boundary identifications of the
+  cell as a list [10X<boundary>[110X with entries of the form [10X[ d1, d2, e, b, m, gam ][110X,
+  where  [10Xd1[110X,  [10Xd2[110X  are elements of [23XT_{\Delta^+}(\Gamma)\subset\Delta^+[123X labeling
+  the Schwarz triangles this edge is a part of, [10Xe[110X the position in [10X<edges>[110X, [10Xb[110X a
+  running integer index of the boundary (identical for identified boundaries),
+  [10Xm[110X  either  [10X0[110X or [10X1[110X indicating the orientation of the triangle associated with
+  this instance of the boundary (0 for gray and 1 for white Schwarz triangle),
+  and [10Xgam[110X the translation relating the given to the identified boundary, as an
+  element  of  the  finitely presented group, i.e., in terms of the generators
+  given to the left of [10X->[110X in the third line.[133X
+  
+  [33X[0;0YThe full file structure of a HyperCell cell graph file thus is as follows:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCC version 1.0[128X[104X
+    [4X[28X[ <r>, <q>, <p> ][128X[104X
+    [4X[28X[ [ <rel1>, <rel2>, ... ], <center> ][128X[104X
+    [4X[28X[ g1, g2, ... ] -> [ <generator1>, <generator2>, ... ][128X[104X
+    [4X[28X[ <d1>, <d2>, ... ][128X[104X
+    [4X[28X[ [ <gx1>, <gx2>, ... ], [ <gy1>, <gy2>, ... ], [ <gz1>, <gz2>, ... ] ][128X[104X
+    [4X[28X[ [ w, gi ], ... ][128X[104X
+    [4X[28X[ [ v1, v2, s ], ... ][128X[104X
+    [4X[28X[ [ gam1, gam2, ... ], ... ][128X[104X
+    [4X[28X[ [ edge, orientation ], ... ][128X[104X
+    [4X[28X[ [ d1, d2, e, b, m, gam ], ... ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YA  complete example for the cell graph of the quotient T2.6 of [23X\Delta(2,8,8)[123X
+  is given below:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCC version 1.0[128X[104X
+    [4X[28X[ 2, 8, 8 ][128X[104X
+    [4X[28X[ [ x^2, x*y*z, x*z*y, y^3*z^-1 ], 3 ][128X[104X
+    [4X[28X[ g1, g2, g3, g4 ] -> [ z^-1*x^-1*y*z^-1*y*z*y*x^-1, z^-1*x^-1*y*z^-1*y*z*y*[128X[104X
+    [4X[28X  x^-1*y*x*z, z*y*(x^-1*z^-1)^2*y^3*x*z, y^-1*z*y^-1*x*z ][128X[104X
+    [4X[28X[ 1, y^-1*x^-1, (y^-1*x^-1)^2, (y^-1*x^-1)^3, (y^-1*x^-1)^4, (y^-1*x^-1)^5,[128X[104X
+    [4X[28X  (y^-1*x^-1)^6, (y^-1*x^-1)^7 ][128X[104X
+    [4X[28X[ [ 1, (y^-1*x^-1)^3, y^-1*x^-1, (y^-1*x^-1)^2 ], [ 1 ], [ 1 ] ][128X[104X
+    [4X[28X[ [ 1, 1 ], [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 2, 1 ], [ 3, 1 ] ][128X[104X
+    [4X[28X[ [ 1, 6, 1 ], [ 5, 1, 1 ], [ 6, 5, 1 ], [ 3, 6, 2 ], [ 5, 3, 2 ], [ 6, 5, 2 ],[128X[104X
+    [4X[28X  [ 4, 6, 3 ], [ 5, 4, 3 ], [ 6, 5, 3 ], [ 2, 6, 4 ], [ 5, 2, 4 ], [ 6, 5, 4 ],[128X[104X
+    [4X[28X  [ 1, 6, 5 ], [ 5, 1, 5 ], [ 6, 5, 5 ], [ 3, 6, 6 ], [ 5, 3, 6 ], [ 6, 5, 6 ],[128X[104X
+    [4X[28X  [ 4, 6, 7 ], [ 5, 4, 7 ], [ 6, 5, 7 ], [ 2, 6, 8 ], [ 5, 2, 8 ], [ 6, 5, 8 ] ][128X[104X
+    [4X[28X[ 1, 1, 1, 1, g2^-1*g3*g4^-1, g4*g3^-1*g2, 1, g2^-1*g1, g1^-1*g2, 1, g4^-1, g4,[128X[104X
+    [4X[28X  g1, g2^-1*g3*g4^-1, g1^-1*g2*g3^-1*g4, g2, g2^-1*g1, g1^-1, g3, g4^-1,[128X[104X
+    [4X[28X  g4*g3^-1, g4, g4^-1*g3*g2^-1*g1, g1^-1*g2*g3^-1 ][128X[104X
+    [4X[28X[ [ [ [ 1, 1 ], [ 3, 1 ], [ 18, -1 ], [ 13, -1 ] ], [ [ 4, 1 ], [ 6, 1 ],[128X[104X
+    [4X[28X  [ 21, -1 ], [ 16, -1 ] ], [ [ 7, 1 ], [ 9, 1 ], [ 24, -1 ], [ 19, -1 ] ],[128X[104X
+    [4X[28X  [ [ 10, 1 ], [ 12, 1 ], [ 3, -1 ], [ 22, -1 ] ], [ [ 13, 1 ], [ 15, 1 ],[128X[104X
+    [4X[28X  [ 6, -1 ], [ 1, -1 ] ], [ [ 16, 1 ], [ 18, 1 ], [ 9, -1 ], [ 4, -1 ] ],[128X[104X
+    [4X[28X  [ [ 19, 1 ], [ 21, 1 ], [ 12, -1 ], [ 7, -1 ] ], [ [ 22, 1 ], [ 24, 1 ],[128X[104X
+    [4X[28X  [ 15, -1 ], [ 10, -1 ] ] ], [ [ [ 2, 1 ], [ 1, 1 ], [ 22, -1 ], [ 11, -1 ] ],[128X[104X
+    [4X[28X  [ [ 5, 1 ], [ 4, 1 ], [ 1, -1 ], [ 14, -1 ] ], [ [ 8, 1 ], [ 7, 1 ], [ 4, -1 ],[128X[104X
+    [4X[28X  [ 17, -1 ] ], [ [ 11, 1 ], [ 10, 1 ], [ 7, -1 ], [ 20, -1 ] ], [ [ 14, 1 ],[128X[104X
+    [4X[28X  [ 13, 1 ], [ 10, -1 ], [ 23, -1 ] ], [ [ 17, 1 ], [ 16, 1 ], [ 13, -1 ],[128X[104X
+    [4X[28X  [ 2, -1 ] ], [ [ 20, 1 ], [ 19, 1 ], [ 16, -1 ], [ 5, -1 ] ], [ [ 23, 1 ],[128X[104X
+    [4X[28X  [ 22, 1 ], [ 19, -1 ], [ 8, -1 ] ] ], [ [ [ 3, 1 ], [ 2, 1 ], [ 14, -1 ],[128X[104X
+    [4X[28X  [ 6, -1 ] ], [ [ 6, 1 ], [ 5, 1 ], [ 17, -1 ], [ 9, -1 ] ], [ [ 9, 1 ],[128X[104X
+    [4X[28X  [ 8, 1 ], [ 20, -1 ], [ 12, -1 ] ], [ [ 12, 1 ], [ 11, 1 ], [ 23, -1 ],[128X[104X
+    [4X[28X  [ 15, -1 ] ], [ [ 15, 1 ], [ 14, 1 ], [ 2, -1 ], [ 18, -1 ] ], [ [ 18, 1 ],[128X[104X
+    [4X[28X  [ 17, 1 ], [ 5, -1 ], [ 21, -1 ] ], [ [ 21, 1 ], [ 20, 1 ], [ 8, -1 ],[128X[104X
+    [4X[28X  [ 24, -1 ] ], [ [ 24, 1 ], [ 23, 1 ], [ 11, -1 ], [ 3, -1 ] ] ] ][128X[104X
+    [4X[28X[ [ 1, 1, 2, 1, 0, g1 ], [ (y*x)^3*y, (y*x)^3*y, 2, 1, 1, g1^-1 ], [ y^-1*x^-1,[128X[104X
+    [4X[28X  y^-1*x^-1, 5, 2, 0, g2 ], [ (y*x)^2*y, (y*x)^2*y, 5, 2, 1, g2^-1 ],[128X[104X
+    [4X[28X  [ (y^-1*x^-1)^2, (y^-1*x^-1)^2, 8, 3, 0, g3 ], [ y*x*y, y*x*y, 8, 3, 1, g3^-1 ],[128X[104X
+    [4X[28X  [ (y^-1*x^-1)^3, (y^-1*x^-1)^3, 11, 4, 0, g4 ], [ y, y, 11, 4, 1, g4^-1 ],[128X[104X
+    [4X[28X  [ (y^-1*x^-1)^4, (y^-1*x^-1)^4, 14, 1, 0, g1^-1 ], [ x^-1, x^-1, 14, 1, 1, g1 ],[128X[104X
+    [4X[28X  [ (y^-1*x^-1)^5, (y^-1*x^-1)^5, 17, 2, 0, g2^-1 ], [ (y*x)^6*y, (y*x)^6*y, 17,[128X[104X
+    [4X[28X  2, 1, g2 ], [ (y^-1*x^-1)^6, (y^-1*x^-1)^6, 20, 3, 0, g3^-1 ], [ (y*x)^5*y,[128X[104X
+    [4X[28X  (y*x)^5*y, 20, 3, 1, g3 ], [ (y^-1*x^-1)^7, (y^-1*x^-1)^7, 23, 4, 0, g4^-1 ],[128X[104X
+    [4X[28X  [ (y*x)^4*y, (y*x)^4*y, 23, 4, 1, g4 ] ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X8.2 [33X[0;0YHyperCell model graph (*.hcm)[133X[101X
+  
+  [33X[0;0YThe basic file structure of a HyperCell model graph file is as follows (with
+  placeholders marked by [10X<...>[110X):[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCM version 1.0[128X[104X
+    [4X[28X[ <r>, <q>, <p> ][128X[104X
+    [4X[28X[ <relators> , <center> ][128X[104X
+    [4X[28X[ g1, g2, ... ] -> <generators>[128X[104X
+    [4X[28X<TDGAMMA>[128X[104X
+    [4X[28X[ <TGGx>, <TGGy>, <TGGz> ][128X[104X
+    [4X[28X<model type>[128X[104X
+    [4X[28X<vertices>[128X[104X
+    [4X[28X<edges>[128X[104X
+    [4X[28X<edge translations>[128X[104X
+    [4X[28X<faces>[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe first line specifies the file format and its version.[133X
+  
+  [33X[0;0YThe second line gives the signature [23X(r,q,p)[123X of the underlying triangle group
+  [23X\Delta(r,q,p)[123X  and  the  third  line  specifies  the triangle-group quotient
+  [23X\Delta^+(r,q,p)/\Gamma[123X  by the list of relators [10X<relators>[110X given as elements
+  of the proper triangle group [23X\Delta^+[123X with generators [23Xx[123X, [23Xy[123X, [23Xz[123X and the center
+  of  the cell given as the integer [10X<center>[110X with [10X1[110X, [10X2[110X, [10X3[110X corresponding to the
+  center  lying  at  the  vertex  [23Xx[123X, [23Xy[123X, [23Xz[123X of the fundamental Schwarz triangle,
+  respectively.[133X
+  
+  [33X[0;0YThe fourth line specifies the generators of the translation group [23X\Gamma[123X. To
+  the left of [10X->[110X are the generators of the finitely presented group and to the
+  right  the  list  [10X<generators>[110X  of their images in the proper triangle group
+  [23X\Delta^+[123X in terms of the generators [23Xx[123X, [23Xy[123X, [23Xz[123X.[133X
+  
+  [33X[0;0YThe  fifth  line  gives  the  transversal  [23XT_{\Delta^+}(\Gamma)[123X  as  a  list
+  [10X<TDGAMMA>[110X  of  elements  of the proper triangle group [23X\Delta^+[123X and the sixth
+  line  specifies the transversals [23XT_{G^+}(G_w^+)[123X as lists [10X<TGGw>[110X with [23Xw=x,y,z[123X
+  ([10Xw=x,y,z[110X)    of    preimages    of    elements   of   the   quotient   group
+  [23XG^+\cong\Delta^+/\Gamma[123X  under  the  quotient  homomorphism [23X\Delta^+\to G^+[123X,
+  i.e., in terms of the generators [23Xx[123X, [23Xy[123X, [23Xz[123X.[133X
+  
+  [33X[0;0YThe  seventh  line  specifies  the model type. The following model types are
+  currently implemented:[133X
+  
+  [30X    [33X[0;6Y[13XDerived  graph[113X:  general  model  graph with vertices, edges, and faces
+        derived  from  the  cell  graph. The model type is given as [10X[ "VEF", [
+        vfs,  efs,  ffs  ]  ][110X,  where  [10Xvfs[110X, [10Xefs[110X, and [10Xffs[110X are lists of integers
+        between  1  and  3  indicating  the vertex types, edge types, and face
+        types, respectively. See [2XTGCellModelGraph[102X ([14X4.2-1[114X) for details.[133X
+  
+  [30X    [33X[0;6Y[13XTessellation graph[113X: tessellation model graph derived from a cell graph
+        of  a triangle group. The model type is given as [10X[ "TESS", [ p, q ], [
+        "VEF", [ [ 2 ], [ 1 ], [ 3 ] ] ] ][110X for the [23X\{p,q\}[123X tessellation and as
+        [10X[  "TESS",  [  q,  p  ],  [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ][110X for the
+        (dual)  [23X\{q,p\}[123X  tessellation.  See [2XTessellationModelGraph[102X ([14X4.2-2[114X) for
+        details.[133X
+  
+  [30X    [33X[0;6Y[13XKagome  graph[113X:  kagome  model  graph  derived  from  a cell graph of a
+        triangle group. The model type is given as [10X[ "KAGOME", p, [ "VEF", [ [
+        1 ], [ 2 ], [ 2, 3 ] ] ] ][110X. See [2XKagomeModelGraph[102X ([14X4.2-4[114X) for details.[133X
+  
+  [30X    [33X[0;6Y[13XLieb  graph[113X:  Lieb model graph derived from a cell graph of a triangle
+        group.  The model type is given as [10X[ "LIEB", [ p, q ], [ "VEF", [ [ 1,
+        2  ], [ ], [ 3 ] ] ] ][110X for the [23X\{p,q\}[123X tessellation and as [10X[ "LIEB", [
+        q,  p  ], [ "VEF", [ [ 1, 3 ], [ ], [ 2 ] ] ] ][110X for the (dual) [23X\{q,p\}[123X
+        tessellation. See [2XLiebModelGraph[102X ([14X4.2-5[114X) for details.[133X
+  
+  [33X[0;0YLines  eight  to  eleven  specify the vertices, edges, edge translations and
+  faces of the cell:[133X
+  
+  [30X    [33X[0;6YThe vertices are given as a list [10X<vertices>[110X with entries of the form [10X[
+        w, gi ][110X, where [10Xw[110X is [10X1[110X, [10X2[110X, [10X3[110X corresponding to the vertex [23Xx[123X, [23Xy[123X, [23Xz[123X of the
+        fundamental  Schwarz triangle and [10Xgi[110X is the position of the element in
+        the transversal [23XT_{G^+}(G_w^+)[123X.[133X
+  
+  [30X    [33X[0;6YThe  edges  are given as a list [10X<edges>[110X with entries of the form [10X[ v1,
+        v2,  tag  ][110X,  where  [10Xv1[110X  and  [10Xv2[110X  are the positions of the vertices in
+        [10X<vertices>[110X  connected  by  the edge, and [10Xtag[110X is a unique identifier of
+        the  edge.  More  details  on  the  tags  are given in the methods for
+        constructing different models, see [14X4.2[114X.[133X
+  
+  [30X    [33X[0;6YThe  edge  translations, i.e., the translations relating the unit cell
+        containing  the  first  vertex  ([10Xv1[110X)  to  the unit cell containing the
+        second ([10Xv2[110X) are given as a list [10X<edge translations>[110X of elements of the
+        finitely  presented  group,  i.e., in terms of the generators given to
+        the  left of [10X->[110X in the third line. If [10Xv1[110X corresponds to the vertex [23X(w,
+        [g_{u_w}]_w)[123X  and  [10Xv2[110X  to  the vertex [23X(w', [g_{\tilde{u}_{w'}}]_{w'})[123X,
+        then [10Xgam[110X corresponds to the translation [23X\gamma[123X such that[133X
+  
+  
+  [24X      [33X[0;6Yg_{\tilde{u}_{w'}} = g_{u_w}\gamma.[133X
+  
+  [124X
+  
+  [30X    [33X[0;6YThe faces are given as a list [10X<faces>[110X with entries of the form [10X[ edge,
+        orientation  ][110X,  where [10Xedge[110X is the position of the edge in [10X<edges>[110X and
+        [10Xorientation[110X  is  [10X1[110X or [10X-1[110X depending on whether the edge is traversed in
+        the same or opposite direction as the edge given in [10X<edges>[110X.[133X
+  
+  [33X[0;0YThe full file structure of a HyperCell cell graph file thus is as follows:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCM version 1.0[128X[104X
+    [4X[28X[ <r>, <q>, <p> ][128X[104X
+    [4X[28X[ [ <rel1>, <rel2>, ... ], <center> ][128X[104X
+    [4X[28X[ g1, g2, ... ] -> [ <generator1>, <generator2>, ... ][128X[104X
+    [4X[28X[ <d1>, <d2>, ... ][128X[104X
+    [4X[28X[ [ <gx1>, <gx2>, ... ], [ <gy1>, <gy2>, ... ], [ <gz1>, <gz2>, ... ] ][128X[104X
+    [4X[28X<model type>[128X[104X
+    [4X[28X[ [ w, gi ], ... ][128X[104X
+    [4X[28X[ [ v1, v2, tag ], ... ][128X[104X
+    [4X[28X[ [ gam1, gam2, ... ], ... ][128X[104X
+    [4X[28X[ [ edge, orientation ], ... ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YA complete example for the [23X{8,8}[123X tessellation graph centered at the [23Xz[123X vertex
+  on the cell defined by the quotient T2.6 of [23X\Delta(2,8,8)[123X is given below:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCM version 1.0[128X[104X
+    [4X[28X[ 2, 8, 8 ][128X[104X
+    [4X[28X[ [ x^2, x*y*z, x*z*y, y^3*z^-1 ], 3 ][128X[104X
+    [4X[28X[ g1, g2, g3, g4 ] -> [ z^-1*x^-1*y*z^-1*y*z*y*x^-1,[128X[104X
+    [4X[28X  z^-1*x^-1*y*z^-1*y*z*y*x^-1*y*x*z, z*y*(x^-1*z^-1)^2*y^3*x*z, y^-1*z*y^-1*x*z ][128X[104X
+    [4X[28X[ 1, y^-1*x^-1, (y^-1*x^-1)^2, (y^-1*x^-1)^3, (y^-1*x^-1)^4, (y^-1*x^-1)^5,[128X[104X
+    [4X[28X  (y^-1*x^-1)^6, (y^-1*x^-1)^7 ][128X[104X
+    [4X[28X[ [ 1, (y^-1*x^-1)^3, y^-1*x^-1, (y^-1*x^-1)^2 ], [ 1 ], [ 1 ] ][128X[104X
+    [4X[28X[ "TESS", [ 8, 8 ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ][128X[104X
+    [4X[28X[ [ 3, 1 ] ][128X[104X
+    [4X[28X[ [ 1, 1, [ 1, [ [ 1, 1 ], 1, 5 ] ] ], [ 1, 1, [ 1, [ [ 1, 2 ], 4, 8 ] ] ],[128X[104X
+    [4X[28X  [ 1, 1, [ 1, [ [ 1, 3 ], 2, 6 ] ] ], [ 1, 1, [ 1, [ [ 1, 4 ], 3, 7 ] ] ] ][128X[104X
+    [4X[28X[ g1, g4, g2, g3 ][128X[104X
+    [4X[28X[ [ [ 1, -1 ], [ 2, -1 ], [ 4, 1 ], [ 3, -1 ], [ 1, 1 ], [ 2, 1 ], [ 4, -1 ],[128X[104X
+    [4X[28X  [ 3, 1 ] ] ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X8.3 [33X[0;0YHyperCell supercell graph (*.hcs)[133X[101X
+  
+  [33X[0;0YThe  basic  file  structure  of a HyperCell supercell model graph file is as
+  follows (with placeholders marked by [10X<...>[110X):[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCS version 1.0[128X[104X
+    [4X[28X[ <r>, <q>, <p> ][128X[104X
+    [4X[28X[ <primitive cell relators> , <supercell relators>, <center> ][128X[104X
+    [4X[28X[ g1, g2, ... ] -> <pc generators>[128X[104X
+    [4X[28X<TDGAMMApc>[128X[104X
+    [4X[28X[ <TGpcGx>, <TGpcGy>, <TGpcGz> ][128X[104X
+    [4X[28X[ g1, g2, ... ] -> <sc generators>[128X[104X
+    [4X[28X[ g1, g2, ... ] -> <sc generators in terms of pc generators>[128X[104X
+    [4X[28X<TGAMMApcGAMMAsc>[128X[104X
+    [4X[28X<TDGAMMAsc>[128X[104X
+    [4X[28X[ <TGscGx>, <TGscGy>, <TGscGz> ][128X[104X
+    [4X[28X<model type>[128X[104X
+    [4X[28X<vertices>[128X[104X
+    [4X[28X<edges>[128X[104X
+    [4X[28X<edge translations>[128X[104X
+    [4X[28X<faces>[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe first line specifies the file format and its version.[133X
+  
+  [33X[0;0YThe second line gives the signature [23X(r,q,p)[123X of the underlying triangle group
+  [23X\Delta(r,q,p)[123X  and  the  third  line  specifies  the triangle-group quotient
+  [23X\Delta^+(r,q,p)/\Gamma_\mathrm{pc}[123X and [23X\Delta^+(r,q,p)/\Gamma_\mathrm{sc}[123X by
+  the  list  of  relators  [10X<primitive cell relators>[110X and [10X<supercell relators>[110X,
+  respectively,  given  as elements of the proper triangle group [23X\Delta^+[123X with
+  generators  [23Xx[123X, [23Xy[123X, [23Xz[123X and the center of the cell given as the integer [10X<center>[110X
+  with  [10X1[110X, [10X2[110X, [10X3[110X corresponding to the center lying at the vertex [23Xx[123X, [23Xy[123X, [23Xz[123X of the
+  fundamental Schwarz triangle, respectively.[133X
+  
+  [33X[0;0YThe   fourth   line  specifies  the  generators  of  the  translation  group
+  [23X\Gamma_\mathrm{pc}[123X  of  the  primitive  cell.  To  the  left  of  [10X->[110X are the
+  generators  of  the  finitely  presented  group  and  to  the right the list
+  [10X<generators>[110X  of their images in the proper triangle group [23X\Delta^+[123X in terms
+  of the generators [23Xx[123X, [23Xy[123X, [23Xz[123X.[133X
+  
+  [33X[0;0YThe  fifth  line gives the transversal [23XT_{\Delta^+}(\Gamma_\mathrm{pc})[123X as a
+  list  [10X<TDGAMMApc>[110X  of elements of the proper triangle group [23X\Delta^+[123X and the
+  sixth  line  specifies  the transversals [23XT_{G^+_\mathrm{pc}}(G_w^+)[123X as lists
+  [10X<TGpcGw>[110X  with  [23Xw=x,y,z[123X  ([10Xw=x,y,z[110X)  of preimages of elements of the quotient
+  group  [23XG^+_\mathrm{pc}\cong\Delta^+/\Gamma_\mathrm{pc}[123X  under  the  quotient
+  homomorphism  [23X\Delta^+\to  G^+_\mathrm{pc}[123X, i.e., in terms of the generators
+  [23Xx[123X, [23Xy[123X, [23Xz[123X.[133X
+  
+  [33X[0;0YLines seven, ten, and eleven give the same information as lines three, four,
+  and   five,   respectively,   but   for   the   supercell  ([23XG^+_\mathrm{sc}[123X,
+  [23X\Gamma_\mathrm{sc}[123X) instead of the primitive cell. The eighth line specifies
+  the   homomorphism  embedding  the  normal  subgroup  [23X\Gamma_\mathrm{sc}[123X  in
+  [23X\Gamma_\mathrm{pc}[123X  with  the  generators  of  the  finitely presented group
+  [23X\Gamma_\mathrm{sc}[123X  to  the  left  of  [10X->[110X  and  their images in the finitely
+  presented  group  [23X\Gamma_\mathrm{pc}[123X  to the right. The ninth line gives the
+  corresponding  transversal  [23XT_{\Gamma_\mathrm{pc}} (\Gamma_\mathrm{sc})[123X as a
+  list [10X<TGAMMApcGAMMAsc>[110X of elements of the triangle group [23X\Delta^+[123X.[133X
+  
+  [33X[0;0YThe  twelfth  line  specifies  the model type. The following model types are
+  currently implemented:[133X
+  
+  [30X    [33X[0;6Y[13XDerived  graph[113X:  general  model  graph with vertices, edges, and faces
+        derived  from  the  cell  graph. The model type is given as [10X[ "VEF", [
+        vfs,  efs,  ffs  ]  ][110X,  where  [10Xvfs[110X, [10Xefs[110X, and [10Xffs[110X are lists of integers
+        between  1  and  3  indicating  the vertex types, edge types, and face
+        types, respectively. See [2XTGCellModelGraph[102X ([14X4.2-1[114X) for details.[133X
+  
+  [30X    [33X[0;6Y[13XTessellation graph[113X: tessellation model graph derived from a cell graph
+        of  a triangle group. The model type is given as [10X[ "TESS", [ p, q ], [
+        "VEF", [ [ 2 ], [ 1 ], [ 3 ] ] ] ][110X for the [23X\{p,q\}[123X tessellation and as
+        [10X[  "TESS",  [  q,  p  ],  [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ][110X for the
+        (dual)  [23X\{q,p\}[123X  tessellation.  See [2XTessellationModelGraph[102X ([14X4.2-2[114X) for
+        details.[133X
+  
+  [30X    [33X[0;6Y[13XKagome  graph[113X:  kagome  model  graph  derived  from  a cell graph of a
+        triangle group. The model type is given as [10X[ "KAGOME", p, [ "VEF", [ [
+        1 ], [ 2 ], [ 2, 3 ] ] ] ][110X. See [2XKagomeModelGraph[102X ([14X4.2-4[114X) for details.[133X
+  
+  [30X    [33X[0;6Y[13XLieb  graph[113X:  Lieb model graph derived from a cell graph of a triangle
+        group.  The model type is given as [10X[ "LIEB", [ p, q ], [ "VEF", [ [ 1,
+        2  ], [ ], [ 3 ] ] ] ][110X for the [23X\{p,q\}[123X tessellation and as [10X[ "LIEB", [
+        p,  q  ], [ "VEF", [ [ 1, 3 ], [ ], [ 2 ] ] ] ][110X for the (dual) [23X\{q,p\}[123X
+        tessellation. See [2XLiebModelGraph[102X ([14X4.2-5[114X) for details.[133X
+  
+  [33X[0;0YLines thirteen to sixteen specify the vertices, edges, edge translations and
+  faces of the cell:[133X
+  
+  [30X    [33X[0;6YThe vertices are given as a list [10X<vertices>[110X with entries of the form [10X[
+        w, gi ][110X, where [10Xw[110X is [10X1[110X, [10X2[110X, [10X3[110X corresponding to the vertex [23Xx[123X, [23Xy[123X, [23Xz[123X of the
+        fundamental  Schwarz triangle and [10Xgi[110X is the position of the element in
+        the transversal [23XT_{G^+}(G_w^+)[123X.[133X
+  
+  [30X    [33X[0;6YThe  edges  are given as a list [10X<edges>[110X with entries of the form [10X[ v1,
+        v2,  tag  ][110X,  where  [10Xv1[110X  and  [10Xv2[110X  are the positions of the vertices in
+        [10X<vertices>[110X  connected  by  the edge, and [10Xtag[110X is a unique identifier of
+        the  edge. The tag [10Xtag[110X is of the form [10X[ v1pc, v2pc, tagpc ][110X with [10Xv1pc[110X,
+        [10Xv2pc[110X  the  positions  of the vertices in the primitive cell, and [10Xtagpc[110X
+        the  tag  of  the  edge  in  the  primitive  cell (see [14X4.2[114X). Thus, [10Xtag[110X
+        specifies (up to the translation) the edge in the primitive cell.[133X
+  
+  [30X    [33X[0;6YThe  edge  translations, i.e., the translations relating the unit cell
+        containing  the  first  vertex  ([10Xv1[110X)  to  the unit cell containing the
+        second ([10Xv2[110X) are given as a list [10X<edge translations>[110X of elements of the
+        finitely  presented  group,  i.e., in terms of the generators given to
+        the  left of [10X->[110X in the third line. If [10Xv1[110X corresponds to the vertex [23X(w,
+        [g_{u_w}]_w)[123X  and  [10Xv2[110X  to  the vertex [23X(w', [g_{\tilde{u}_{w'}}]_{w'})[123X,
+        then [10Xgam[110X corresponds to the translation [23X\gamma[123X such that[133X
+  
+  
+  [24X      [33X[0;6Yg_{\tilde{u}_{w'}} = g_{u_w}\gamma.[133X
+  
+  [124X
+  
+  [30X    [33X[0;6YThe faces are given as a list [10X<faces>[110X with entries of the form [10X[ edge,
+        orientation  ][110X,  where [10Xedge[110X is the position of the edge in [10X<edges>[110X and
+        [10Xorientation[110X  is  [10X1[110X or [10X-1[110X depending on whether the edge is traversed in
+        the same or opposite direction as the edge given in [10X<edges>[110X.[133X
+  
+  [33X[0;0YThe full file structure of a HyperCell cell graph file thus is as follows:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCS version 1.0[128X[104X
+    [4X[28X[ <r>, <q>, <p> ][128X[104X
+    [4X[28X[ [ <rel1>, <rel2>, ... ], [ <rel1>, <rel2>, ... ], <center> ][128X[104X
+    [4X[28X[ g1, g2, ... ] -> [ <pc generator1>, <pc generator2>, ... ][128X[104X
+    [4X[28X[ <d1>, <d2>, ... ][128X[104X
+    [4X[28X[ [ <gx1>, <gx2>, ... ], [ <gy1>, <gy2>, ... ], [ <gz1>, <gz2>, ... ] ][128X[104X
+    [4X[28X[ g1, g2, ... ] -> [ <sc generator1>, <sc generator2>, ... ][128X[104X
+    [4X[28X[ eta1, eta2, ... ][128X[104X
+    [4X[28X[ <dsc1>, <dsc2>, ... ][128X[104X
+    [4X[28X[ [ <gscx1>, <gscx2>, ... ], [ <gscy1>, <gscy2>, ... ], ... ][128X[104X
+    [4X[28X<model type>[128X[104X
+    [4X[28X[ [ w, gi ], ... ][128X[104X
+    [4X[28X[ [ v1, v2, s ], ... ][128X[104X
+    [4X[28X[ [ gam1, gam2, ... ], ... ][128X[104X
+    [4X[28X[ [ edge, orientation ], ... ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YA complete example for the [23X{8,8}[123X tessellation graph centered at the [23Xz[123X vertex
+  on  the  cell  defined by the quotient T2.6 of [23X\Delta(2,8,8)[123X extended to the
+  supercell defined by the quotient T3.11 is given below:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCS version 1.0[128X[104X
+    [4X[28X[ 2, 8, 8 ][128X[104X
+    [4X[28X[ [ x^2, x*y*z, x*z*y, y^3*z^-1 ], [ x^2, x*y*z, x*z*y, y^-8 ], 3 ][128X[104X
+    [4X[28X[ g1, g2, g3, g4 ] -> [ z^-1*x^-1*y*z^-1*y*z*y*x^-1,[128X[104X
+    [4X[28X  z^-1*x^-1*y*z^-1*y*z*y*x^-1*y*x*z, z*y*(x^-1*z^-1)^2*y^3*x*z, y^-1*z*y^-1*x*z ][128X[104X
+    [4X[28X[ 1, y^-1*x^-1, (y^-1*x^-1)^2, (y^-1*x^-1)^3, (y^-1*x^-1)^4, (y^-1*x^-1)^5,[128X[104X
+    [4X[28X  (y^-1*x^-1)^6, (y^-1*x^-1)^7 ][128X[104X
+    [4X[28X[ [ 1, (y^-1*x^-1)^3, y^-1*x^-1, (y^-1*x^-1)^2 ], [ 1 ], [ 1 ] ][128X[104X
+    [4X[28X[ g1, g2, g3, g4, g5, g6 ] -> [ x*y^-1*z^-1, y*x*z, z*y^-1*z^-1*y, y^2*x*z*y^-1,[128X[104X
+    [4X[28X  y^-1*z*y^-1*z^-1*y^2, y^3*x*z*y^-2 ][128X[104X
+    [4X[28X[ g1, g2, g3, g4, g5, g6 ] -> [ g1^-1*g4^-1, g1^-1*g2, g3*g4^-1,[128X[104X
+    [4X[28X  g1^-1*g2*g4^-1*g1^-1*g2*g3^-1*g4*g1*g2^-1*g1, g4*g1^-1*g4^-1*g3*g2^-1*g1,[128X[104X
+    [4X[28X  g1^-1*g2*g3^-1*g4*g2^-1*g1 ][128X[104X
+    [4X[28X[ 1, y^3*z^-1 ][128X[104X
+    [4X[28X[ 1, x, y, y^-1, z, z^-1, y^2, y*z^-1, y^-2, y^-1*z, y^3, y^2*z^-1, y^-3, y^-2*z,[128X[104X
+    [4X[28X  y^4, y^3*z^-1 ][128X[104X
+    [4X[28X[ [ 1, y, y^-1, y^2, y^-2, y^3, y^-3, y^4 ], [ 1, x ], [ 1, x ] ][128X[104X
+    [4X[28X[ "TESS", [ 8, 8 ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ][128X[104X
+    [4X[28X[ [ 3, 1, 1 ], [ 3, 1, 2 ] ][128X[104X
+    [4X[28X[ 1, x ][128X[104X
+    [4X[28X[ [ 1, 2, [ 1, 1, [ 1, [ [ 1, 1 ], 1, 5 ] ] ] ],[128X[104X
+    [4X[28X  [ 1, 2, [ 1, 1, [ 1, [ [ 1, 2 ], 4, 8 ] ] ] ],[128X[104X
+    [4X[28X  [ 1, 2, [ 1, 1, [ 1, [ [ 1, 3 ], 2, 6 ] ] ] ],[128X[104X
+    [4X[28X  [ 1, 2, [ 1, 1, [ 1, [ [ 1, 4 ], 3, 7 ] ] ] ],[128X[104X
+    [4X[28X  [ 2, 1, [ 1, 1, [ 1, [ [ 1, 1 ], 1, 5 ] ] ] ],[128X[104X
+    [4X[28X  [ 2, 1, [ 1, 1, [ 1, [ [ 1, 2 ], 4, 8 ] ] ] ],[128X[104X
+    [4X[28X  [ 2, 1, [ 1, 1, [ 1, [ [ 1, 3 ], 2, 6 ] ] ] ],[128X[104X
+    [4X[28X  [ 2, 1, [ 1, 1, [ 1, [ [ 1, 4 ], 3, 7 ] ] ] ] ][128X[104X
+    [4X[28X[ 1, g4^-1*g6*g2, g2, g4^-1*g2, g3*g5^-1*g3^-1*g1^-1*g2^-1*g4^-1*g6^-1*g4, g1^-1,[128X[104X
+    [4X[28X  g3*g5^-1*g1^-1, g3*g1^-1 ][128X[104X
+    [4X[28X[ ][128X[104X
+  [4X[32X[104X
+  
+  
+  [1X8.4 [33X[0;0YHyperCells extensions[133X[101X
+  
+  [33X[0;0YIn  addition,  the  following  file formats are introduced by the HyperCells
+  package:[133X
+  
+  [30X    [33X[0;6Y[13XHyperCell  quotient  sequences  structure[113X  ([10X*.hcqs[110X)  for  storing  the
+        adjacency  matrices,  i.e.,  [10XTGQuotientSequencesStructure[110X objects (see
+        [14X6.2[114X)[133X
+  
+  [30X    [33X[0;6Y[13XHyperCell  point-group  matrices[113X ([10X*.hcpgm[110X) for storing the point-group
+        matrices, i.e., [10XPGMatrices[110X objects (see [14X7.3[114X)[133X
+  
+  [33X[0;0YThese file formats are described in detail below.[133X
+  
+  
+  [1X8.4-1 [33X[0;0YHyperCell quotient sequences structure (*.hcqs)[133X[101X
+  
+  [33X[0;0YThe basic file structure of a HyperCell quotient sequences structure file is
+  as follows (with placeholders marked by [10X<...>[110X):[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCQS version 1.0[128X[104X
+    [4X[28X[ <r>, <q>, <p> ][128X[104X
+    [4X[28X<boundByGenus>[128X[104X
+    [4X[28X<quotients>[128X[104X
+    [4X[28X<mirror symmetries>[128X[104X
+    [4X[28X<sparse>[128X[104X
+    [4X[28X<adjacency matrix>[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe  first  line  specifies the file format and its version. The second line
+  gives  the signature [23X(r,q,p)[123X of the underlying triangle group [23X\Delta(r,q,p)[123X.
+  The  third  line specifies the upper bound for triangle group quotients with
+  genus  smaller  than  [10X<boundByGenus>[110X,  and  the forth line, [10X<quotients>[110X, the
+  corresponding list of triangle group quotients considered.[133X
+  
+  [33X[0;0YLine five, [10X<mirror symmetries>[110X, specifies an ordered binary list of ones and
+  zeros, 1 if quotients in [10X<quotients>[110X have mirror symmetries 0 otherwise.[133X
+  
+  [33X[0;0YThe  sixth  line  [10X<sparse>[110X  specifies  if  line  seven, the adjacency matrix
+  [10X<adjacency matrix>[110X, is sparsely represented [10Xtrue[110X, or dense [10Xfalse[110X.[133X
+  
+  [33X[0;0YThe  full  file  structure  of a HyperCell quotient sequences structure file
+  thus is as follows:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCQS version 1.0[128X[104X
+    [4X[28X[ <r>, <q>, <p> ][128X[104X
+    [4X[28X<boundByGenus>[128X[104X
+    [4X[28X[ [ <genus1>, <number1> ], [ <genus2>, <number2> ], ... ][128X[104X
+    [4X[28X[ b1, b2, ... ][128X[104X
+    [4X[28X<sparse>[128X[104X
+    [4X[28X[ entry1, entry2, ... ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YA complete example for a quotient sequences structure with a dense adjacency
+  matrix  for  the  [23X\Delta(2,8,8)[123X  triangle group and triangle group quotients
+  with genus smaller than 12 is given below:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCQS version 1.0[128X[104X
+    [4X[28X[ 2, 8, 8 ][128X[104X
+    [4X[28X12[128X[104X
+    [4X[28X[ [ 2, 6 ], [ 3, 10 ], [ 3, 11 ], [ 5, 12 ], [ 5, 13 ], [128X[104X
+    [4X[28X  [ 9, 19 ], [ 9, 20 ], [ 9, 21 ], [ 9, 22 ], [ 9, 23 ], [128X[104X
+    [4X[28X  [ 10, 22 ], [ 11, 12 ], [ 11, 13 ] ][128X[104X
+    [4X[28X[ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0 ][128X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[28X[ [ 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ], [128X[104X
+    [4X[28X  [ 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0 ], [128X[104X
+    [4X[28X  [ 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1 ], [128X[104X
+    [4X[28X  [ 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0 ], [128X[104X
+    [4X[28X  [ 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0 ], [128X[104X
+    [4X[28X  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], [128X[104X
+    [4X[28X  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], [128X[104X
+    [4X[28X  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], [128X[104X
+    [4X[28X  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], [128X[104X
+    [4X[28X  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], [128X[104X
+    [4X[28X  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], [128X[104X
+    [4X[28X  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], [128X[104X
+    [4X[28X  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] ])[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YA  complete  example  for a sparse representation of the adjacency matrix of
+  the  quotient  sequences  structure for the [23X\Delta(2,8,8)[123X triangle group and
+  triangle group quotients with genus smaller than 12 is given below:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCQS version 1.0[128X[104X
+    [4X[28X[ 2, 8, 8 ][128X[104X
+    [4X[28X12[128X[104X
+    [4X[28X[ [ 2, 6 ], [ 3, 10 ], [ 3, 11 ], [ 5, 12 ], [ 5, 13 ], [128X[104X
+    [4X[28X  [ 9, 19 ], [ 9, 20 ], [ 9, 21 ], [ 9, 22 ], [ 9, 23 ], [128X[104X
+    [4X[28X  [ 10, 22 ], [ 11, 12 ], [ 11, 13 ] ][128X[104X
+    [4X[28X[ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0 ][128X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X[ [ [ 1, 3 ], 1 ], [ [ 1, 5 ], 1 ], [ [ 1, 7 ], 1 ], [ [ 1, 9 ], 1 ], [128X[104X
+    [4X[28X  [ [ 1, 11 ], 1 ], [ [ 1, 13 ], 1 ], [ [ 2, 5 ], 1 ], [ [ 2, 7 ], 1 ], [128X[104X
+    [4X[28X  [ [ 2, 9 ], 1 ], [ [ 2, 12 ], 1 ], [ [ 3, 5 ], 1 ], [ [ 3, 7 ], 1 ], [128X[104X
+    [4X[28X  [ [ 3, 9 ], 1 ], [ [ 3, 13 ], 1 ], [ [ 4, 6 ], 1 ], [ [ 4, 8 ], 1 ], [128X[104X
+    [4X[28X  [ [ 4, 9 ], 1 ], [ [ 5, 7 ], 1 ], [ [ 5, 9 ], 1 ] ])[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X8.4-2 [33X[0;0YHyperCell point-group matrices (*.hcpgm)[133X[101X
+  
+  [33X[0;0YThe  basic  file  structure  of  a HyperCell point-group matrices file is as
+  follows (with placeholders marked by [10X<...>[110X):[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCPGM version 1.0[128X[104X
+    [4X[28X[ <r>, <q>, <p> ][128X[104X
+    [4X[28X<quotient>[128X[104X
+    [4X[28X<sparse>[128X[104X
+    [4X[28X<abcPGMats>[128X[104X
+    [4X[28X<symPGMats>[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThe  first  line  specifies the file format and its version. The second line
+  gives  the  signature [23X(r,q,p)[123X of the underlying triangle group [23X\Delta(r,q,p)[123X
+  and  the  third  line  gives  the  triangle  group  quotient. The forth line
+  [10X<sparse>[110X  specifies if line five and six containing the point-group matrices
+  [10X<abcPGMats>[110X and [10X<symPGMats>[110X, respectively, are sparsely represented [10Xtrue[110X, or
+  dense [10Xfalse[110X.[133X
+  
+  [33X[0;0YThe  full file structure of a HyperCell point-group matrices file thus is as
+  follows:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCPGM version 1.0[128X[104X
+    [4X[28X[ <r>, <q>, <p> ][128X[104X
+    [4X[28X[ <quotientName>, <order>, <genus>, <actionType>, <rels> ][128X[104X
+    [4X[28X<sparse>[128X[104X
+    [4X[28X[ [ "a", <pgMatA> ], [ "b", <pgMatB> ], [ "c", <pgMatC> ] ][128X[104X
+    [4X[28X[ [ [ <symName1>, <sym1> ], <pgMat1> ], [ [ <symName2>, <sym2> ], <pgMat2> ], [128X[104X
+    [4X[28X    ... ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YA  complete  example  for  the  point-group  matrices  for the [23X\Delta(2,8,8)[123X
+  triangle group and triangle group quotient [10XT2.6[110X with symmetry elements [10Xa[110X, [10Xb[110X,
+  [10Xc[110X   as   generators   of   [23X\Delta(2,8,8)[123X  and  [10Xx[110X,  [10Xy[110X,  [10Xz[110X  as  generators  of
+  [23X\Delta^+(2,8,8)[123X which we choose to denote as [10X"X"[110X, [10X"Y"[110X, [10X"Z"[110X:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCPGM version 1.0[128X[104X
+    [4X[28X[ 2, 8, 8 ][128X[104X
+    [4X[28X[ [ 2, 6 ], 8, 2, "Action reflexible [m,n]", [128X[104X
+    [4X[28X  "[ x^2, x * y * z, x * z * y, y^3 * z^-1 ]" ][128X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[28X[ [ "a", [128X[104X
+    [4X[28X    [ [ 0, 1, 0, 0 ], [ 1, 0, 0, 0 ], [ -1, -1, -1, 0 ], [ 0, 0, 0, 1 ] ] ], [128X[104X
+    [4X[28X  [ "b",[128X[104X
+    [4X[28X    [ [ 0, -1, 0, 0 ], [ -1, 0, 0, 0 ], [ 1, 1, 1, 0 ], [ 0, 0, 0, -1 ] ] ], [128X[104X
+    [4X[28X  [ "c", [128X[104X
+    [4X[28X    [ [ -1, 0, 0, 0 ], [ 1, 1, 1, 1 ], [ 0, 0, 0, -1 ], [ 0, 0, -1, 0 ] ] ] ][128X[104X
+    [4X[28X[ [ [ "X", "x" ], [128X[104X
+    [4X[28X    [ [ -1, 0, 0, 0 ], [ 0, -1, 0, 0 ], [ 0, 0, -1, 0 ], [ 0, 0, 0, -1 ] ] ], [128X[104X
+    [4X[28X  [ [ "Y", "y" ], [128X[104X
+    [4X[28X    [ [ -1, -1, -1, -1 ], [ 1, 0, 0, 0 ], [ 0, 1, 1, 0 ], [ 0, 0, 1, 0 ] ] ], [128X[104X
+    [4X[28X  [ [ "Z", "z" ],[128X[104X
+    [4X[28X    [ [ 0, -1, 0, 0 ], [ 0, 0, -1, 1 ], [ 0, 0, 0, -1 ], [ 1, 1, 1, 0 ] ] ] ][128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YA  complete  example for a sparse representation of the point-group matrices
+  for  the  [23X\Delta(2,8,8)[123X triangle group and triangle group quotient [10XT2.6[110X with
+  symmetry  elements  [10Xa[110X,  [10Xb[110X,  [10Xc[110X  as generators of [23X\Delta(2,8,8)[123X and [10Xx[110X, [10Xy[110X, [10Xz[110X as
+  generators of [23X\Delta^+(2,8,8)[123X which we choose to denote as [10X"X"[110X, [10X"Y"[110X, [10X"Z"[110X:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28XHyperCells HCPGM version 1.0[128X[104X
+    [4X[28X[ 2, 8, 8 ][128X[104X
+    [4X[28X[ [ 2, 6 ], 8, 2, "Action reflexible [m,n]", [128X[104X
+    [4X[28X  "[ x^2, x * y * z, x * z * y, y^3 * z^-1 ]" ][128X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[28X[ [ "a", [ [ [ 1, 2 ], 1 ], [ [ 2, 1 ], 1 ], [ [ 3, 1 ], -1 ], [128X[104X
+    [4X[28X	   [ [ 3, 2 ], -1 ], [ [ 3, 3 ], -1 ], [ [ 4, 4 ], 1 ] ] ],[128X[104X
+    [4X[28X  [ "b", [ [ [ 1, 2 ], -1 ], [ [ 2, 1 ], -1 ], [ [ 3, 1 ], 1 ],[128X[104X
+    [4X[28X	   [ [ 3, 2 ], 1 ], [ [ 3, 3 ], 1 ], [ [ 4, 4 ], -1 ] ] ],[128X[104X
+    [4X[28X  [ "c", [ [ [ 1, 1 ], -1 ], [ [ 2, 1 ], 1 ], [ [ 2, 2 ], 1 ], [128X[104X
+    [4X[28X	   [ [ 2, 3 ], 1 ], [ [ 2, 4 ], 1 ], [ [ 3, 4 ], -1 ], [128X[104X
+    [4X[28X	   [ [4, 3 ], -1 ] ] ] ][128X[104X
+    [4X[28X[ [ [ "X", "x" ], [ [ [ 1, 1 ], -1 ], [ [ 2, 2 ], -1 ], [ [ 3, 1 ], -1 ], [128X[104X
+    [4X[28X           [ [ 3, 2 ], -1 ], [ [ 3, 3 ], -1 ], [ [ 4, 4 ], -1 ] ] ], [128X[104X
+    [4X[28X  [ [ "Y", "y" ], [ [ [ 1, 1 ], -1 ], [ [ 1, 2 ], -1 ], [ [ 1, 3 ], -1 ], [128X[104X
+    [4X[28X	   [ [ 1, 4 ], -1 ], [ [ 2, 1 ], 1 ], [ [ 3, 1 ], 1 ], [128X[104X
+    [4X[28X	   [ [ 3, 2 ], 1 ], [ [ 3, 3 ], 1 ], [ [ 3, 4 ], -1 ], [128X[104X
+    [4X[28X	   [ [ 4, 3 ], 1 ] ] ], [128X[104X
+    [4X[28X  [ [ "Z", "z" ], [ [ [ 1, 2 ], -1 ], [ [ 2, 1 ], -1 ], [ [ 2, 2 ], -1 ],[128X[104X
+    [4X[28X	   [ [ 2, 3 ], -1 ], [ [ 2, 4 ], 1 ], [ [ 3, 4 ], -1 ], [128X[104X
+    [4X[28X           [ [ 4, 1 ], 1 ], [ [ 4, 2 ], 1 ], [ [ 4, 3 ], 1 ] ] ] ][128X[104X
+  [4X[32X[104X
   

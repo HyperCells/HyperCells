@@ -5,7 +5,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<title>GAP (HyperCells) - Chapter 8: References</title>
+<title>GAP (HyperCells) - Chapter 8: File Formats</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 <meta name="generator" content="GAPDoc2HTML" />
 <link rel="stylesheet" type="text/css" href="manual.css" />
@@ -15,26 +15,582 @@
 <body class="chap8"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
 
-<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap7.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+<div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap7.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapBib.html">[Next Chapter]</a>&nbsp;  </div>
 
 <p id="mathjaxlink" class="pcenter"><a href="chap8_mj.html">[MathJax on]</a></p>
-<p><a id="X869846817A67F557" name="X869846817A67F557"></a></p>
-<div class="ChapSects"><a href="chap8.html#X869846817A67F557">8 <span class="Heading">References</span></a>
+<p><a id="X8091CEE880E799B4" name="X8091CEE880E799B4"></a></p>
+<div class="ChapSects"><a href="chap8.html#X8091CEE880E799B4">8 <span class="Heading">File Formats</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X7CFBF28C7E45D68A">8.1 <span class="Heading">HyperCell cell graph (*.hcc)</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X8672A7E782E0D7F3">8.2 <span class="Heading">HyperCell model graph (*.hcm)</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X79442B71791A7C60">8.3 <span class="Heading">HyperCell supercell graph (*.hcs)</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X7A14A8427920E0F9">8.4 <span class="Heading">HyperCells extensions</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7CCCFF2A86CC3C62">8.4-1 <span class="Heading">HyperCell quotient sequences structure (*.hcqs)</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X82CD08E07A0F6B59">8.4-2 <span class="Heading">HyperCell point-group matrices (*.hcpgm)</span></a>
+</span>
+</div></div>
 </div>
 
-<h3>8 <span class="Heading">References</span></h3>
+<h3>8 <span class="Heading">File Formats</span></h3>
 
-<p>[<var class="Arg">LMB23</var>] P. M. Lenggenhager, J. Maciejko, and T. Bzdušek, "<em>Non-Abelian hyperbolic band theory from supercells</em>", arXiv:2305.04945 (2023), see <span class="URL"><a href="https://doi.org/10.48550/arXiv.2305.04945">https://doi.org/10.48550/arXiv.2305.04945</a></span>.</p>
-
-<p>[<var class="Arg">LP22</var>] R. Lux and E. Prodan, "<em>Spectral and combinatorial aspects of Cayley-crystals</em>", arXiv:2212.10329 (2022), see <span class="URL"><a href="https://doi.org/10.48550/arXiv.2212.10329">https://doi.org/10.48550/arXiv.2212.10329</a></span>.</p>
+<p>The following file formats are introduced by the HyperCells package:</p>
 
 
-<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap7.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
+<ul>
+<li><p><em>HyperCell cell graph</em> (<code class="code">*.hcc</code>) for storing the cell graphs, i.e., <code class="code">TGCellGraph</code> objects (see <a href="chap3.html#X7945E96B7A771F5A"><span class="RefLink">3.7</span></a>)</p>
+
+</li>
+<li><p><em>HyperCell model graph</em> (<code class="code">*.hcm</code>) for storing the model graphs, i.e., <code class="code">TGCellModelGraph</code> objects (see <a href="chap4.html#X87FE1AF37CFB0B86"><span class="RefLink">4.1</span></a>)</p>
+
+</li>
+<li><p><em>HyperCell supercell graph</em> (<code class="code">*.hcs</code>) for storing the supercell model graphs, i.e., <code class="code">TGSuperCellModelGraph</code> objects (see <a href="chap5.html#X84E3E01A7C2274DF"><span class="RefLink">5.1</span></a>)</p>
+
+</li>
+</ul>
+<p>These file formats are described in detail below.</p>
+
+<p><a id="X7CFBF28C7E45D68A" name="X7CFBF28C7E45D68A"></a></p>
+
+<h4>8.1 <span class="Heading">HyperCell cell graph (*.hcc)</span></h4>
+
+<p>The basic file structure of a HyperCell cell graph file is as follows (with placeholders marked by <code class="code">&lt;...&gt;</code>):</p>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="example"><pre>
+HyperCells HCC version 1.0
+[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
+[ &lt;relators&gt; , &lt;center&gt; ]
+[ g1, g2, ... ] -&gt; &lt;generators&gt;
+&lt;TDGAMMA&gt;
+[ &lt;TGGx&gt;, &lt;TGGy&gt;, &lt;TGGz&gt; ]
+&lt;vertices&gt;
+&lt;edges&gt;
+&lt;edge translations&gt;
+&lt;faces&gt;
+&lt;boundary&gt;
+</pre></div>
+
+<p>The first line specifies the file format and its version.</p>
+
+<p>The second line gives the signature <span class="Math">(r,q,p)</span> of the underlying triangle group <span class="Math">\Delta(r,q,p)</span> and the third line specifies the triangle-group quotient <span class="Math">\Delta^+(r,q,p)/\Gamma</span> by the list of relators <code class="code">&lt;relators&gt;</code> given as elements of the proper triangle group <span class="Math">\Delta^+</span> with generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> and the center of the cell given as the integer <code class="code">&lt;center&gt;</code> with <code class="code">1</code>, <code class="code">2</code>, <code class="code">3</code> corresponding to the center lying at the vertex <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> of the fundamental Schwarz triangle, respectively.</p>
+
+<p>The fourth line specifies the generators of the translation group <span class="Math">\Gamma</span>. To the left of <code class="code">-&gt;</code> are the generators of the finitely presented group and to the right the list <code class="code">&lt;generators&gt;</code> of their images in the proper triangle group <span class="Math">\Delta^+</span> in terms of the generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span>.</p>
+
+<p>The fifth line gives the transversal <span class="Math">T_{\Delta^+}(\Gamma)</span> as a list <code class="code">&lt;TDGAMMA&gt;</code> of elements of the proper triangle group <span class="Math">\Delta^+</span> and the sixth line specifies the transversals <span class="Math">T_{G^+}(G_w^+)</span> as lists <code class="code">&lt;TGGw&gt;</code> with <span class="Math">w=x,y,z</span> (<code class="code">w=x,y,z</code>) of preimages of elements of the quotient group <span class="Math">G^+\cong\Delta^+/\Gamma</span> under the quotient homomorphism <span class="Math">\Delta^+\to G^+</span>, i.e., in terms of the generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span>.</p>
+
+<p>Lines seven to ten specify the vertices, edges, edge translations and faces of the cell:</p>
+
+
+<ul>
+<li><p>The vertices are given as a list <code class="code">&lt;vertices&gt;</code> with entries of the form <code class="code">[ w, gi ]</code>, where <code class="code">w</code> is <code class="code">1</code>, <code class="code">2</code>, <code class="code">3</code> corresponding to the vertex <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> of the fundamental Schwarz triangle and <code class="code">gi</code> is the position of the element in the transversal <span class="Math">T_{G^+}(G_w^+)</span>.</p>
+
+</li>
+<li><p>The edges are given as a list <code class="code">&lt;edges&gt;</code> with entries of the form <code class="code">[ v1, v2, s ]</code>, where <code class="code">v1</code> and <code class="code">v2</code> are the positions of the vertices in <code class="code">&lt;vertices&gt;</code> connected by the edge, <code class="code">s</code> is the position of the element in <span class="Math">T_{\Delta^+}(\Gamma)</span> labeling the Schwarz triangle this edge is a part of.</p>
+
+</li>
+<li><p>The edge translations, i.e., the translations relating the unit cell containing the first vertex (<code class="code">v1</code>) to the unit cell containing the second (<code class="code">v2</code>) are given as a list <code class="code">&lt;edge translations&gt;</code> of elements of the finitely presented group, i.e., in terms of the generators given to the left of <code class="code">-&gt;</code> in the third line. If <code class="code">v1</code> corresponds to the vertex <span class="Math">(w, [g_{u_w}]_w)</span> and <code class="code">v2</code> to the vertex <span class="Math">(w', [g_{\tilde{u}_{w'}}]_{w'})</span>, then <code class="code">gam</code> corresponds to the translation <span class="Math">\gamma</span> such that</p>
+
+<p class="pcenter">g_{\tilde{u}_{w'}} = g_{u_w}\gamma.</p>
+
+</li>
+<li><p>The faces are given as a list <code class="code">&lt;faces&gt;</code> with entries of the form <code class="code">[ edge, orientation ]</code>, where <code class="code">edge</code> is the position of the edge in <code class="code">&lt;edges&gt;</code> and <code class="code">orientation</code> is <code class="code">1</code> or <code class="code">-1</code> depending on whether the edge is traversed in the same or opposite direction as the edge given in <code class="code">&lt;edges&gt;</code>.</p>
+
+</li>
+</ul>
+<p>Finally, the eleventh line specifies the boundary identifications of the cell as a list <code class="code">&lt;boundary&gt;</code> with entries of the form <code class="code">[ d1, d2, e, b, m, gam ]</code>, where <code class="code">d1</code>, <code class="code">d2</code> are elements of <span class="Math">T_{\Delta^+}(\Gamma)\subset\Delta^+</span> labeling the Schwarz triangles this edge is a part of, <code class="code">e</code> the position in <code class="code">&lt;edges&gt;</code>, <code class="code">b</code> a running integer index of the boundary (identical for identified boundaries), <code class="code">m</code> either <code class="code">0</code> or <code class="code">1</code> indicating the orientation of the triangle associated with this instance of the boundary (0 for gray and 1 for white Schwarz triangle), and <code class="code">gam</code> the translation relating the given to the identified boundary, as an element of the finitely presented group, i.e., in terms of the generators given to the left of <code class="code">-&gt;</code> in the third line.</p>
+
+<p>The full file structure of a HyperCell cell graph file thus is as follows:</p>
+
+
+<div class="example"><pre>
+HyperCells HCC version 1.0
+[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
+[ [ &lt;rel1&gt;, &lt;rel2&gt;, ... ], &lt;center&gt; ]
+[ g1, g2, ... ] -&gt; [ &lt;generator1&gt;, &lt;generator2&gt;, ... ]
+[ &lt;d1&gt;, &lt;d2&gt;, ... ]
+[ [ &lt;gx1&gt;, &lt;gx2&gt;, ... ], [ &lt;gy1&gt;, &lt;gy2&gt;, ... ], [ &lt;gz1&gt;, &lt;gz2&gt;, ... ] ]
+[ [ w, gi ], ... ]
+[ [ v1, v2, s ], ... ]
+[ [ gam1, gam2, ... ], ... ]
+[ [ edge, orientation ], ... ]
+[ [ d1, d2, e, b, m, gam ], ... ]
+</pre></div>
+
+<p>A complete example for the cell graph of the quotient T2.6 of <span class="Math">\Delta(2,8,8)</span> is given below:</p>
+
+
+<div class="example"><pre>
+HyperCells HCC version 1.0
+[ 2, 8, 8 ]
+[ [ x^2, x*y*z, x*z*y, y^3*z^-1 ], 3 ]
+[ g1, g2, g3, g4 ] -&gt; [ z^-1*x^-1*y*z^-1*y*z*y*x^-1, z^-1*x^-1*y*z^-1*y*z*y*
+  x^-1*y*x*z, z*y*(x^-1*z^-1)^2*y^3*x*z, y^-1*z*y^-1*x*z ]
+[ 1, y^-1*x^-1, (y^-1*x^-1)^2, (y^-1*x^-1)^3, (y^-1*x^-1)^4, (y^-1*x^-1)^5,
+  (y^-1*x^-1)^6, (y^-1*x^-1)^7 ]
+[ [ 1, (y^-1*x^-1)^3, y^-1*x^-1, (y^-1*x^-1)^2 ], [ 1 ], [ 1 ] ]
+[ [ 1, 1 ], [ 1, 2 ], [ 1, 3 ], [ 1, 4 ], [ 2, 1 ], [ 3, 1 ] ]
+[ [ 1, 6, 1 ], [ 5, 1, 1 ], [ 6, 5, 1 ], [ 3, 6, 2 ], [ 5, 3, 2 ], [ 6, 5, 2 ],
+  [ 4, 6, 3 ], [ 5, 4, 3 ], [ 6, 5, 3 ], [ 2, 6, 4 ], [ 5, 2, 4 ], [ 6, 5, 4 ],
+  [ 1, 6, 5 ], [ 5, 1, 5 ], [ 6, 5, 5 ], [ 3, 6, 6 ], [ 5, 3, 6 ], [ 6, 5, 6 ],
+  [ 4, 6, 7 ], [ 5, 4, 7 ], [ 6, 5, 7 ], [ 2, 6, 8 ], [ 5, 2, 8 ], [ 6, 5, 8 ] ]
+[ 1, 1, 1, 1, g2^-1*g3*g4^-1, g4*g3^-1*g2, 1, g2^-1*g1, g1^-1*g2, 1, g4^-1, g4,
+  g1, g2^-1*g3*g4^-1, g1^-1*g2*g3^-1*g4, g2, g2^-1*g1, g1^-1, g3, g4^-1,
+  g4*g3^-1, g4, g4^-1*g3*g2^-1*g1, g1^-1*g2*g3^-1 ]
+[ [ [ [ 1, 1 ], [ 3, 1 ], [ 18, -1 ], [ 13, -1 ] ], [ [ 4, 1 ], [ 6, 1 ],
+  [ 21, -1 ], [ 16, -1 ] ], [ [ 7, 1 ], [ 9, 1 ], [ 24, -1 ], [ 19, -1 ] ],
+  [ [ 10, 1 ], [ 12, 1 ], [ 3, -1 ], [ 22, -1 ] ], [ [ 13, 1 ], [ 15, 1 ],
+  [ 6, -1 ], [ 1, -1 ] ], [ [ 16, 1 ], [ 18, 1 ], [ 9, -1 ], [ 4, -1 ] ],
+  [ [ 19, 1 ], [ 21, 1 ], [ 12, -1 ], [ 7, -1 ] ], [ [ 22, 1 ], [ 24, 1 ],
+  [ 15, -1 ], [ 10, -1 ] ] ], [ [ [ 2, 1 ], [ 1, 1 ], [ 22, -1 ], [ 11, -1 ] ],
+  [ [ 5, 1 ], [ 4, 1 ], [ 1, -1 ], [ 14, -1 ] ], [ [ 8, 1 ], [ 7, 1 ], [ 4, -1 ],
+  [ 17, -1 ] ], [ [ 11, 1 ], [ 10, 1 ], [ 7, -1 ], [ 20, -1 ] ], [ [ 14, 1 ],
+  [ 13, 1 ], [ 10, -1 ], [ 23, -1 ] ], [ [ 17, 1 ], [ 16, 1 ], [ 13, -1 ],
+  [ 2, -1 ] ], [ [ 20, 1 ], [ 19, 1 ], [ 16, -1 ], [ 5, -1 ] ], [ [ 23, 1 ],
+  [ 22, 1 ], [ 19, -1 ], [ 8, -1 ] ] ], [ [ [ 3, 1 ], [ 2, 1 ], [ 14, -1 ],
+  [ 6, -1 ] ], [ [ 6, 1 ], [ 5, 1 ], [ 17, -1 ], [ 9, -1 ] ], [ [ 9, 1 ],
+  [ 8, 1 ], [ 20, -1 ], [ 12, -1 ] ], [ [ 12, 1 ], [ 11, 1 ], [ 23, -1 ],
+  [ 15, -1 ] ], [ [ 15, 1 ], [ 14, 1 ], [ 2, -1 ], [ 18, -1 ] ], [ [ 18, 1 ],
+  [ 17, 1 ], [ 5, -1 ], [ 21, -1 ] ], [ [ 21, 1 ], [ 20, 1 ], [ 8, -1 ],
+  [ 24, -1 ] ], [ [ 24, 1 ], [ 23, 1 ], [ 11, -1 ], [ 3, -1 ] ] ] ]
+[ [ 1, 1, 2, 1, 0, g1 ], [ (y*x)^3*y, (y*x)^3*y, 2, 1, 1, g1^-1 ], [ y^-1*x^-1,
+  y^-1*x^-1, 5, 2, 0, g2 ], [ (y*x)^2*y, (y*x)^2*y, 5, 2, 1, g2^-1 ],
+  [ (y^-1*x^-1)^2, (y^-1*x^-1)^2, 8, 3, 0, g3 ], [ y*x*y, y*x*y, 8, 3, 1, g3^-1 ],
+  [ (y^-1*x^-1)^3, (y^-1*x^-1)^3, 11, 4, 0, g4 ], [ y, y, 11, 4, 1, g4^-1 ],
+  [ (y^-1*x^-1)^4, (y^-1*x^-1)^4, 14, 1, 0, g1^-1 ], [ x^-1, x^-1, 14, 1, 1, g1 ],
+  [ (y^-1*x^-1)^5, (y^-1*x^-1)^5, 17, 2, 0, g2^-1 ], [ (y*x)^6*y, (y*x)^6*y, 17,
+  2, 1, g2 ], [ (y^-1*x^-1)^6, (y^-1*x^-1)^6, 20, 3, 0, g3^-1 ], [ (y*x)^5*y,
+  (y*x)^5*y, 20, 3, 1, g3 ], [ (y^-1*x^-1)^7, (y^-1*x^-1)^7, 23, 4, 0, g4^-1 ],
+  [ (y*x)^4*y, (y*x)^4*y, 23, 4, 1, g4 ] ]
+</pre></div>
+
+<p><a id="X8672A7E782E0D7F3" name="X8672A7E782E0D7F3"></a></p>
+
+<h4>8.2 <span class="Heading">HyperCell model graph (*.hcm)</span></h4>
+
+<p>The basic file structure of a HyperCell model graph file is as follows (with placeholders marked by <code class="code">&lt;...&gt;</code>):</p>
+
+
+<div class="example"><pre>
+HyperCells HCM version 1.0
+[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
+[ &lt;relators&gt; , &lt;center&gt; ]
+[ g1, g2, ... ] -&gt; &lt;generators&gt;
+&lt;TDGAMMA&gt;
+[ &lt;TGGx&gt;, &lt;TGGy&gt;, &lt;TGGz&gt; ]
+&lt;model type&gt;
+&lt;vertices&gt;
+&lt;edges&gt;
+&lt;edge translations&gt;
+&lt;faces&gt;
+</pre></div>
+
+<p>The first line specifies the file format and its version.</p>
+
+<p>The second line gives the signature <span class="Math">(r,q,p)</span> of the underlying triangle group <span class="Math">\Delta(r,q,p)</span> and the third line specifies the triangle-group quotient <span class="Math">\Delta^+(r,q,p)/\Gamma</span> by the list of relators <code class="code">&lt;relators&gt;</code> given as elements of the proper triangle group <span class="Math">\Delta^+</span> with generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> and the center of the cell given as the integer <code class="code">&lt;center&gt;</code> with <code class="code">1</code>, <code class="code">2</code>, <code class="code">3</code> corresponding to the center lying at the vertex <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> of the fundamental Schwarz triangle, respectively.</p>
+
+<p>The fourth line specifies the generators of the translation group <span class="Math">\Gamma</span>. To the left of <code class="code">-&gt;</code> are the generators of the finitely presented group and to the right the list <code class="code">&lt;generators&gt;</code> of their images in the proper triangle group <span class="Math">\Delta^+</span> in terms of the generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span>.</p>
+
+<p>The fifth line gives the transversal <span class="Math">T_{\Delta^+}(\Gamma)</span> as a list <code class="code">&lt;TDGAMMA&gt;</code> of elements of the proper triangle group <span class="Math">\Delta^+</span> and the sixth line specifies the transversals <span class="Math">T_{G^+}(G_w^+)</span> as lists <code class="code">&lt;TGGw&gt;</code> with <span class="Math">w=x,y,z</span> (<code class="code">w=x,y,z</code>) of preimages of elements of the quotient group <span class="Math">G^+\cong\Delta^+/\Gamma</span> under the quotient homomorphism <span class="Math">\Delta^+\to G^+</span>, i.e., in terms of the generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span>.</p>
+
+<p>The seventh line specifies the model type. The following model types are currently implemented:</p>
+
+
+<ul>
+<li><p><em>Derived graph</em>: general model graph with vertices, edges, and faces derived from the cell graph. The model type is given as <code class="code">[ "VEF", [ vfs, efs, ffs ] ]</code>, where <code class="code">vfs</code>, <code class="code">efs</code>, and <code class="code">ffs</code> are lists of integers between 1 and 3 indicating the vertex types, edge types, and face types, respectively. See <code class="func">TGCellModelGraph</code> (<a href="chap4.html#X7BA14A6582AE5C5E"><span class="RefLink">4.2-1</span></a>) for details.</p>
+
+</li>
+<li><p><em>Tessellation graph</em>: tessellation model graph derived from a cell graph of a triangle group. The model type is given as <code class="code">[ "TESS", [ p, q ], [ "VEF", [ [ 2 ], [ 1 ], [ 3 ] ] ] ]</code> for the <span class="Math">\{p,q\}</span> tessellation and as <code class="code">[ "TESS", [ q, p ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ]</code> for the (dual) <span class="Math">\{q,p\}</span> tessellation. See <code class="func">TessellationModelGraph</code> (<a href="chap4.html#X81214D9683970055"><span class="RefLink">4.2-2</span></a>) for details.</p>
+
+</li>
+<li><p><em>Kagome graph</em>: kagome model graph derived from a cell graph of a triangle group. The model type is given as <code class="code">[ "KAGOME", p, [ "VEF", [ [ 1 ], [ 2 ], [ 2, 3 ] ] ] ]</code>. See <code class="func">KagomeModelGraph</code> (<a href="chap4.html#X83338B0D7836C5F5"><span class="RefLink">4.2-4</span></a>) for details.</p>
+
+</li>
+<li><p><em>Lieb graph</em>: Lieb model graph derived from a cell graph of a triangle group. The model type is given as <code class="code">[ "LIEB", [ p, q ], [ "VEF", [ [ 1, 2 ], [ ], [ 3 ] ] ] ]</code> for the <span class="Math">\{p,q\}</span> tessellation and as <code class="code">[ "LIEB", [ q, p ], [ "VEF", [ [ 1, 3 ], [ ], [ 2 ] ] ] ]</code> for the (dual) <span class="Math">\{q,p\}</span> tessellation. See <code class="func">LiebModelGraph</code> (<a href="chap4.html#X79C56FEA858B37D5"><span class="RefLink">4.2-5</span></a>) for details.</p>
+
+</li>
+</ul>
+<p>Lines eight to eleven specify the vertices, edges, edge translations and faces of the cell:</p>
+
+
+<ul>
+<li><p>The vertices are given as a list <code class="code">&lt;vertices&gt;</code> with entries of the form <code class="code">[ w, gi ]</code>, where <code class="code">w</code> is <code class="code">1</code>, <code class="code">2</code>, <code class="code">3</code> corresponding to the vertex <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> of the fundamental Schwarz triangle and <code class="code">gi</code> is the position of the element in the transversal <span class="Math">T_{G^+}(G_w^+)</span>.</p>
+
+</li>
+<li><p>The edges are given as a list <code class="code">&lt;edges&gt;</code> with entries of the form <code class="code">[ v1, v2, tag ]</code>, where <code class="code">v1</code> and <code class="code">v2</code> are the positions of the vertices in <code class="code">&lt;vertices&gt;</code> connected by the edge, and <code class="code">tag</code> is a unique identifier of the edge. More details on the tags are given in the methods for constructing different models, see <a href="chap4.html#X815588F086D7AFC5"><span class="RefLink">4.2</span></a>.</p>
+
+</li>
+<li><p>The edge translations, i.e., the translations relating the unit cell containing the first vertex (<code class="code">v1</code>) to the unit cell containing the second (<code class="code">v2</code>) are given as a list <code class="code">&lt;edge translations&gt;</code> of elements of the finitely presented group, i.e., in terms of the generators given to the left of <code class="code">-&gt;</code> in the third line. If <code class="code">v1</code> corresponds to the vertex <span class="Math">(w, [g_{u_w}]_w)</span> and <code class="code">v2</code> to the vertex <span class="Math">(w', [g_{\tilde{u}_{w'}}]_{w'})</span>, then <code class="code">gam</code> corresponds to the translation <span class="Math">\gamma</span> such that</p>
+
+<p class="pcenter">g_{\tilde{u}_{w'}} = g_{u_w}\gamma.</p>
+
+</li>
+<li><p>The faces are given as a list <code class="code">&lt;faces&gt;</code> with entries of the form <code class="code">[ edge, orientation ]</code>, where <code class="code">edge</code> is the position of the edge in <code class="code">&lt;edges&gt;</code> and <code class="code">orientation</code> is <code class="code">1</code> or <code class="code">-1</code> depending on whether the edge is traversed in the same or opposite direction as the edge given in <code class="code">&lt;edges&gt;</code>.</p>
+
+</li>
+</ul>
+<p>The full file structure of a HyperCell cell graph file thus is as follows:</p>
+
+
+<div class="example"><pre>
+HyperCells HCM version 1.0
+[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
+[ [ &lt;rel1&gt;, &lt;rel2&gt;, ... ], &lt;center&gt; ]
+[ g1, g2, ... ] -&gt; [ &lt;generator1&gt;, &lt;generator2&gt;, ... ]
+[ &lt;d1&gt;, &lt;d2&gt;, ... ]
+[ [ &lt;gx1&gt;, &lt;gx2&gt;, ... ], [ &lt;gy1&gt;, &lt;gy2&gt;, ... ], [ &lt;gz1&gt;, &lt;gz2&gt;, ... ] ]
+&lt;model type&gt;
+[ [ w, gi ], ... ]
+[ [ v1, v2, tag ], ... ]
+[ [ gam1, gam2, ... ], ... ]
+[ [ edge, orientation ], ... ]
+</pre></div>
+
+<p>A complete example for the <span class="Math">{8,8}</span> tessellation graph centered at the <span class="Math">z</span> vertex on the cell defined by the quotient T2.6 of <span class="Math">\Delta(2,8,8)</span> is given below:</p>
+
+
+<div class="example"><pre>
+HyperCells HCM version 1.0
+[ 2, 8, 8 ]
+[ [ x^2, x*y*z, x*z*y, y^3*z^-1 ], 3 ]
+[ g1, g2, g3, g4 ] -&gt; [ z^-1*x^-1*y*z^-1*y*z*y*x^-1,
+  z^-1*x^-1*y*z^-1*y*z*y*x^-1*y*x*z, z*y*(x^-1*z^-1)^2*y^3*x*z, y^-1*z*y^-1*x*z ]
+[ 1, y^-1*x^-1, (y^-1*x^-1)^2, (y^-1*x^-1)^3, (y^-1*x^-1)^4, (y^-1*x^-1)^5,
+  (y^-1*x^-1)^6, (y^-1*x^-1)^7 ]
+[ [ 1, (y^-1*x^-1)^3, y^-1*x^-1, (y^-1*x^-1)^2 ], [ 1 ], [ 1 ] ]
+[ "TESS", [ 8, 8 ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ]
+[ [ 3, 1 ] ]
+[ [ 1, 1, [ 1, [ [ 1, 1 ], 1, 5 ] ] ], [ 1, 1, [ 1, [ [ 1, 2 ], 4, 8 ] ] ],
+  [ 1, 1, [ 1, [ [ 1, 3 ], 2, 6 ] ] ], [ 1, 1, [ 1, [ [ 1, 4 ], 3, 7 ] ] ] ]
+[ g1, g4, g2, g3 ]
+[ [ [ 1, -1 ], [ 2, -1 ], [ 4, 1 ], [ 3, -1 ], [ 1, 1 ], [ 2, 1 ], [ 4, -1 ],
+  [ 3, 1 ] ] ]
+</pre></div>
+
+<p><a id="X79442B71791A7C60" name="X79442B71791A7C60"></a></p>
+
+<h4>8.3 <span class="Heading">HyperCell supercell graph (*.hcs)</span></h4>
+
+<p>The basic file structure of a HyperCell supercell model graph file is as follows (with placeholders marked by <code class="code">&lt;...&gt;</code>):</p>
+
+
+<div class="example"><pre>
+HyperCells HCS version 1.0
+[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
+[ &lt;primitive cell relators&gt; , &lt;supercell relators&gt;, &lt;center&gt; ]
+[ g1, g2, ... ] -&gt; &lt;pc generators&gt;
+&lt;TDGAMMApc&gt;
+[ &lt;TGpcGx&gt;, &lt;TGpcGy&gt;, &lt;TGpcGz&gt; ]
+[ g1, g2, ... ] -&gt; &lt;sc generators&gt;
+[ g1, g2, ... ] -&gt; &lt;sc generators in terms of pc generators&gt;
+&lt;TGAMMApcGAMMAsc&gt;
+&lt;TDGAMMAsc&gt;
+[ &lt;TGscGx&gt;, &lt;TGscGy&gt;, &lt;TGscGz&gt; ]
+&lt;model type&gt;
+&lt;vertices&gt;
+&lt;edges&gt;
+&lt;edge translations&gt;
+&lt;faces&gt;
+</pre></div>
+
+<p>The first line specifies the file format and its version.</p>
+
+<p>The second line gives the signature <span class="Math">(r,q,p)</span> of the underlying triangle group <span class="Math">\Delta(r,q,p)</span> and the third line specifies the triangle-group quotient <span class="Math">\Delta^+(r,q,p)/\Gamma_\mathrm{pc}</span> and <span class="Math">\Delta^+(r,q,p)/\Gamma_\mathrm{sc}</span> by the list of relators <code class="code">&lt;primitive cell relators&gt;</code> and <code class="code">&lt;supercell relators&gt;</code>, respectively, given as elements of the proper triangle group <span class="Math">\Delta^+</span> with generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> and the center of the cell given as the integer <code class="code">&lt;center&gt;</code> with <code class="code">1</code>, <code class="code">2</code>, <code class="code">3</code> corresponding to the center lying at the vertex <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> of the fundamental Schwarz triangle, respectively.</p>
+
+<p>The fourth line specifies the generators of the translation group <span class="Math">\Gamma_\mathrm{pc}</span> of the primitive cell. To the left of <code class="code">-&gt;</code> are the generators of the finitely presented group and to the right the list <code class="code">&lt;generators&gt;</code> of their images in the proper triangle group <span class="Math">\Delta^+</span> in terms of the generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span>.</p>
+
+<p>The fifth line gives the transversal <span class="Math">T_{\Delta^+}(\Gamma_\mathrm{pc})</span> as a list <code class="code">&lt;TDGAMMApc&gt;</code> of elements of the proper triangle group <span class="Math">\Delta^+</span> and the sixth line specifies the transversals <span class="Math">T_{G^+_\mathrm{pc}}(G_w^+)</span> as lists <code class="code">&lt;TGpcGw&gt;</code> with <span class="Math">w=x,y,z</span> (<code class="code">w=x,y,z</code>) of preimages of elements of the quotient group <span class="Math">G^+_\mathrm{pc}\cong\Delta^+/\Gamma_\mathrm{pc}</span> under the quotient homomorphism <span class="Math">\Delta^+\to G^+_\mathrm{pc}</span>, i.e., in terms of the generators <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span>.</p>
+
+<p>Lines seven, ten, and eleven give the same information as lines three, four, and five, respectively, but for the supercell (<span class="Math">G^+_\mathrm{sc}</span>, <span class="Math">\Gamma_\mathrm{sc}</span>) instead of the primitive cell. The eighth line specifies the homomorphism embedding the normal subgroup <span class="Math">\Gamma_\mathrm{sc}</span> in <span class="Math">\Gamma_\mathrm{pc}</span> with the generators of the finitely presented group <span class="Math">\Gamma_\mathrm{sc}</span> to the left of <code class="code">-&gt;</code> and their images in the finitely presented group <span class="Math">\Gamma_\mathrm{pc}</span> to the right. The ninth line gives the corresponding transversal <span class="Math">T_{\Gamma_\mathrm{pc}} (\Gamma_\mathrm{sc})</span> as a list <code class="code">&lt;TGAMMApcGAMMAsc&gt;</code> of elements of the triangle group <span class="Math">\Delta^+</span>.</p>
+
+<p>The twelfth line specifies the model type. The following model types are currently implemented:</p>
+
+
+<ul>
+<li><p><em>Derived graph</em>: general model graph with vertices, edges, and faces derived from the cell graph. The model type is given as <code class="code">[ "VEF", [ vfs, efs, ffs ] ]</code>, where <code class="code">vfs</code>, <code class="code">efs</code>, and <code class="code">ffs</code> are lists of integers between 1 and 3 indicating the vertex types, edge types, and face types, respectively. See <code class="func">TGCellModelGraph</code> (<a href="chap4.html#X7BA14A6582AE5C5E"><span class="RefLink">4.2-1</span></a>) for details.</p>
+
+</li>
+<li><p><em>Tessellation graph</em>: tessellation model graph derived from a cell graph of a triangle group. The model type is given as <code class="code">[ "TESS", [ p, q ], [ "VEF", [ [ 2 ], [ 1 ], [ 3 ] ] ] ]</code> for the <span class="Math">\{p,q\}</span> tessellation and as <code class="code">[ "TESS", [ q, p ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ]</code> for the (dual) <span class="Math">\{q,p\}</span> tessellation. See <code class="func">TessellationModelGraph</code> (<a href="chap4.html#X81214D9683970055"><span class="RefLink">4.2-2</span></a>) for details.</p>
+
+</li>
+<li><p><em>Kagome graph</em>: kagome model graph derived from a cell graph of a triangle group. The model type is given as <code class="code">[ "KAGOME", p, [ "VEF", [ [ 1 ], [ 2 ], [ 2, 3 ] ] ] ]</code>. See <code class="func">KagomeModelGraph</code> (<a href="chap4.html#X83338B0D7836C5F5"><span class="RefLink">4.2-4</span></a>) for details.</p>
+
+</li>
+<li><p><em>Lieb graph</em>: Lieb model graph derived from a cell graph of a triangle group. The model type is given as <code class="code">[ "LIEB", [ p, q ], [ "VEF", [ [ 1, 2 ], [ ], [ 3 ] ] ] ]</code> for the <span class="Math">\{p,q\}</span> tessellation and as <code class="code">[ "LIEB", [ p, q ], [ "VEF", [ [ 1, 3 ], [ ], [ 2 ] ] ] ]</code> for the (dual) <span class="Math">\{q,p\}</span> tessellation. See <code class="func">LiebModelGraph</code> (<a href="chap4.html#X79C56FEA858B37D5"><span class="RefLink">4.2-5</span></a>) for details.</p>
+
+</li>
+</ul>
+<p>Lines thirteen to sixteen specify the vertices, edges, edge translations and faces of the cell:</p>
+
+
+<ul>
+<li><p>The vertices are given as a list <code class="code">&lt;vertices&gt;</code> with entries of the form <code class="code">[ w, gi ]</code>, where <code class="code">w</code> is <code class="code">1</code>, <code class="code">2</code>, <code class="code">3</code> corresponding to the vertex <span class="Math">x</span>, <span class="Math">y</span>, <span class="Math">z</span> of the fundamental Schwarz triangle and <code class="code">gi</code> is the position of the element in the transversal <span class="Math">T_{G^+}(G_w^+)</span>.</p>
+
+</li>
+<li><p>The edges are given as a list <code class="code">&lt;edges&gt;</code> with entries of the form <code class="code">[ v1, v2, tag ]</code>, where <code class="code">v1</code> and <code class="code">v2</code> are the positions of the vertices in <code class="code">&lt;vertices&gt;</code> connected by the edge, and <code class="code">tag</code> is a unique identifier of the edge. The tag <code class="code">tag</code> is of the form <code class="code">[ v1pc, v2pc, tagpc ]</code> with <code class="code">v1pc</code>, <code class="code">v2pc</code> the positions of the vertices in the primitive cell, and <code class="code">tagpc</code> the tag of the edge in the primitive cell (see <a href="chap4.html#X815588F086D7AFC5"><span class="RefLink">4.2</span></a>). Thus, <code class="code">tag</code> specifies (up to the translation) the edge in the primitive cell.</p>
+
+</li>
+<li><p>The edge translations, i.e., the translations relating the unit cell containing the first vertex (<code class="code">v1</code>) to the unit cell containing the second (<code class="code">v2</code>) are given as a list <code class="code">&lt;edge translations&gt;</code> of elements of the finitely presented group, i.e., in terms of the generators given to the left of <code class="code">-&gt;</code> in the third line. If <code class="code">v1</code> corresponds to the vertex <span class="Math">(w, [g_{u_w}]_w)</span> and <code class="code">v2</code> to the vertex <span class="Math">(w', [g_{\tilde{u}_{w'}}]_{w'})</span>, then <code class="code">gam</code> corresponds to the translation <span class="Math">\gamma</span> such that</p>
+
+<p class="pcenter">g_{\tilde{u}_{w'}} = g_{u_w}\gamma.</p>
+
+</li>
+<li><p>The faces are given as a list <code class="code">&lt;faces&gt;</code> with entries of the form <code class="code">[ edge, orientation ]</code>, where <code class="code">edge</code> is the position of the edge in <code class="code">&lt;edges&gt;</code> and <code class="code">orientation</code> is <code class="code">1</code> or <code class="code">-1</code> depending on whether the edge is traversed in the same or opposite direction as the edge given in <code class="code">&lt;edges&gt;</code>.</p>
+
+</li>
+</ul>
+<p>The full file structure of a HyperCell cell graph file thus is as follows:</p>
+
+
+<div class="example"><pre>
+HyperCells HCS version 1.0
+[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
+[ [ &lt;rel1&gt;, &lt;rel2&gt;, ... ], [ &lt;rel1&gt;, &lt;rel2&gt;, ... ], &lt;center&gt; ]
+[ g1, g2, ... ] -&gt; [ &lt;pc generator1&gt;, &lt;pc generator2&gt;, ... ]
+[ &lt;d1&gt;, &lt;d2&gt;, ... ]
+[ [ &lt;gx1&gt;, &lt;gx2&gt;, ... ], [ &lt;gy1&gt;, &lt;gy2&gt;, ... ], [ &lt;gz1&gt;, &lt;gz2&gt;, ... ] ]
+[ g1, g2, ... ] -&gt; [ &lt;sc generator1&gt;, &lt;sc generator2&gt;, ... ]
+[ eta1, eta2, ... ]
+[ &lt;dsc1&gt;, &lt;dsc2&gt;, ... ]
+[ [ &lt;gscx1&gt;, &lt;gscx2&gt;, ... ], [ &lt;gscy1&gt;, &lt;gscy2&gt;, ... ], ... ]
+&lt;model type&gt;
+[ [ w, gi ], ... ]
+[ [ v1, v2, s ], ... ]
+[ [ gam1, gam2, ... ], ... ]
+[ [ edge, orientation ], ... ]
+</pre></div>
+
+<p>A complete example for the <span class="Math">{8,8}</span> tessellation graph centered at the <span class="Math">z</span> vertex on the cell defined by the quotient T2.6 of <span class="Math">\Delta(2,8,8)</span> extended to the supercell defined by the quotient T3.11 is given below:</p>
+
+
+<div class="example"><pre>
+HyperCells HCS version 1.0
+[ 2, 8, 8 ]
+[ [ x^2, x*y*z, x*z*y, y^3*z^-1 ], [ x^2, x*y*z, x*z*y, y^-8 ], 3 ]
+[ g1, g2, g3, g4 ] -&gt; [ z^-1*x^-1*y*z^-1*y*z*y*x^-1,
+  z^-1*x^-1*y*z^-1*y*z*y*x^-1*y*x*z, z*y*(x^-1*z^-1)^2*y^3*x*z, y^-1*z*y^-1*x*z ]
+[ 1, y^-1*x^-1, (y^-1*x^-1)^2, (y^-1*x^-1)^3, (y^-1*x^-1)^4, (y^-1*x^-1)^5,
+  (y^-1*x^-1)^6, (y^-1*x^-1)^7 ]
+[ [ 1, (y^-1*x^-1)^3, y^-1*x^-1, (y^-1*x^-1)^2 ], [ 1 ], [ 1 ] ]
+[ g1, g2, g3, g4, g5, g6 ] -&gt; [ x*y^-1*z^-1, y*x*z, z*y^-1*z^-1*y, y^2*x*z*y^-1,
+  y^-1*z*y^-1*z^-1*y^2, y^3*x*z*y^-2 ]
+[ g1, g2, g3, g4, g5, g6 ] -&gt; [ g1^-1*g4^-1, g1^-1*g2, g3*g4^-1,
+  g1^-1*g2*g4^-1*g1^-1*g2*g3^-1*g4*g1*g2^-1*g1, g4*g1^-1*g4^-1*g3*g2^-1*g1,
+  g1^-1*g2*g3^-1*g4*g2^-1*g1 ]
+[ 1, y^3*z^-1 ]
+[ 1, x, y, y^-1, z, z^-1, y^2, y*z^-1, y^-2, y^-1*z, y^3, y^2*z^-1, y^-3, y^-2*z,
+  y^4, y^3*z^-1 ]
+[ [ 1, y, y^-1, y^2, y^-2, y^3, y^-3, y^4 ], [ 1, x ], [ 1, x ] ]
+[ "TESS", [ 8, 8 ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ]
+[ [ 3, 1, 1 ], [ 3, 1, 2 ] ]
+[ 1, x ]
+[ [ 1, 2, [ 1, 1, [ 1, [ [ 1, 1 ], 1, 5 ] ] ] ],
+  [ 1, 2, [ 1, 1, [ 1, [ [ 1, 2 ], 4, 8 ] ] ] ],
+  [ 1, 2, [ 1, 1, [ 1, [ [ 1, 3 ], 2, 6 ] ] ] ],
+  [ 1, 2, [ 1, 1, [ 1, [ [ 1, 4 ], 3, 7 ] ] ] ],
+  [ 2, 1, [ 1, 1, [ 1, [ [ 1, 1 ], 1, 5 ] ] ] ],
+  [ 2, 1, [ 1, 1, [ 1, [ [ 1, 2 ], 4, 8 ] ] ] ],
+  [ 2, 1, [ 1, 1, [ 1, [ [ 1, 3 ], 2, 6 ] ] ] ],
+  [ 2, 1, [ 1, 1, [ 1, [ [ 1, 4 ], 3, 7 ] ] ] ] ]
+[ 1, g4^-1*g6*g2, g2, g4^-1*g2, g3*g5^-1*g3^-1*g1^-1*g2^-1*g4^-1*g6^-1*g4, g1^-1,
+  g3*g5^-1*g1^-1, g3*g1^-1 ]
+[ ]
+</pre></div>
+
+<p><a id="X7A14A8427920E0F9" name="X7A14A8427920E0F9"></a></p>
+
+<h4>8.4 <span class="Heading">HyperCells extensions</span></h4>
+
+<p>In addition, the following file formats are introduced by the HyperCells package:</p>
+
+
+<ul>
+<li><p><em>HyperCell quotient sequences structure</em> (<code class="code">*.hcqs</code>) for storing the adjacency matrices, i.e., <code class="code">TGQuotientSequencesStructure</code> objects (see <a href="chap6.html#X81715DA27F6068E0"><span class="RefLink">6.2</span></a>)</p>
+
+</li>
+<li><p><em>HyperCell point-group matrices</em> (<code class="code">*.hcpgm</code>) for storing the point-group matrices, i.e., <code class="code">PGMatrices</code> objects (see <a href="chap7.html#X873EC38D7AD44D76"><span class="RefLink">7.3</span></a>)</p>
+
+</li>
+</ul>
+<p>These file formats are described in detail below.</p>
+
+<p><a id="X7CCCFF2A86CC3C62" name="X7CCCFF2A86CC3C62"></a></p>
+
+<h5>8.4-1 <span class="Heading">HyperCell quotient sequences structure (*.hcqs)</span></h5>
+
+<p>The basic file structure of a HyperCell quotient sequences structure file is as follows (with placeholders marked by <code class="code">&lt;...&gt;</code>):</p>
+
+
+<div class="example"><pre>
+HyperCells HCQS version 1.0
+[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
+&lt;boundByGenus&gt;
+&lt;quotients&gt;
+&lt;mirror symmetries&gt;
+&lt;sparse&gt;
+&lt;adjacency matrix&gt;
+</pre></div>
+
+<p>The first line specifies the file format and its version. The second line gives the signature <span class="Math">(r,q,p)</span> of the underlying triangle group <span class="Math">\Delta(r,q,p)</span>. The third line specifies the upper bound for triangle group quotients with genus smaller than <code class="code">&lt;boundByGenus&gt;</code>, and the forth line, <code class="code">&lt;quotients&gt;</code>, the corresponding list of triangle group quotients considered.</p>
+
+<p>Line five, <code class="code">&lt;mirror symmetries&gt;</code>, specifies an ordered binary list of ones and zeros, 1 if quotients in <code class="code">&lt;quotients&gt;</code> have mirror symmetries 0 otherwise.</p>
+
+<p>The sixth line <code class="code">&lt;sparse&gt;</code> specifies if line seven, the adjacency matrix <code class="code">&lt;adjacency matrix&gt;</code>, is sparsely represented <code class="code">true</code>, or dense <code class="code">false</code>.</p>
+
+<p>The full file structure of a HyperCell quotient sequences structure file thus is as follows:</p>
+
+
+<div class="example"><pre>
+HyperCells HCQS version 1.0
+[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
+&lt;boundByGenus&gt;
+[ [ &lt;genus1&gt;, &lt;number1&gt; ], [ &lt;genus2&gt;, &lt;number2&gt; ], ... ]
+[ b1, b2, ... ]
+&lt;sparse&gt;
+[ entry1, entry2, ... ]
+</pre></div>
+
+<p>A complete example for a quotient sequences structure with a dense adjacency matrix for the <span class="Math">\Delta(2,8,8)</span> triangle group and triangle group quotients with genus smaller than 12 is given below:</p>
+
+
+<div class="example"><pre>
+HyperCells HCQS version 1.0
+[ 2, 8, 8 ]
+12
+[ [ 2, 6 ], [ 3, 10 ], [ 3, 11 ], [ 5, 12 ], [ 5, 13 ], 
+  [ 9, 19 ], [ 9, 20 ], [ 9, 21 ], [ 9, 22 ], [ 9, 23 ], 
+  [ 10, 22 ], [ 11, 12 ], [ 11, 13 ] ]
+[ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0 ]
+false
+[ [ 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ], 
+  [ 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0 ], 
+  [ 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1 ], 
+  [ 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 0, 0 ], 
+  [ 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0 ], 
+  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], 
+  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], 
+  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], 
+  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], 
+  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], 
+  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], 
+  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ], 
+  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] ])
+</pre></div>
+
+<p>A complete example for a sparse representation of the adjacency matrix of the quotient sequences structure for the <span class="Math">\Delta(2,8,8)</span> triangle group and triangle group quotients with genus smaller than 12 is given below:</p>
+
+
+<div class="example"><pre>
+HyperCells HCQS version 1.0
+[ 2, 8, 8 ]
+12
+[ [ 2, 6 ], [ 3, 10 ], [ 3, 11 ], [ 5, 12 ], [ 5, 13 ], 
+  [ 9, 19 ], [ 9, 20 ], [ 9, 21 ], [ 9, 22 ], [ 9, 23 ], 
+  [ 10, 22 ], [ 11, 12 ], [ 11, 13 ] ]
+[ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0 ]
+true
+[ [ [ 1, 3 ], 1 ], [ [ 1, 5 ], 1 ], [ [ 1, 7 ], 1 ], [ [ 1, 9 ], 1 ], 
+  [ [ 1, 11 ], 1 ], [ [ 1, 13 ], 1 ], [ [ 2, 5 ], 1 ], [ [ 2, 7 ], 1 ], 
+  [ [ 2, 9 ], 1 ], [ [ 2, 12 ], 1 ], [ [ 3, 5 ], 1 ], [ [ 3, 7 ], 1 ], 
+  [ [ 3, 9 ], 1 ], [ [ 3, 13 ], 1 ], [ [ 4, 6 ], 1 ], [ [ 4, 8 ], 1 ], 
+  [ [ 4, 9 ], 1 ], [ [ 5, 7 ], 1 ], [ [ 5, 9 ], 1 ] ])
+</pre></div>
+
+<p><a id="X82CD08E07A0F6B59" name="X82CD08E07A0F6B59"></a></p>
+
+<h5>8.4-2 <span class="Heading">HyperCell point-group matrices (*.hcpgm)</span></h5>
+
+<p>The basic file structure of a HyperCell point-group matrices file is as follows (with placeholders marked by <code class="code">&lt;...&gt;</code>):</p>
+
+
+<div class="example"><pre>
+HyperCells HCPGM version 1.0
+[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
+&lt;quotient&gt;
+&lt;sparse&gt;
+&lt;abcPGMats&gt;
+&lt;symPGMats&gt;
+</pre></div>
+
+<p>The first line specifies the file format and its version. The second line gives the signature <span class="Math">(r,q,p)</span> of the underlying triangle group <span class="Math">\Delta(r,q,p)</span> and the third line gives the triangle group quotient. The forth line <code class="code">&lt;sparse&gt;</code> specifies if line five and six containing the point-group matrices <code class="code">&lt;abcPGMats&gt;</code> and <code class="code">&lt;symPGMats&gt;</code>, respectively, are sparsely represented <code class="code">true</code>, or dense <code class="code">false</code>.</p>
+
+<p>The full file structure of a HyperCell point-group matrices file thus is as follows:</p>
+
+
+<div class="example"><pre>
+HyperCells HCPGM version 1.0
+[ &lt;r&gt;, &lt;q&gt;, &lt;p&gt; ]
+[ &lt;quotientName&gt;, &lt;order&gt;, &lt;genus&gt;, &lt;actionType&gt;, &lt;rels&gt; ]
+&lt;sparse&gt;
+[ [ "a", &lt;pgMatA&gt; ], [ "b", &lt;pgMatB&gt; ], [ "c", &lt;pgMatC&gt; ] ]
+[ [ [ &lt;symName1&gt;, &lt;sym1&gt; ], &lt;pgMat1&gt; ], [ [ &lt;symName2&gt;, &lt;sym2&gt; ], &lt;pgMat2&gt; ], 
+    ... ]
+</pre></div>
+
+<p>A complete example for the point-group matrices for the <span class="Math">\Delta(2,8,8)</span> triangle group and triangle group quotient <code class="code">T2.6</code> with symmetry elements <code class="code">a</code>, <code class="code">b</code>, <code class="code">c</code> as generators of <span class="Math">\Delta(2,8,8)</span> and <code class="code">x</code>, <code class="code">y</code>, <code class="code">z</code> as generators of <span class="Math">\Delta^+(2,8,8)</span> which we choose to denote as <code class="code">"X"</code>, <code class="code">"Y"</code>, <code class="code">"Z"</code>:</p>
+
+
+<div class="example"><pre>
+HyperCells HCPGM version 1.0
+[ 2, 8, 8 ]
+[ [ 2, 6 ], 8, 2, "Action reflexible [m,n]", 
+  "[ x^2, x * y * z, x * z * y, y^3 * z^-1 ]" ]
+false
+[ [ "a", 
+    [ [ 0, 1, 0, 0 ], [ 1, 0, 0, 0 ], [ -1, -1, -1, 0 ], [ 0, 0, 0, 1 ] ] ], 
+  [ "b",
+    [ [ 0, -1, 0, 0 ], [ -1, 0, 0, 0 ], [ 1, 1, 1, 0 ], [ 0, 0, 0, -1 ] ] ], 
+  [ "c", 
+    [ [ -1, 0, 0, 0 ], [ 1, 1, 1, 1 ], [ 0, 0, 0, -1 ], [ 0, 0, -1, 0 ] ] ] ]
+[ [ [ "X", "x" ], 
+    [ [ -1, 0, 0, 0 ], [ 0, -1, 0, 0 ], [ 0, 0, -1, 0 ], [ 0, 0, 0, -1 ] ] ], 
+  [ [ "Y", "y" ], 
+    [ [ -1, -1, -1, -1 ], [ 1, 0, 0, 0 ], [ 0, 1, 1, 0 ], [ 0, 0, 1, 0 ] ] ], 
+  [ [ "Z", "z" ],
+    [ [ 0, -1, 0, 0 ], [ 0, 0, -1, 1 ], [ 0, 0, 0, -1 ], [ 1, 1, 1, 0 ] ] ] ]
+</pre></div>
+
+<p>A complete example for a sparse representation of the point-group matrices for the <span class="Math">\Delta(2,8,8)</span> triangle group and triangle group quotient <code class="code">T2.6</code> with symmetry elements <code class="code">a</code>, <code class="code">b</code>, <code class="code">c</code> as generators of <span class="Math">\Delta(2,8,8)</span> and <code class="code">x</code>, <code class="code">y</code>, <code class="code">z</code> as generators of <span class="Math">\Delta^+(2,8,8)</span> which we choose to denote as <code class="code">"X"</code>, <code class="code">"Y"</code>, <code class="code">"Z"</code>:</p>
+
+
+<div class="example"><pre>
+HyperCells HCPGM version 1.0
+[ 2, 8, 8 ]
+[ [ 2, 6 ], 8, 2, "Action reflexible [m,n]", 
+  "[ x^2, x * y * z, x * z * y, y^3 * z^-1 ]" ]
+true
+[ [ "a", [ [ [ 1, 2 ], 1 ], [ [ 2, 1 ], 1 ], [ [ 3, 1 ], -1 ], 
+	   [ [ 3, 2 ], -1 ], [ [ 3, 3 ], -1 ], [ [ 4, 4 ], 1 ] ] ],
+  [ "b", [ [ [ 1, 2 ], -1 ], [ [ 2, 1 ], -1 ], [ [ 3, 1 ], 1 ],
+	   [ [ 3, 2 ], 1 ], [ [ 3, 3 ], 1 ], [ [ 4, 4 ], -1 ] ] ],
+  [ "c", [ [ [ 1, 1 ], -1 ], [ [ 2, 1 ], 1 ], [ [ 2, 2 ], 1 ], 
+	   [ [ 2, 3 ], 1 ], [ [ 2, 4 ], 1 ], [ [ 3, 4 ], -1 ], 
+	   [ [4, 3 ], -1 ] ] ] ]
+[ [ [ "X", "x" ], [ [ [ 1, 1 ], -1 ], [ [ 2, 2 ], -1 ], [ [ 3, 1 ], -1 ], 
+           [ [ 3, 2 ], -1 ], [ [ 3, 3 ], -1 ], [ [ 4, 4 ], -1 ] ] ], 
+  [ [ "Y", "y" ], [ [ [ 1, 1 ], -1 ], [ [ 1, 2 ], -1 ], [ [ 1, 3 ], -1 ], 
+	   [ [ 1, 4 ], -1 ], [ [ 2, 1 ], 1 ], [ [ 3, 1 ], 1 ], 
+	   [ [ 3, 2 ], 1 ], [ [ 3, 3 ], 1 ], [ [ 3, 4 ], -1 ], 
+	   [ [ 4, 3 ], 1 ] ] ], 
+  [ [ "Z", "z" ], [ [ [ 1, 2 ], -1 ], [ [ 2, 1 ], -1 ], [ [ 2, 2 ], -1 ],
+	   [ [ 2, 3 ], -1 ], [ [ 2, 4 ], 1 ], [ [ 3, 4 ], -1 ], 
+           [ [ 4, 1 ], 1 ], [ [ 4, 2 ], 1 ], [ [ 4, 3 ], 1 ] ] ] ]
+</pre></div>
+
+
+<div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap7.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapBib.html">[Next Chapter]</a>&nbsp;  </div>
+
+
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

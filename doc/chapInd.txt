@@ -3,12 +3,14 @@
   [1XIndex[101X
   
   [2XAddOrientedNNNEdgesToTessellationModelGraph[102X 4.2-3 
+  [2XAdjacencyMatrix[102X, for TGQuotientSequencesStructure 6.2-7 
   [2XAsQuotient[102X, for TGCellEmbedding 5.4-3 
       for TGCellMSWPs 3.6-1 
       for TGCellPointGroup 3.5-2 
   [2XAsQuotientGroup[102X, for TGCellPointGroup 3.5-1 
   [2XAsTGSubgroup[102X, for TGCellTranslationGroup 3.4-1 
       for TGTranslationGroup 2.2-5 
+  [2XBoundByGenus[102X, for TGQuotientSequencesStructure 6.2-3 
   [2XCellBoundary[102X, for TGCellGraph 3.7-11 
   [2XCellCenter[102X, for TGCellGraph 3.7-4 
       for TGCellModelGraph 4.3-3 
@@ -33,19 +35,26 @@
   [2XCellVertices[102X, for TGCellGraph 3.7-5 
       for TGCellModelGraph 4.3-7 
       for TGSuperCellModelGraph 5.3-9 
-  [2XExport[102X, for TGCellGraph, OutputTextStream 3.7-13 
+  [2XEvaluatePGMatrix[102X, for PGMatricesOfGenerators 7.2-10 
+  [2XExport[102X, for PGMatrices, OutputTextStream 7.4-1 
+      for PGMatrices, String 7.4-1 
+      for TGCellGraph, OutputTextStream 3.7-13 
       for TGCellGraph, String 3.7-13 
       for TGCellModelGraph, OutputTextStream 4.4-1 
       for TGCellModelGraph, String 4.4-1 
+      for TGQuotientSequencesStructure, OutputTextStream 6.4-1 
+      for TGQuotientSequencesStructure, String 6.4-1 
       for TGSuperCellModelGraph, OutputTextStream 5.5-1 
       for TGSuperCellModelGraph, String 5.5-1 
-  [2XExportString[102X, for TGCellGraph 3.7-13 
+  [2XExportString[102X, for PGMatrices 7.4-1 
+      for TGCellGraph 3.7-13 
       for TGCellModelGraph 4.4-1 
       for TGQuotient 2.5-1 
+      for TGQuotientSequencesStructure 6.4-1 
       for TGSuperCellModelGraph 5.5-1 
-  [2XExportTGQuotientList[102X 6.3-1 
-  [2XExportTGQuotientSequences[102X 6.3-2 
-  [2XExtendTGQuotientSequence[102X 6.2-1 
+  [2XExportTGQuotientList[102X 6.4-3 
+  [2XExportTGQuotientSequences[102X 6.4-4 
+  [2XExtendTGQuotientSequence[102X 6.3-1 
   [2XFpGroup[102X, for TGCellTranslationGroup 3.4-3 
       for TGTranslationGroup 2.2-6 
       of [Proper]TriangleGroup 2.1-4 
@@ -53,7 +62,10 @@
       for TGTranslationGroup 2.2-7 
   [2XGenerators[102X, for TGCellTranslationGroup 3.4-2 
   [2XGetKernel[102X, for TGCellMSWPs 3.6-3 
-  [2XGetProperTriangleGroup[102X, for TGCell 3.2-1 
+  [2XGetListTGQuotients[102X, for TGQuotientSequencesStructure 6.2-4 
+  [2XGetPGMatricesOfGenerators[102X, for PGMatrices 7.3-2 
+  [2XGetProperTriangleGroup[102X, for PGMatricesOfGenerators 7.2-4 
+      for TGCell 3.2-1 
       for TGCellGraph 3.7-2 
       for TGCellModelGraph 4.3-1 
       for TGSuperCellModelGraph 5.3-1 
@@ -65,40 +77,62 @@
       for TGCellModelGraph 4.3-4 
       for TGSuperCellModelGraph 5.3-7 
   [2XGetTGPrimitiveCell[102X, for TGSuperCellModelGraph 5.3-5 
+  [2XGetTGQuotient[102X, for PGMatricesOfGenerators 7.2-6 
   [2XGetTGSuperCell[102X, for TGSuperCellModelGraph 5.3-6 
+  [2XGetTriangleGroup[102X, for PGMatricesOfGenerators 7.2-3 
   [2XHasTGCellMSWPs[102X, for TGCell 3.2-5 
+  [2XImportPGMatrices[102X 7.4-2 
+  [2XImportPGMatricesFromFile[102X 7.4-2 
+  [2XImportPGMatricesFromString[102X 7.4-2 
   [2XImportTGCellGraph[102X 3.7-14 
   [2XImportTGCellGraphFromFile[102X 3.7-14 
   [2XImportTGCellGraphFromString[102X 3.7-14 
   [2XImportTGCellModelGraph[102X 4.4-2 
   [2XImportTGCellModelGraphFromFile[102X 4.4-2 
   [2XImportTGCellModelGraphFromString[102X 4.4-2 
-  [2XImportTGQuotientList[102X 6.3-3 
-  [2XImportTGQuotientListFromFile[102X 6.3-3 
-  [2XImportTGQuotientSequences[102X 6.3-4 
-  [2XImportTGQuotientSequencesFromFile[102X 6.3-4 
+  [2XImportTGQuotientList[102X 6.4-5 
+  [2XImportTGQuotientListFromFile[102X 6.4-5 
+  [2XImportTGQuotientSequences[102X 6.4-6 
+  [2XImportTGQuotientSequencesFromFile[102X 6.4-6 
+  [2XImportTGQuotientSequencesStructure[102X 6.4-2 
+  [2XImportTGQuotientSequencesStructureFromFile[102X 6.4-2 
+  [2XImportTGQuotientSequencesStructureFromString[102X 6.4-2 
   [2XImportTGQuotientString[102X 2.5-2 
   [2XImportTGSuperCellModelGraph[102X 5.5-2 
   [2XImportTGSuperCellModelGraphFromFile[102X 5.5-2 
   [2XImportTGSuperCellModelGraphFromString[102X 5.5-2 
+  [2XIsSparse[102X, for PGMatricesOfGenerators 7.2-7 
+      for TGQuotientSequencesStructure 6.2-6 
   [2XIsTGQuotientSequence[102X 6.1-1 
   [2XKagomeModelGraph[102X 4.2-4 
+  [2XLiebModelGraph[102X 4.2-5 
   [2XListTGQuotients[102X 2.4-3 
   [2XListTriangleGroups[102X 2.4-2 
   [2XLoadTGQuotients[102X 2.4-1 
+  [2XLongestSequence[102X, for TGQuotientSequencesStructure 6.2-9 
+  [2XMirrorSymmetries[102X, for TGQuotientSequencesStructure 6.2-5 
   [2XModelName[102X, for TGCellModelGraph 4.3-6 
   [2XModelType[102X, for TGCellModelGraph 4.3-5 
       for TGSuperCellModelGraph 5.3-8 
-  [2XNextTGQuotientOptions[102X 6.2-2 
+  [2XNearestNeighborAdjacencyMatrix[102X, for TGQuotientSequencesStructure 6.2-8 
+  [2XNextTGQuotientOptions[102X 6.3-2 
+  [2XPGMatrices[102X 7.3-1 
+  [2XPGMatricesOfGenerators[102X 7.2-1 
+  [2XPGMatricesRec[102X, for PGMatrices 7.3-5 
+      for PGMatricesOfGenerators 7.2-9 
   [2XPrimitiveCellRelators[102X, for TGSuperCellModelGraph 5.3-2 
   [2XPrimitiveCellTranslationGroup[102X, for TGCellEmbedding 5.4-1 
   [2XProperTriangleGroup[102X 2.1-2 
   [2XQuotientHomomorphism[102X, for TGCellPointGroup 3.5-4 
       for TGTranslationGroup 2.2-4 
   [2XRandomTGSuperCellModelGraph[102X 5.2-2 
-  [2XSignature[102X, of [Proper]TriangleGroup 2.1-3 
+  [2XSignature[102X, for PGMatricesOfGenerators 7.2-2 
+      for TGQuotientSequencesStructure 6.2-2 
+      of [Proper]TriangleGroup 2.1-3 
   [2XSuperCellRelators[102X, for TGSuperCellModelGraph 5.3-3 
   [2XSuperCellTranslationGroup[102X, for TGCellEmbedding 5.4-2 
+  [2XSymmetries[102X, for PGMatrices 7.3-3 
+  [2XSymmetryNames[102X, for PGMatrices 7.3-4 
   [2XTessellationModelGraph[102X 4.2-2 
   [2XTGCell[102X 3.1-1 
   [2XTGCellGraph[102X 3.7-1 
@@ -108,14 +142,17 @@
   [2XTGCellSchwarzTriangleRep[102X, for TGCell 3.3-1 
   [2XTGCellSymmetric[102X 3.1-2 
   [2XTGCellTranslationGroup[102X, for TGCell 3.2-3 
+  [2XTGGenerators[102X, for PGMatricesOfGenerators 7.2-8 
   [2XTGQuotient[102X 2.3-1 
   [2XTGQuotientActionType[102X, for TGQuotient 2.3-6 
   [2XTGQuotientGenus[102X, for TGQuotient 2.3-3 
   [2XTGQuotientGroup[102X, for ProperTriangleGroup, TGQuotient 2.3-9 
-  [2XTGQuotientName[102X, for TGQuotient 2.3-2 
+  [2XTGQuotientName[102X, for PGMatricesOfGenerators 7.2-5 
+      for TGQuotient 2.3-2 
   [2XTGQuotientOrder[102X, for TGQuotient 2.3-5 
   [2XTGQuotientRelators[102X, for ProperTriangleGroup, TGQuotient 2.3-8 
       for TGQuotient 2.3-7 
+  [2XTGQuotientSequencesStructure[102X 6.2-1 
   [2XTGSuperCellModelGraph[102X 5.2-1 
   [2XTGTranslationGroup[102X 2.2-2 
   [2XTGTranslationGroupFromQuotient[102X 2.2-1 

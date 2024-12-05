@@ -15,7 +15,7 @@
 <body class="chap0"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Next Chapter]</a>&nbsp;  </div>
 
@@ -29,10 +29,10 @@
 <h2>A <strong class="pkg">GAP</strong> package for constructing primitive cells and supercells of hyperbolic lattices</h2>
 
 <p>
-    0.9.1-beta</p>
+    1.0.0</p>
 
 <p>
-    5 March 2024
+    3 December 2024
   </p>
 
 </div>
@@ -65,6 +65,9 @@
 
 <div class="ContChap"><a href="chap1.html#X7DFB63A97E67C0A1">1 <span class="Heading">Introduction</span></a>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X85861B017AEEC50B">1.1 <span class="Heading">Example</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7A5B9B2683208F8B">1.2 <span class="Heading">Simplify extension (optional)</span></a>
 </span>
 </div>
 </div>
@@ -192,6 +195,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X81214D9683970055">4.2-2 TessellationModelGraph</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X845763347FC85D18">4.2-3 AddOrientedNNNEdgesToTessellationModelGraph</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X83338B0D7836C5F5">4.2-4 KagomeModelGraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X79C56FEA858B37D5">4.2-5 LiebModelGraph</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X809AA1397EEB4675">4.3 <span class="Heading">Model Properties</span></a>
 </span>
@@ -269,31 +273,92 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X79254908867A25D4">6.1-1 IsTGQuotientSequence</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7AE3F9827D738B32">6.2 <span class="Heading">Extending Quotient Sequences</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X81715DA27F6068E0">6.2 <span class="Heading">Constructing Sequences of Triangle-Group Quotients</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82174B717D38C3F5">6.2-1 ExtendTGQuotientSequence</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84D295BB87C96036">6.2-2 NextTGQuotientOptions</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X825BFA82851A8625">6.2-1 TGQuotientSequencesStructure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84E82A2A7E20253F">6.2-2 Signature</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X864DFC7B81230862">6.2-3 BoundByGenus</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X844347A887B90759">6.2-4 GetListTGQuotients</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7A91FDCB8650E006">6.2-5 MirrorSymmetries</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C0C76BE87BAE1FC">6.2-6 IsSparse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82733793814244FA">6.2-7 AdjacencyMatrix</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8076A98787BBDE36">6.2-8 NearestNeighborAdjacencyMatrix</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D371FCC7F4CB157">6.2-9 LongestSequence</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X8492C5B38700A475">6.3 <span class="Heading">Export and Import</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7AE3F9827D738B32">6.3 <span class="Heading">Extending Quotient Sequences</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X787D7E71783D5893">6.3-1 ExportTGQuotientList</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X846F5EFF82709A71">6.3-2 ExportTGQuotientSequences</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X879296C47BDD6230">6.3-3 ImportTGQuotientList</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8060BB2F8190A0D2">6.3-4 ImportTGQuotientSequences</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X82174B717D38C3F5">6.3-1 ExtendTGQuotientSequence</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X84D295BB87C96036">6.3-2 NextTGQuotientOptions</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X8492C5B38700A475">6.4 <span class="Heading">Export and Import</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D4343B17C4DD6F1">6.4-1 <span class="Heading">Exporting TGQuotientSequencesStructure Objects</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C15CA3F7FADEC52">6.4-2 <span class="Heading">Importing TGQuotientSequencesStructure Objects</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X787D7E71783D5893">6.4-3 ExportTGQuotientList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X846F5EFF82709A71">6.4-4 ExportTGQuotientSequences</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X879296C47BDD6230">6.4-5 ImportTGQuotientList</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X8060BB2F8190A0D2">6.4-6 ImportTGQuotientSequences</a></span>
 </div></div>
 </div>
-<div class="ContChap"><a href="chap7.html#X8091CEE880E799B4">7 <span class="Heading">File Formats</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X7CFBF28C7E45D68A">7.1 <span class="Heading">HyperCell cell graph (*.hcc)</span></a>
+<div class="ContChap"><a href="chap7.html#X84982DAB84AFA590">7 <span class="Heading">Representations of point groups</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X7A5EF6AC7C0051A7">7.1 <span class="Heading">Point-group matrices</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X8672A7E782E0D7F3">7.2 <span class="Heading">HyperCell model graph (*.hcm)</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X78C32C4F787BBEA8">7.2 <span class="Heading">PGMatricesOfGenerators</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X78C32C4F787BBEA8">7.2-1 PGMatricesOfGenerators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X786ACF3281326823">7.2-2 Signature</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X853878E083197B98">7.2-3 GetTriangleGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X823135A1813D957E">7.2-4 GetProperTriangleGroup</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X8149917B7AADD486">7.2-5 TGQuotientName</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X85B38D5E850CB6B4">7.2-6 GetTGQuotient</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X86A674CB78B9D9A1">7.2-7 IsSparse</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X83B2DE91838C1843">7.2-8 TGGenerators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X783F4843877075D8">7.2-9 PGMatricesRec</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7EB13C2F8615FDC7">7.2-10 EvaluatePGMatrix</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X873EC38D7AD44D76">7.3 <span class="Heading">PGMatrices</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X873EC38D7AD44D76">7.3-1 PGMatrices</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X8662DE228057F77A">7.3-2 GetPGMatricesOfGenerators</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X85CD1E1579BDE96B">7.3-3 Symmetries</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7BDD8665834E0878">7.3-4 SymmetryNames</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X793FA4BC81802B77">7.3-5 PGMatricesRec</a></span>
+</div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X8492C5B38700A475">7.4 <span class="Heading">Export and Import</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7FC93691823C2D4A">7.4-1 <span class="Heading">Exporting PGMatrices Objects</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap7.html#X7A652AED81DC17E9">7.4-2 <span class="Heading">Importing PGMatrices Objects</span></a>
+</span>
+</div></div>
+</div>
+<div class="ContChap"><a href="chap8.html#X8091CEE880E799B4">8 <span class="Heading">File Formats</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X7CFBF28C7E45D68A">8.1 <span class="Heading">HyperCell cell graph (*.hcc)</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap7.html#X79442B71791A7C60">7.3 <span class="Heading">HyperCell supercell graph (*.hcs)</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X8672A7E782E0D7F3">8.2 <span class="Heading">HyperCell model graph (*.hcm)</span></a>
 </span>
 </div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X79442B71791A7C60">8.3 <span class="Heading">HyperCell supercell graph (*.hcs)</span></a>
+</span>
+</div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap8.html#X7A14A8427920E0F9">8.4 <span class="Heading">HyperCells extensions</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X7CCCFF2A86CC3C62">8.4-1 <span class="Heading">HyperCell quotient sequences structure (*.hcqs)</span></a>
+</span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap8.html#X82CD08E07A0F6B59">8.4-2 <span class="Heading">HyperCell point-group matrices (*.hcpgm)</span></a>
+</span>
+</div></div>
 </div>
 <div class="ContChap"><a href="chapBib.html"><span class="Heading">References</span></a></div>
 <div class="ContChap"><a href="chapInd.html"><span class="Heading">Index</span></a></div>
@@ -303,7 +368,7 @@
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap1.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0.html">Top</a>  <a href="chap1.html">1</a>  <a href="chap2.html">2</a>  <a href="chap3.html">3</a>  <a href="chap4.html">4</a>  <a href="chap5.html">5</a>  <a href="chap6.html">6</a>  <a href="chap7.html">7</a>  <a href="chap8.html">8</a>  <a href="chapBib.html">Bib</a>  <a href="chapInd.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

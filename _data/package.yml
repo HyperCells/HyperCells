@@ -1,7 +1,7 @@
 name: HyperCells
-version: "0.9.1-beta"
+version: "1.0.0"
 license: "CC BY-SA 4.0"
-date: 2024-03-05
+date: 2024-12-03
 description: |
     A GAP package for constructing primitive cells and supercells of hyperbolic lattices
 
@@ -19,14 +19,19 @@ maintainers:
 
 GAP: ">= 4.11"
 
-www: https://patrick-lenggenhager.github.io/HyperCells/
+suggested-pkgs:
+    - name: "kbmag"
+      version: ">= 1.5.10"
+      url: "https://gap-packages.github.io/kbmag"
+
+www: https://HyperCells.github.io/HyperCells/
 readme: README.md
-packageinfo: https://patrick-lenggenhager.github.io/HyperCells/PackageInfo.g
-github: https://github.com/patrick-lenggenhager/HyperCells
+packageinfo: https://HyperCells.github.io/HyperCells/PackageInfo.g
+github: https://github.com/HyperCells/HyperCells
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/patrick-lenggenhager/HyperCells/releases/download/v0.9.1-beta/HyperCells-0.9.1-beta.tar.gz
+      url: https://github.com/HyperCells/HyperCells/releases/download/v1.0.0/HyperCells-1.0.0.tar.gz
 
 abstract: |
 
@@ -39,21 +44,21 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>LMB24</span>]   <b class='BibAuthor'>Lenggenhager, P. M., Maciejko, J. and Bzdušek, T.</b>,
      <i class='BibTitle'>HyperCells, A GAP package for constructing primitive cells and supercells of hyperbolic lattices,
-             Version 0.9.1-beta</i>
+             Version 1.0.0</i>
      (<span class='BibYear'>2024</span>)<br />
     (<span class='BibNote'>GAP package</span>),
-    <span class='BibHowpublished'><a href="https://patrick-lenggenhager.github.io/HyperCells/">https://patrick-lenggenhager.github.io/HyperCells/</a></span>.
+    <span class='BibHowpublished'><a href="https://HyperCells.github.io/HyperCells/">https://HyperCells.github.io/HyperCells/</a></span>.
     </p>
     
 
 bibtex: |
-    @misc{ HyperCells0.9.1-beta,
+    @misc{ HyperCells1.0.0,
       author =           {Lenggenhager, P. M. and Maciejko, J. and Bzdu{\v s}ek, T.},
-      title =            {{HyperCells}, A GAP package for constructing primitive cells and supercells of hyperbolic lattices, {V}ersion 0.9.1-beta},
-      month =            {Mar},
+      title =            {{HyperCells}, A GAP package for constructing primitive cells and supercells of hyperbolic lattices, {V}ersion 1.0.0},
+      month =            {Dec},
       year =             {2024},
       note =             {GAP package},
-      howpublished =     {\href {https://patrick-lenggenhager.github.io/HyperCells/} {\texttt{https://patrick-lenggenhager.github.io/}\discretionary {}{}{}\texttt{HyperCells/}}},
+      howpublished =     {\href {https://HyperCells.github.io/HyperCells/} {\texttt{https://HyperCells.github.io/}\discretionary {}{}{}\texttt{HyperCells/}}},
       keywords =         {hyperbolic lattices; triangle groups},
       printedkey =       {LMB24}
     }

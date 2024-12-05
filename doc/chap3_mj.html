@@ -18,7 +18,7 @@
 <body class="chap3"  onload="jscontent()">
 
 
-<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinktop"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <div class="chlinkprevnexttop">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
@@ -440,7 +440,7 @@ TGCellGraph( cell,
 </ul>
 <p>Optionally, generators <var class="Arg">GAMgens</var> of the translation group <span class="SimpleMath">\(\Gamma\)</span> can be explicitly given as elements of <var class="Arg">tg</var>. If not given, they are computed automatically. Similarly, choices for the transversals <span class="SimpleMath">\(T_{\Delta^+}(\Gamma)\)</span> and <span class="SimpleMath">\(T_{G^+}(G_w^+)\)</span> can be given as <var class="Arg">TDGAM</var> and <var class="Arg">TGGw</var>, respectively. If not given, they are computed automatically. Here, <var class="Arg">TDGAM</var> is a list of elements of <var class="Arg">tg</var> and <var class="Arg">TGGw</var> is a list of three lists, one for <span class="SimpleMath">\(w=x,y,z\)</span>, respectively, of elements of <var class="Arg">tg</var>.</p>
 
-<p>The option <code class="code">simplify</code>, which takes a non-negative integer as argument, can be used to specify the level of simplification of words in the translation group, both for the translation generators expressed in terms of generators of the proper triangle group and for the translations expressed as elements of the finitely presented group <code class="code">FpGroup(TGCellTranslationGroup(GetTGCell(</code><var class="Arg">cellgraph</var><code class="code">)))</code>.</p>
+<p>The option <code class="code">simplify</code>, which takes a non-negative integer as argument, can be used to specify the level of simplification of words in the translation group, both for the translation generators expressed in terms of generators of the proper triangle group and for the translations expressed as elements of the finitely presented group <code class="code">FpGroup(TGCellTranslationGroup(GetTGCell(</code><var class="Arg">cellgraph</var><code class="code">)))</code>. The additional option <code class="code">simplifyMethod</code>, which takes a string, can be used to specify the method of simplification. By default <code class="code">simplifyMethod</code> is set to <code class="code">"BruteForce"</code>. If the package kbmag (see kbmag reference manual <span class="URL"><a href="https://docs.gap-system.org/pkg/kbmag/doc/chap0_mj.html">kbmag Reference Manual</a></span>) is loaded it is possible to set <code class="code">simplifyMethod</code> to <code class="code">"KnuthBendix"</code>, such that the Knuth-Bendix completion algorithm is used in the simplification. This method uses the available space in cache, which can be flushed by calling <code class="code">FlushCaches</code> (see section Mutability and Copying in the <span class="URL"><a href="https://docs.gap-system.org/doc/ref/chap0_mj.html">GAP Reference Manual</a></span>).</p>
 
 <p><a id="X864917A87E33B694" name="X864917A87E33B694"></a></p>
 
@@ -553,7 +553,7 @@ TGCellGraph( cell,
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0_mj.html">[Top of Book]</a>&nbsp;  <a href="chap0_mj.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap2_mj.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap4_mj.html">[Next Chapter]</a>&nbsp;  </div>
 
 
-<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
+<div class="chlinkbot"><span class="chlink1">Goto Chapter: </span><a href="chap0_mj.html">Top</a>  <a href="chap1_mj.html">1</a>  <a href="chap2_mj.html">2</a>  <a href="chap3_mj.html">3</a>  <a href="chap4_mj.html">4</a>  <a href="chap5_mj.html">5</a>  <a href="chap6_mj.html">6</a>  <a href="chap7_mj.html">7</a>  <a href="chap8_mj.html">8</a>  <a href="chapBib_mj.html">Bib</a>  <a href="chapInd_mj.html">Ind</a>  </div>
 
 <hr />
 <p class="foot">generated by <a href="http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc">GAPDoc2HTML</a></p>

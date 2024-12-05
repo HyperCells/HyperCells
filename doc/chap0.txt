@@ -7,10 +7,10 @@
                                    lattices [101X
   
   
-                                   0.9.1-beta
+                                     1.0.0
   
   
-                                  5 March 2024
+                                3 December 2024
   
   
                             Patrick M. Lenggenhager
@@ -36,6 +36,7 @@
   
   1 [33X[0;0YIntroduction[133X
     1.1 [33X[0;0YExample[133X
+    1.2 [33X[0;0YSimplify extension (optional)[133X
   2 [33X[0;0YTriangle Groups and Translation Subgroups[133X
     2.1 [33X[0;0YTriangle Groups[133X
       2.1-1 TriangleGroup
@@ -116,6 +117,7 @@
       4.2-2 TessellationModelGraph
       4.2-3 AddOrientedNNNEdgesToTessellationModelGraph
       4.2-4 KagomeModelGraph
+      4.2-5 LiebModelGraph
     4.3 [33X[0;0YModel Properties[133X
       4.3-1 GetProperTriangleGroup
       4.3-2 CellRelators
@@ -163,18 +165,55 @@
   6 [33X[0;0YSequences of Triangle-Group Quotients[133X
     6.1 [33X[0;0YCheck Sequence of Triangle-Group Quotients[133X
       6.1-1 IsTGQuotientSequence
-    6.2 [33X[0;0YExtending Quotient Sequences[133X
-      6.2-1 ExtendTGQuotientSequence
-      6.2-2 NextTGQuotientOptions
-    6.3 [33X[0;0YExport and Import[133X
-      6.3-1 ExportTGQuotientList
-      6.3-2 ExportTGQuotientSequences
-      6.3-3 ImportTGQuotientList
-      6.3-4 ImportTGQuotientSequences
-  7 [33X[0;0YFile Formats[133X
-    7.1 [33X[0;0YHyperCell cell graph (*.hcc)[133X
-    7.2 [33X[0;0YHyperCell model graph (*.hcm)[133X
-    7.3 [33X[0;0YHyperCell supercell graph (*.hcs)[133X
+    6.2 [33X[0;0YConstructing Sequences of Triangle-Group Quotients[133X
+      6.2-1 TGQuotientSequencesStructure
+      6.2-2 Signature
+      6.2-3 BoundByGenus
+      6.2-4 GetListTGQuotients
+      6.2-5 MirrorSymmetries
+      6.2-6 IsSparse
+      6.2-7 AdjacencyMatrix
+      6.2-8 NearestNeighborAdjacencyMatrix
+      6.2-9 LongestSequence
+    6.3 [33X[0;0YExtending Quotient Sequences[133X
+      6.3-1 ExtendTGQuotientSequence
+      6.3-2 NextTGQuotientOptions
+    6.4 [33X[0;0YExport and Import[133X
+      6.4-1 [33X[0;0YExporting TGQuotientSequencesStructure Objects[133X
+      6.4-2 [33X[0;0YImporting TGQuotientSequencesStructure Objects[133X
+      6.4-3 ExportTGQuotientList
+      6.4-4 ExportTGQuotientSequences
+      6.4-5 ImportTGQuotientList
+      6.4-6 ImportTGQuotientSequences
+  7 [33X[0;0YRepresentations of point groups[133X
+    7.1 [33X[0;0YPoint-group matrices[133X
+    7.2 [33X[0;0YPGMatricesOfGenerators[133X
+      7.2-1 PGMatricesOfGenerators
+      7.2-2 Signature
+      7.2-3 GetTriangleGroup
+      7.2-4 GetProperTriangleGroup
+      7.2-5 TGQuotientName
+      7.2-6 GetTGQuotient
+      7.2-7 IsSparse
+      7.2-8 TGGenerators
+      7.2-9 PGMatricesRec
+      7.2-10 EvaluatePGMatrix
+    7.3 [33X[0;0YPGMatrices[133X
+      7.3-1 PGMatrices
+      7.3-2 GetPGMatricesOfGenerators
+      7.3-3 Symmetries
+      7.3-4 SymmetryNames
+      7.3-5 PGMatricesRec
+    7.4 [33X[0;0YExport and Import[133X
+      7.4-1 [33X[0;0YExporting PGMatrices Objects[133X
+      7.4-2 [33X[0;0YImporting PGMatrices Objects[133X
+  8 [33X[0;0YFile Formats[133X
+    8.1 [33X[0;0YHyperCell cell graph (*.hcc)[133X
+    8.2 [33X[0;0YHyperCell model graph (*.hcm)[133X
+    8.3 [33X[0;0YHyperCell supercell graph (*.hcs)[133X
+    8.4 [33X[0;0YHyperCells extensions[133X
+      8.4-1 [33X[0;0YHyperCell quotient sequences structure (*.hcqs)[133X
+      8.4-2 [33X[0;0YHyperCell point-group matrices (*.hcpgm)[133X
   
   
   [32X
