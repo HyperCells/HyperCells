@@ -376,7 +376,7 @@ end;
 
 # Multiplies two sparse matrices. (Not optimized)
 sparseMatMultiply@ := function(mat1, mat2)
-	local mat2T, matNew, i, j, entry1, entry2, rowIdx, colIdx, temp1, temp2, sum, signed;
+	local mat2T, matNew, i, j, entry1, entry2, rowIdx, colIdx, temp1, temp2, sum, signed, avoidZeroNonZeroDouble, aZNZentries;
 
 	# --------
 	# Options:
@@ -397,6 +397,7 @@ sparseMatMultiply@ := function(mat1, mat2)
 
         mat2T := sparseMatTranspose@(mat2); 
 	matNew :=  rec(); # new matrix predecessor (will be converted to nested list in the end)
+	avoidZeroNonZeroDouble := [];
         for i in [1..Length(mat1)] do
 
 	    rowIdx := mat1[i,1][1]; # get row of matrix mat1
@@ -405,7 +406,7 @@ sparseMatMultiply@ := function(mat1, mat2)
                 colIdx := mat2T[j,1][1]; # corresponds to row of matrix mat2
 		if not String([rowIdx, colIdx]) in RecNames(matNew) then
 
-		    temp1 := i;; temp2 := j;; sum := 0;
+		    temp1 := i;; temp2 := j;; sum := 0;; aZNZentries := [0];;
                     while temp1 <= Length(mat1) and mat1[temp1,1][1] = rowIdx and temp2 <= Length(mat2T) and mat2T[temp2,1][1] = colIdx do
               		
 			# multiplication conditions
@@ -414,14 +415,15 @@ sparseMatMultiply@ := function(mat1, mat2)
                         elif mat1[temp1,1][2] > mat2T[temp2,1][2] then
  			    temp2 := temp2 + 1;
                         else
+			     Append(aZNZentries, [mat1[temp1,2]*mat2T[temp2,2]]);
 			     sum := sum + mat1[temp1,2]*mat2T[temp2,2];; temp1 := temp1 + 1;; temp2 := temp2 + 1;;
                         fi;
-
-			if temp1 > Length(mat1) or temp2 > Length(mat2T) then
-				break;
-			fi;
  		    od;
-                    if not sum = 0 then
+
+		    if sum = 0 and not Length(Filtered(aZNZentries, IsZero)) = Length(aZNZentries) then
+			Append(avoidZeroNonZeroDouble, [[rowIdx, colIdx]]);
+		    fi;
+		    if not sum = 0 and not [rowIdx, colIdx] in avoidZeroNonZeroDouble then
 			matNew.(String([rowIdx, colIdx])) := sum/AbsoluteValue(sum)^signed ;
 		    fi;
 		fi;
