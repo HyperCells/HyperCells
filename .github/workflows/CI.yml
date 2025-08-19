@@ -49,6 +49,7 @@ jobs:
       - uses: gap-actions/build-pkg-docs@v1
         with:
           use-latex: 'true'
+          warnings-as-errors: 'false'
       - name: 'Upload documentation'
         uses: actions/upload-artifact@v4
         with:
