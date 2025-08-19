@@ -70,6 +70,10 @@ In general, we follow the ["fork-and-pull" Git workflow](https://github.com/susa
 5. Push changes to your fork
 6. Open a Pull Request in our repository
 
+Note that the automatic checks currently ignore any warnings produced when building
+the documentation (due to false positives related to LaTeX labels). Thus, these warnings
+and the generated output should be checked manually before a Pull Request is accepted.
+
 ## License
 
 By contributing, you agree that your contributions will be licensed under the
