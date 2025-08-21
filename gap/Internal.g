@@ -433,16 +433,16 @@ sparseMatMultiply@ := function(mat1, mat2, dims)
     if signed = fail or signed = false then
     	signed := false;
     elif not IsBool(signed) then
-	Error(StringFormatted("The option signed {} is not valid. It must be a boolean.", signed));
+		Error(StringFormatted("The option signed {} is not valid. It must be a boolean.", signed));
 	return fail;
     else
-	signed := true;
+		signed := true;
     fi;
 
     # reformat record into a nested list of the form [ [[rowIdx, colIdx], entry], ... ]
     matNew := toSparseMat@(toDenseMat@(mat1, dims)*toDenseMat@(mat2,dims));
     if signed then
-	matNew := signSparseMatrix@(matNew);
+		matNew := signSparseMatrix@(matNew);
     fi;
     return matNew;
 end;
