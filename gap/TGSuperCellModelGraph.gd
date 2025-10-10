@@ -67,7 +67,7 @@ DeclareCategory( "IsTGSuperCellModelGraphObj", IsObject );
 #! - <Ref Func='TGSuperCellModelGraph'/>:
 #!   constructs a supercell model graph from a model graph and a supercell choosing
 #!   representatives such that the resulting supercell is a symmetric connected cell.
-#! - <Ref Func='RandomTGSuperCellModelGraph'/>:
+#! - <Ref Func='UnrefinedTGSuperCellModelGraph'/>:
 #!   constructs a supercell model graph from a model graph and relators specifying
 #!   the supercell. Note that the resulting supercell is neither symmetric nor connected
 #!   in general. Usually, the representatives are automatically chosen and arbitrary,
@@ -108,6 +108,14 @@ DeclareGlobalFunction( "TGSuperCellModelGraph" );
 #!   translation group $\Gamma_\mathrm{sc}$, $T_{\Delta^+}(\Gamma_\mathrm{sc})$,
 #!   and $T_{\Gamma_\mathrm{pc}}(\Gamma_\mathrm{sc})$ can be given as optional
 #!   arguments <A>GAMgens</A>, <A>TDGAM</A>, and <A>TGAMs</A>, respectively.
+#! @Arguments model,scquotient[,GAMgens[,TDGAM[,TGAMs]]]
+#! @Returns cell graph as `Section_TGSuperCellModelGraph` object
+#! (see <Ref Sect='Section_TGSuperCellModelGraph'/>).
+DeclareGlobalFunction( "UnrefinedTGSuperCellModelGraph" );
+
+#! @Description
+#!   Same as <Ref Func='UnrefinedTGSuperCellModelGraph'/> but will be deprecated due to
+#!   the misleading name.
 #! @Arguments model,scquotient[,GAMgens[,TDGAM[,TGAMs]]]
 #! @Returns cell graph as `Section_TGSuperCellModelGraph` object
 #! (see <Ref Sect='Section_TGSuperCellModelGraph'/>).
