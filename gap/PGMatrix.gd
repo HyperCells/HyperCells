@@ -51,7 +51,8 @@ DeclareCategory( "IsPGMatricesOfGeneratorsObj", IsObject );
 #!   Constructs the point-group matrices for the generators `a`, `b` and `c` of the triangle group $\Delta$
 #!   specified by the `TriangleGroup` object <A>fulltg</A> (see <Ref Sect="Section_TriangleGroups"/>), which 
 #!   define a representation of the point group $G\cong\Delta/\Gamma$ specified by the triangle group quotient 
-#!   <A>tgquotient</A>, a `TGQuotient` object (see <Ref Sect="TGQuotient"/>). They are constructed through the
+#!   <A>tgquotient</A>, a `TGQuotient` object (see <Ref Sect="TGQuotient"/>). They are matrices of dimensions
+#!   `2g` x `2g`, where `g` is the genus of the Riemann surface the quotient acts upon. Each is constructed through the
 #!   use of the embedding homomorphism from the proper triangle group $\Delta^+$ to the triangle group $\Delta$, 
 #!   where the former is specified by the `ProperTriangleGroup` object <A>tg</A> (see <Ref Sect="Section_TriangleGroups"/>).
 #!
@@ -59,7 +60,7 @@ DeclareCategory( "IsPGMatricesOfGeneratorsObj", IsObject );
 #!   representation of the point-group matrices. If `sparse` is `true`, the point-group matrices are of the
 #!   form `[ [ [ rowIdx, colIdx ], entry ], ... ]`, where `entry` is the corresponding matrix element at
 #!   position `rowIdx` and `colIdx`, which represent indices of the matrix rows and columns, 
-#!   respectively. The default is `false`.
+#!   respectively. The default is `false`. 
 #! @Arguments fulltg, tg, tgquotient
 #! @Returns the point-group matrices of the (full) triangle group generators `a`, `b` and `c` as a
 #!   `PGMatricesOfGenerators` object.
@@ -164,10 +165,11 @@ DeclareCategory( "IsPGMatricesObj", IsObject );
 #!   or the reflection generators `x`, `y`, `z` of the proper triangle group $\Delta^+$, specified by the 
 #!   `TriangleGroup` object `fulltg` and `ProperTriangleGroup` object `tg`, respectively 
 #!   (see <Ref Sect="Section_TriangleGroups"/>). Each point-group matrix is constructed through a sequence of
-#!   matrix multiplications of the point-group matrices in <A>pgMatsGs</A>, i.e., the point-group matrices of
+#!   dense matrix multiplications of the point-group matrices in <A>pgMatsGs</A>, i.e., the point-group matrices of
 #!   the generators `a`, `b` and `c` of $\Delta$, which form representations of the point group previously 
 #!   specified by a corresponding triangle group quotient, `fulltg` and `tg`. The sequences are specified by the corresponding 
-#!   words in <A>symmetries</A>.
+#!   words in <A>symmetries</A>. The point-group matrices are of dimensions `2g` x `2g`, where `g` is the genus 
+#!   of the Riemann surface the quotient acts upon.
 #!
 #!   The option `symNames` can be used to specify the names of the <A>symmetries</A>. If a 
 #!   single symmetry is provided in the argument <A>symmetries</A>, `symNames` takes a single

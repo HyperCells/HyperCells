@@ -250,7 +250,7 @@ InstallMethod( EvaluatePGMatrix, [ IsElementOfFpGroup, IsPGMatricesOfGeneratorsO
 function(symmetry, pgMatsGs)	
     local fulltg, tg, tgFpObjs, D, DELTA, embDDELTA, 
      elementsRec, item, PGMat, PGMatRaw, signature, 
-     symmetriesDeconstructed;
+     symmetriesDeconstructed, quotient, Wrapped;
 
     # Get needed objects:
     # -------------------
@@ -262,6 +262,7 @@ function(symmetry, pgMatsGs)
     # embedding homomorphism of D in DELTA embDDELTA
     fulltg := GetTriangleGroup(pgMatsGs);
     tg := GetProperTriangleGroup(pgMatsGs);
+    quotient := TGQuotientName(pgMatsGs);
     tgFpObjs := constructTGFpAndEmb@(fulltg, tg);
     D := tgFpObjs[1];; DELTA := tgFpObjs[2];; embDDELTA := tgFpObjs[3];       
 	
@@ -304,7 +305,10 @@ function(symmetry, pgMatsGs)
         for item in symmetriesDeconstructed do       
            Append(PGMatRaw, [elementsRec.(String(item))]);
         od;
-        PGMat := Iterated(PGMatRaw, sparseMatMultiply@);
+	Wrapped := function(x, y) 
+	   return sparseMatMultiply@(x, y, [2*quotient[1],2*quotient[1]]); 
+	end;
+        PGMat := Iterated(PGMatRaw, Wrapped);
     else
         PGMatRaw := [];
         for item in symmetriesDeconstructed do       
@@ -369,8 +373,8 @@ end );
 InstallGlobalFunction( PGMatrices,
 function(symmetries, pgMatsGs)	
     local fulltg, tg, tgFpObjs, D, DELTA, embDDELTA, elementsRec,
-     i, item, pgMatsRec, PGMatRaw, signature, symNames, 
-     symmetriesDeconstructed, F;
+     i, item, pgMatsRec, PGMatRaw, signature, symNames, Wrapped, 
+     quotient, symmetriesDeconstructed, F;
 
     # Check second argument:
     # ----------------------
@@ -391,6 +395,7 @@ function(symmetries, pgMatsGs)
     # embedding homomorphism of D in DELTA embDDELTA
     fulltg := GetTriangleGroup(pgMatsGs);
     tg := GetProperTriangleGroup(pgMatsGs);
+    quotient := TGQuotientName(pgMatsGs);
     tgFpObjs := constructTGFpAndEmb@(fulltg, tg);
     D := tgFpObjs[1];; DELTA := tgFpObjs[2];; embDDELTA := tgFpObjs[3];       
 	
@@ -455,12 +460,15 @@ function(symmetries, pgMatsGs)
 
     pgMatsRec := rec();
     if IsSparse(pgMatsGs) then
+	Wrapped := function(x, y) 
+	   return sparseMatMultiply@(x, y, [2*quotient[1],2*quotient[1]]); 
+	end;
         for i in [1..Length(symmetriesDeconstructed)] do 
             PGMatRaw := [];
             for item in symmetriesDeconstructed[i] do       
            	Append(PGMatRaw, [elementsRec.(String(item))]);
             od;
-            pgMatsRec.(symNames[i]) := Iterated(PGMatRaw, sparseMatMultiply@);
+            pgMatsRec.(symNames[i]) := Iterated(PGMatRaw, Wrapped);
 	od;
     else
         for i in [1..Length(symmetriesDeconstructed)] do 

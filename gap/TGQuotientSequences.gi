@@ -742,11 +742,6 @@ function(tg)
 
 end );
 
-# Takes a matrix and replaces each entry 
-# by its sign: +/- 1 for non-zero entries, 0 otherwise.
-signMatrix@ := function(mat)
-	return List(mat, row -> List(row, entry -> SignInt(entry)));
-end;
 
 # Subtracts sparse matrix mat2 from mat1. (Not optimized)
 sparseMatSubtract@ := function(mat1, mat2)
@@ -795,14 +790,16 @@ end;
 
 InstallMethod( NearestNeighborAdjacencyMatrix, [ IsTGQuotientSequencesStructureObj and IsTGQuotientSequencesStructureComponentRep ], 
 function(tgQSS)
-	local adjMat, NNadjMat;
+	local adjMat, quotients, dims, NNadjMat;
 	
 	# get the adjacency matrix
 	adjMat := AdjacencyMatrix(tgQSS);
+	quotients := GetListTGQuotients(tgQSS);
+	dims := [Length(quotients),Length(quotients)];
 
 	# check for sparsity and subtract the signed matrix 2nd matrix power of adjMat from adjMat
 	if IsSparse(tgQSS) then	
-		NNadjMat := sparseMatSubtract@(adjMat,sparseMatMultiply@(adjMat,adjMat : signed := true));
+		NNadjMat := sparseMatSubtract@(adjMat,sparseMatMultiply@(adjMat, adjMat, dims : signed := true));
 	else 
 		NNadjMat := adjMat - signMatrix@(adjMat*adjMat);
 	fi;
