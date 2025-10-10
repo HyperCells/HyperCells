@@ -298,7 +298,19 @@ function(symmetry, pgMatsGs)
     # ------------------------------------------
 
     # record of point-group matrices a, b, c
-    elementsRec := PGMatricesRec(pgMatsGs); 
+    elementsRec := rec();
+    
+    if IsSparse(pgMatsGs) then
+	for item in RecNames(PGMatricesRec(pgMatsGs)) do
+		elementsRec.(item) := PGMatricesRec(pgMatsGs).(item);
+		elementsRec.(JoinStringsWithSeparator([item, "^-1"],"")) := toSparseMat@(Inverse(toDenseMat@(elementsRec.(item), [2*quotient[1],2*quotient[1]])));
+	od;
+    else
+	for item in RecNames(PGMatricesRec(pgMatsGs)) do
+		elementsRec.(item) := PGMatricesRec(pgMatsGs).(item);
+		elementsRec.(JoinStringsWithSeparator([item, "^-1"],"")) := Inverse(elementsRec.(item));
+	od;	
+    fi;
 
     if IsSparse(pgMatsGs) then
         PGMatRaw := [];
@@ -456,7 +468,19 @@ function(symmetries, pgMatsGs)
     # ------------------------------------------
 
     # record of point-group matrices a, b, c
-    elementsRec := PGMatricesRec(pgMatsGs); 
+    elementsRec := rec();
+    
+    if IsSparse(pgMatsGs) then
+	for item in RecNames(PGMatricesRec(pgMatsGs)) do
+		elementsRec.(item) := PGMatricesRec(pgMatsGs).(item);
+		elementsRec.(JoinStringsWithSeparator([item, "^-1"],"")) := toSparseMat@(Inverse(toDenseMat@(elementsRec.(item), [2*quotient[1],2*quotient[1]])));
+	od;
+    else
+	for item in RecNames(PGMatricesRec(pgMatsGs)) do
+		elementsRec.(item) := PGMatricesRec(pgMatsGs).(item);
+		elementsRec.(JoinStringsWithSeparator([item, "^-1"],"")) := Inverse(elementsRec.(item));
+	od;	
+    fi;
 
     pgMatsRec := rec();
     if IsSparse(pgMatsGs) then
