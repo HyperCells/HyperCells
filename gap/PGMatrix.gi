@@ -298,23 +298,43 @@ function(symmetry, pgMatsGs)
     # ------------------------------------------
 
     # record of point-group matrices a, b, c
-    elementsRec := PGMatricesRec(pgMatsGs); 
-
+    elementsRec := rec();
+    
     if IsSparse(pgMatsGs) then
-        PGMatRaw := [];
-        for item in symmetriesDeconstructed do       
-           Append(PGMatRaw, [elementsRec.(String(item))]);
-        od;
-	Wrapped := function(x, y) 
-	   return sparseMatMultiply@(x, y, [2*quotient[1],2*quotient[1]]); 
-	end;
-        PGMat := Iterated(PGMatRaw, Wrapped);
+	for item in RecNames(PGMatricesRec(pgMatsGs)) do
+		elementsRec.(item) := PGMatricesRec(pgMatsGs).(item);
+		elementsRec.(JoinStringsWithSeparator([item, "^-1"],"")) := toSparseMat@(Inverse(toDenseMat@(elementsRec.(item), [2*quotient[1],2*quotient[1]])));
+	od;
     else
-        PGMatRaw := [];
-        for item in symmetriesDeconstructed do       
-            Append(PGMatRaw, [elementsRec.(String(item))]);
-        od;
-        PGMat := Product(PGMatRaw);
+	for item in RecNames(PGMatricesRec(pgMatsGs)) do
+		elementsRec.(item) := PGMatricesRec(pgMatsGs).(item);
+		elementsRec.(JoinStringsWithSeparator([item, "^-1"],"")) := Inverse(elementsRec.(item));
+	od;	
+    fi;
+	
+    if Length(symmetriesDeconstructed) = 0 then
+	if IsSparse(pgMatsGs) then
+		PGMat := List([1..2*quotient[1]], i -> [ [ i, i ], 1 ]);
+	else
+		PGMat := IdentityMat(2*quotient[1]);
+	fi;
+    else
+	if IsSparse(pgMatsGs) then
+ 		PGMatRaw := [];
+ 		for item in symmetriesDeconstructed do       
+			Append(PGMatRaw, [elementsRec.(String(item))]);
+		od;
+		Wrapped := function(x, y) 
+			return sparseMatMultiply@(x, y, [2*quotient[1], 2*quotient[1]]); 
+		end;
+		PGMat := Iterated(PGMatRaw, Wrapped);
+	else
+		PGMatRaw := [];
+		for item in symmetriesDeconstructed do       
+			Append(PGMatRaw, [elementsRec.(String(item))]);
+		od;
+		PGMat := Product(PGMatRaw);
+	fi;
     fi;
 
     return PGMat;
@@ -456,27 +476,49 @@ function(symmetries, pgMatsGs)
     # ------------------------------------------
 
     # record of point-group matrices a, b, c
-    elementsRec := PGMatricesRec(pgMatsGs); 
+    elementsRec := rec();
+    
+    if IsSparse(pgMatsGs) then
+	for item in RecNames(PGMatricesRec(pgMatsGs)) do
+		elementsRec.(item) := PGMatricesRec(pgMatsGs).(item);
+		elementsRec.(JoinStringsWithSeparator([item, "^-1"],"")) := toSparseMat@(Inverse(toDenseMat@(elementsRec.(item), [2*quotient[1],2*quotient[1]])));
+	od;
+    else
+	for item in RecNames(PGMatricesRec(pgMatsGs)) do
+		elementsRec.(item) := PGMatricesRec(pgMatsGs).(item);
+		elementsRec.(JoinStringsWithSeparator([item, "^-1"],"")) := Inverse(elementsRec.(item));
+	od;	
+    fi;
 
     pgMatsRec := rec();
     if IsSparse(pgMatsGs) then
 	Wrapped := function(x, y) 
-	   return sparseMatMultiply@(x, y, [2*quotient[1],2*quotient[1]]); 
+		return sparseMatMultiply@(x, y, [2*quotient[1],2*quotient[1]]); 
 	end;
         for i in [1..Length(symmetriesDeconstructed)] do 
-            PGMatRaw := [];
-            for item in symmetriesDeconstructed[i] do       
-           	Append(PGMatRaw, [elementsRec.(String(item))]);
-            od;
-            pgMatsRec.(symNames[i]) := Iterated(PGMatRaw, Wrapped);
+		if Length(symmetriesDeconstructed[i]) = 0 then
+            		PGMatRaw := List([1..2*quotient[1]], i -> [ [ i, i ], 1 ]);
+			pgMatsRec.(symNames[i]) := PGMatRaw;
+		else
+			PGMatRaw := [];
+            		for item in symmetriesDeconstructed[i] do       
+           			Append(PGMatRaw, [elementsRec.(String(item))]);
+            		od;
+            		pgMatsRec.(symNames[i]) := Iterated(PGMatRaw, Wrapped);
+		fi;
 	od;
     else
         for i in [1..Length(symmetriesDeconstructed)] do 
-            PGMatRaw := [];
-            for item in symmetriesDeconstructed[i] do       
-           	Append(PGMatRaw, [elementsRec.(String(item))]);
-            od;
-            pgMatsRec.(symNames[i]) := Product(PGMatRaw);
+		if Length(symmetriesDeconstructed[i]) = 0 then
+			PGMatRaw := IdentityMat(2*quotient[1]);
+			pgMatsRec.(symNames[i]) := PGMatRaw;
+		else
+			PGMatRaw := [];
+            		for item in symmetriesDeconstructed[i] do       
+           			Append(PGMatRaw, [elementsRec.(String(item))]);
+            		od;
+            		pgMatsRec.(symNames[i]) := Product(PGMatRaw);
+		fi;
 	od;
     fi;
 
@@ -492,8 +534,20 @@ end );
 
 InstallMethod( Export, [  IsPGMatricesObj, IsOutputTextStream ],
 function(pgMats, output)
-    local pgMatGs, pgMatGsRec, pgMatSymsRec, tgquotient, syms, symNames;
+    local pgMatGs, pgMatGsRec, pgMatSymsRec, tgquotient, syms, symNames,
+	wordToString;
     
+    wordToString := function(g)
+	local s;
+	
+	s := String(g); 
+	if s = "<identity ...>" then
+		return " 1";
+	else
+		return s; 
+	fi;
+    end;
+
     pgMatGs := GetPGMatricesOfGenerators(pgMats);
     tgquotient := GetTGQuotient(pgMatGs);
     pgMatGsRec := PGMatricesRec(pgMatGs);
@@ -520,7 +574,7 @@ function(pgMats, output)
 	AppendTo(output, "\n");
 
     # write: point-group matrices of symmetries
-	AppendTo(output, List([1..Length(symNames)], i -> [[symNames[i], String(syms[i])], pgMatSymsRec.(symNames[i])]));
+	AppendTo(output, List([1..Length(symNames)], i -> [[symNames[i], wordToString(syms[i])], pgMatSymsRec.(symNames[i])]));
 end );
 
 
@@ -647,7 +701,7 @@ function(input, args...)
 		PGMatSymsRec!.(symmetryNames[i, 1]) := pgMatSymsLst[i, 2];
 		
 		# reconstruct word
-		if symmetryStrs[i, 1][1] in "abc" then
+		if symmetryStrs[i, 1][1] in "abc" or symmetryStrs[i, 1][1] = " 1" then
 			Append(symmetries, [EvalDELTAString@(symmetryStrs[i, 1], DELTA)]);
 		else
 			Append(symmetries, [EvalDString@(symmetryStrs[i, 1], D)]);
