@@ -106,6 +106,9 @@ gap> scmodel = scmodel2;
 true
 
 gap> scmodelrand := RandomTGSuperCellModelGraph(model, TGQuotient([3, 11]) : simplify := 0);
+Warning: The function RandomTGSuperCellModelGraph has been renamed to Unrefine\
+dTGSuperCellModelGraph. The old name will be deprecated, use UnrefinedTGSuperC\
+ellModelGraph instead.
 TGSuperCellModelGraph( primitive cell = TGCell( ProperTriangleGroup(2, 8, 8), \
 [ x^2, x*y*z, x*z*y, y^3*z^-1 ] ), supercell = TGCell( ProperTriangleGroup(2, \
 8, 8), [ x^2, x*y*z, x*z*y, y^-8 ] ), cell embedding = TGCellEmbedding( primit\
