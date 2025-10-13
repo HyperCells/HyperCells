@@ -106,6 +106,29 @@ gap> scmodel = scmodel2;
 true
 
 gap> scmodelrand := RandomTGSuperCellModelGraph(model, TGQuotient([3, 11]) : simplify := 0);
+Warning: The function RandomTGSuperCellModelGraph has been renamed to Unrefine\
+dTGSuperCellModelGraph. The old name will be deprecated, use UnrefinedTGSuperC\
+ellModelGraph instead.
+TGSuperCellModelGraph( primitive cell = TGCell( ProperTriangleGroup(2, 8, 8), \
+[ x^2, x*y*z, x*z*y, y^3*z^-1 ] ), supercell = TGCell( ProperTriangleGroup(2, \
+8, 8), [ x^2, x*y*z, x*z*y, y^-8 ] ), cell embedding = TGCellEmbedding( primit\
+ive cell = TGCellTranslationGroup( < g1, g2, g3, g4 | g2*g1^-1*g4^-1*g3*g2^-1*\
+g1*g4*g3^-1 > ), supercell = TGCellTranslationGroup( < g1, g2, g3, g4, g5, g6 \
+| g6*g4*g2*g1*g3*g5*g3^-1*g2^-1*g6^-1*g5^-1*g1^-1*g4^-1 > ), transversal = [ <\
+identity ...>, y^3*z^-1 ], embedding = [ g1, g2, g3, g4, g5, g6 ] -> [ g1^-1*g\
+4^-1, g1^-1*g2, g3*g4^-1, g1^-1*g2*g4^-1*g1^-1*g2*g3^-1*g4*g1*g2^-1*g1, g4*g1^\
+-1*g4^-1*g3*g2^-1*g1, g1^-1*g2*g3^-1*g4*g2^-1*g1 ] ), center = 3, type = [ "TE\
+SS", [ 8, 8 ], [ "VEF", [ [ 3 ], [ 1 ], [ 2 ] ] ] ], vertices = [ [ 3, 1, 1 ],\
+ [ 3, 1, 2 ] ], edges = [ [ 1, 2, [ 1, 1, [ 1, [ [ 1, 1 ], 1, 5 ] ] ], g1^-1*g\
+2^-1*g4^-1*g6^-1*g4 ], [ 1, 2, [ 1, 1, [ 1, [ [ 1, 2 ], 4, 8 ] ] ], g1^-1*g2^-\
+1*g4^-1*g2 ], [ 1, 2, [ 1, 1, [ 1, [ [ 1, 3 ], 2, 6 ] ] ], g1^-1*g2^-1*g4^-1*g\
+6^-1*g4*g2 ], [ 1, 2, [ 1, 1, [ 1, [ [ 1, 4 ], 3, 7 ] ] ], g1^-1*g2^-1*g4^-1*g\
+2*g3*g5^-1*g3^-1*g1^-1*g2^-1*g4^-1*g6^-1*g4*g1*g5*g2 ], [ 2, 1, [ 1, 1, [ 1, [\
+ [ 1, 1 ], 1, 5 ] ] ], g3*g5^-1*g3^-1 ], [ 2, 1, [ 1, 1, [ 1, [ [ 1, 2 ], 4, 8\
+ ] ] ], g1^-1*g4^-1*g6*g4*g2*g1 ], [ 2, 1, [ 1, 1, [ 1, [ [ 1, 3 ], 2, 6 ] ] ]\
+, g3*g5^-1*g1^-1*g4^-1*g6*g4*g2*g1 ], [ 2, 1, [ 1, 1, [ 1, [ [ 1, 4 ], 3, 7 ] \
+] ], g3*g1^-1*g4^-1*g6*g4*g2*g1 ] ], faces = [ ] )
+gap> scmodelrand := UnrefinedTGSuperCellModelGraph(model, TGQuotient([3, 11]) : simplify := 0);
 TGSuperCellModelGraph( primitive cell = TGCell( ProperTriangleGroup(2, 8, 8), \
 [ x^2, x*y*z, x*z*y, y^3*z^-1 ] ), supercell = TGCell( ProperTriangleGroup(2, \
 8, 8), [ x^2, x*y*z, x*z*y, y^-8 ] ), cell embedding = TGCellEmbedding( primit\
@@ -299,7 +322,7 @@ y^-1*x^-1)^3, (y^-1*x^-1)^4, y^-1*(y^-1*x^-1)^5, y^-1*x^-1*y^-1*(y^-1*x^-1)^6,\
 *g5*g6*g16^-1, g16^-1, g6*g16^-1, g1*g16^-1 ]\n[ ]"
 
 # Additional supercells (non-symmetric)
-gap> ExportString(RandomTGSuperCellModelGraph(model, TGQuotient([17, 29]) : simplify := 0));
+gap> ExportString(UnrefinedTGSuperCellModelGraph(model, TGQuotient([17, 29]) : simplify := 0));
 "HyperCells HCS version 1.0\n[ 2, 8, 8 ]\n[ [ x^2, x*y*z, x*z*y, y^3*z^-1 ], [\
  x^2, x*y*z, x*z*y^-2*z^-2*y, y^8, (y*z^-1*y^2)^2, z^8 ], 3 ]\n[ g1, g2, g3, g\
 4 ] -> [ z^-1*x^-1*y*z^-1*y*z*y*x^-1, z^-1*x^-1*y*z^-1*y*z*y*x^-1*y*x*z, z*y*(\
@@ -445,7 +468,7 @@ gap> model := TessellationModelGraph(cg, false : simplify := 0);;
 
 # Check number of generators
 gap> scq := TGQuotient([33, 1]);;
-gap> Length(GeneratorsOfGroup(FpGroup(TGCellTranslationGroup(GetTGSuperCell(RandomTGSuperCellModelGraph(model, scq : simplify := 0)))))) = 2 * TGQuotientGenus(scq);
+gap> Length(GeneratorsOfGroup(FpGroup(TGCellTranslationGroup(GetTGSuperCell(UnrefinedTGSuperCellModelGraph(model, scq : simplify := 0)))))) = 2 * TGQuotientGenus(scq);
 true
 gap> Length(GeneratorsOfGroup(FpGroup(TGCellTranslationGroup(GetTGSuperCell(TGSuperCellModelGraph(model, TGCell(tg, scq) : simplify := 0)))))) = 2 * TGQuotientGenus(scq);
 true

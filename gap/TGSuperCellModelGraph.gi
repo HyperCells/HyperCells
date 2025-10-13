@@ -322,7 +322,7 @@ function(model, sc)
 	));
 end );
 
-InstallGlobalFunction( RandomTGSuperCellModelGraph,
+InstallGlobalFunction( UnrefinedTGSuperCellModelGraph,
 function(model, scquotient, args...)
 	local simplify, tg, D, pc, GAMMA0, screls,
 		Gplus, GAM, GAMMA, homDG, fpGAM, isofpGAM, TDGAM,
@@ -504,6 +504,12 @@ function(model, scquotient, args...)
 		edges := MakeImmutable(edges),
 		faces := MakeImmutable(faces)
 	));
+end );
+
+InstallGlobalFunction( RandomTGSuperCellModelGraph,
+function(model, scquotient, args...)
+	Print("Warning: The function RandomTGSuperCellModelGraph has been renamed to UnrefinedTGSuperCellModelGraph. The old name will be deprecated, use UnrefinedTGSuperCellModelGraph instead.\n");
+	return CallFuncList(UnrefinedTGSuperCellModelGraph, Concatenation([model, scquotient], args));
 end );
 
 InstallMethod( \=, [
