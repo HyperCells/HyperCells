@@ -4,12 +4,28 @@ gap> START_TEST("HyperCells: PGMatrix.tst");
 gap> fulltg := TriangleGroup( [ 2, 8, 8 ] );;
 gap> tg := ProperTriangleGroup( [ 2, 8, 8 ] );;
 gap> qpc := TGQuotient( 1, [ 2, 8, 8 ] );;
+gap> cell_graph := TGCellGraph( tg, qpc, 3 );;
+gap> cell := GetTGCell( cell_graph );;
 
 # FpGroups and symmetry elements
 gap> D := FpGroup(tg);;
 gap> DELTA := FpGroup(fulltg);;
 gap> symmetries := [DELTA.1, DELTA.2, DELTA.3, D.1, D.2, D.3, D.3^-1, D.3*D.3^-1, DELTA.2*DELTA.1*DELTA.3, D.1*D.2];;
 gap> symNames := ["A", "B", "C", "X", "Y", "Z", "z^-1", "id", "BAC", "XY"];;
+
+gap> pgMatGs := PGMatricesOfGenerators(fulltg, tg, qpc, cell_graph);
+PGMatricesOfGenerators( TriangleGroup(2, 8, 8), ProperTriangleGroup(2, 8, 8), TGQuotient([ 2, 6 ], [ 2, 8, 8 ], 8, 2, \
+Action reflexible [m,n], [ x^2, x * y * z, x * z * y, y^3 * z^-1 ]), sparse = false, tgGenerators = [ a, b, c ], pgMat\
+ricesRec = rec( a := [ [ 1, 0, 0, 0 ], [ 0, 0, 0, -1 ], [ 0, 0, -1, 0 ], [ 0, -1, 0, 0 ] ], b := [ [ -1, 0, 0, 0 ], [ \
+0, 0, 0, 1 ], [ 0, 0, 1, 0 ], [ 0, 1, 0, 0 ] ], c := [ [ 0, 0, 0, -1 ], [ 0, 0, -1, 0 ], [ 0, -1, 0, 0 ], [ -1, 0, 0, \
+0 ] ] ))
+
+gap> pgMatGs := PGMatricesOfGenerators(fulltg, tg, qpc, cell);
+PGMatricesOfGenerators( TriangleGroup(2, 8, 8), ProperTriangleGroup(2, 8, 8), TGQuotient([ 2, 6 ], [ 2, 8, 8 ], 8, 2, \
+Action reflexible [m,n], [ x^2, x * y * z, x * z * y, y^3 * z^-1 ]), sparse = false, tgGenerators = [ a, b, c ], pgMat\
+ricesRec = rec( a := [ [ 1, 0, 0, 0 ], [ 0, 0, 0, -1 ], [ 0, 0, -1, 0 ], [ 0, -1, 0, 0 ] ], b := [ [ -1, 0, 0, 0 ], [ \
+0, 0, 0, 1 ], [ 0, 0, 1, 0 ], [ 0, 1, 0, 0 ] ], c := [ [ 0, 0, 0, -1 ], [ 0, 0, -1, 0 ], [ 0, -1, 0, 0 ], [ -1, 0, 0, \
+0 ] ] ))
 
 gap> pgMatGs := PGMatricesOfGenerators(fulltg, tg, qpc);
 PGMatricesOfGenerators( TriangleGroup(2, 8, 8), ProperTriangleGroup(2, 8, 8), TGQuotient([ 2, 6 ], [ 2, 8, 8 ], 8, 2, \
@@ -280,6 +296,24 @@ true
 
 # Test on supercell
 gap> qsc := TGQuotient( [3, 11] );;
+gap> cell_graph_sc := TGCellGraph( tg, qsc, 3 );;
+gap> cell_sc := GetTGCell( cell_graph_sc );;
+
+gap> pgMatGs := PGMatricesOfGenerators(fulltg, tg, qsc, cell_graph_sc);
+PGMatricesOfGenerators( TriangleGroup(2, 8, 8), ProperTriangleGroup(2, 8, 8), TGQuotient([ 3, 11 ], [ 2, 8, 8 ], 16, 3\
+, Action reflexible [m,n], [ x^2, x * y * z, x * z * y, y^-8 ]), sparse = false, tgGenerators = [ a, b, c ], pgMatrice\
+sRec = rec( a := [ [ 0, -1, 0, 0, 0, 0 ], [ -1, 0, 0, 0, 0, 0 ], [ 0, 1, 0, 1, 0, 1 ], [ 1, 0, 1, 0, 1, 0 ], [ 0, 0, 0\
+, 0, 0, -1 ], [ 0, 0, 0, 0, -1, 0 ] ], b := [ [ 0, 1, 0, 0, 0, 0 ], [ 1, 0, 0, 0, 0, 0 ], [ 0, -1, 0, -1, 0, -1 ], [ -\
+1, 0, -1, 0, -1, 0 ], [ 0, 0, 0, 0, 0, 1 ], [ 0, 0, 0, 0, 1, 0 ] ], c := [ [ -1, 0, 0, 0, 0, 0 ], [ 0, 1, 0, 1, 0, 1 ]\
+, [ 1, 0, 1, 0, 1, 0 ], [ 0, 0, 0, 0, 0, -1 ], [ 0, 0, 0, 0, -1, 0 ], [ 0, 0, 0, -1, 0, 0 ] ] ))
+
+gap> pgMatGs := PGMatricesOfGenerators(fulltg, tg, qsc, cell_sc);
+PGMatricesOfGenerators( TriangleGroup(2, 8, 8), ProperTriangleGroup(2, 8, 8), TGQuotient([ 3, 11 ], [ 2, 8, 8 ], 16, 3\
+, Action reflexible [m,n], [ x^2, x * y * z, x * z * y, y^-8 ]), sparse = false, tgGenerators = [ a, b, c ], pgMatrice\
+sRec = rec( a := [ [ 0, -1, 0, 0, 0, 0 ], [ -1, 0, 0, 0, 0, 0 ], [ 0, 1, 0, 1, 0, 1 ], [ 1, 0, 1, 0, 1, 0 ], [ 0, 0, 0\
+, 0, 0, -1 ], [ 0, 0, 0, 0, -1, 0 ] ], b := [ [ 0, 1, 0, 0, 0, 0 ], [ 1, 0, 0, 0, 0, 0 ], [ 0, -1, 0, -1, 0, -1 ], [ -\
+1, 0, -1, 0, -1, 0 ], [ 0, 0, 0, 0, 0, 1 ], [ 0, 0, 0, 0, 1, 0 ] ], c := [ [ -1, 0, 0, 0, 0, 0 ], [ 0, 1, 0, 1, 0, 1 ]\
+, [ 1, 0, 1, 0, 1, 0 ], [ 0, 0, 0, 0, 0, -1 ], [ 0, 0, 0, 0, -1, 0 ], [ 0, 0, 0, -1, 0, 0 ] ] ))
 
 gap> pgMatGs := PGMatricesOfGenerators(fulltg, tg, qsc);
 PGMatricesOfGenerators( TriangleGroup(2, 8, 8), ProperTriangleGroup(2, 8, 8), TGQuotient([ 3, 11 ], [ 2, 8, 8 ], 16, 3\
