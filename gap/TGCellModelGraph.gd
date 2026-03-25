@@ -207,11 +207,11 @@ DeclareGlobalFunction( "KagomeModelGraph" );
 #!   @BeginLog
 #! [ "LIEB", [ p, q ], [ "VEF", [ [ 1, 2 ], [  ], [ 3 ] ] ] ]
 #!   @EndLog
-#!   for the $\{p,q\}$ tesselation and to
+#!   for the $\{p,q\}$ tessellation and to
 #!   @BeginLog
 #! [ "LIEB", [ q, p ], [ "VEF", [ [ 1, 3 ], [  ], [ 2 ] ] ] ]
 #!   @EndLog
-#!   for the $\{q,p\}$ tesselation.
+#!   for the $\{q,p\}$ tessellation.
 #!   The edge tags are given in the same format as in <Ref Func='TGCellModelGraph'/>.
 #! @Arguments cellgraph[,dual]
 #! @Returns the model graph as `TGCellModelGraph` object
@@ -282,11 +282,11 @@ DeclareOperation( "GetTGCell", [ IsTGCellModelGraphObj ] );
 #!     @BeginLog
 #! [ "LIEB", [ p, q ], [ "VEF", [ [ 1, 2 ], [  ], [ 3 ] ] ] ]
 #!     @EndLog
-#!     for the $\{p,q\}$ tesselation and as
+#!     for the $\{p,q\}$ tessellation and as
 #!     @BeginLog
 #! [ "LIEB", [ q, p ], [ "VEF", [ [ 1, 3 ], [  ], [ 2 ] ] ] ]
 #!     @EndLog
-#!     for the (dual) $\{q,p\}$ tesselation.
+#!     for the (dual) $\{q,p\}$ tessellation.
 #!     See <Ref Func='LiebModelGraph'/> for details.
 #! @Arguments model
 #! @Label for TGCellModelGraph

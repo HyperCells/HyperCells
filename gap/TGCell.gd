@@ -54,7 +54,7 @@
 DeclareGlobalFunction( "TGCell" );
 
 #! @Description
-#!   Construct the **symmetric** and at `center`centered cell for the triangle group
+#!   Construct the **symmetric** and at `center` centered cell for the triangle group
 #!   <A>tg</A> ($\Delta^+$), given as `ProperTriangleGroup` object
 #!   (see <Ref Sect="Section_TriangleGroups"/>), specified by the quotient <A>q</A>
 #!   given as a `TGQuotient` object <A>quotient</A>
