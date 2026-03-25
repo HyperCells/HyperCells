@@ -56,12 +56,16 @@ DeclareCategory( "IsPGMatricesOfGeneratorsObj", IsObject );
 #!   use of the embedding homomorphism from the proper triangle group $\Delta^+$ to the triangle group $\Delta$, 
 #!   where the former is specified by the `ProperTriangleGroup` object <A>tg</A> (see <Ref Sect="Section_TriangleGroups"/>).
 #!
+#!   Optionally, a TGCell object or a TGCellGraph object <A>TGce</A> can be given derived from the triangle group quotient 
+#!   <A>tgquotient</A>. If not given, the point-group matrices are constructed from the automatically generated cell of the
+#!   triangle group specified by <A>tgquotient</A> using the function <Ref Func='TGCell'/>.
+#!
 #!   The option `sparse`, which takes a boolean, can be used to generate a sparse 
 #!   representation of the point-group matrices. If `sparse` is `true`, the point-group matrices are of the
 #!   form `[ [ [ rowIdx, colIdx ], entry ], ... ]`, where `entry` is the corresponding matrix element at
 #!   position `rowIdx` and `colIdx`, which represent indices of the matrix rows and columns, 
 #!   respectively. The default is `false`. 
-#! @Arguments fulltg, tg, tgquotient
+#! @Arguments fulltg, tg, tgquotient[,TGce]
 #! @Returns the point-group matrices of the (full) triangle group generators `a`, `b` and `c` as a
 #!   `PGMatricesOfGenerators` object.
 DeclareGlobalFunction( "PGMatricesOfGenerators" );
