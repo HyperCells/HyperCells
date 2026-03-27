@@ -109,10 +109,10 @@ function(fulltg, tg, tgquotient, args...)
 
     if Length(args) > 0 then
         if not (IsTGCellObj(args[1]) or IsTGCellGraphObj(args[1])) then
-            Error("The optional argument must be a TGCell object or a TGCellGraph object.");
+            Error("The optional argument must be a TGCell or TGCellGraph object.");
             return fail;
 	elif not GetProperTriangleGroup(args[1]) = tg then 
-            Error("The optional argument must have the same signature as the arguments.");
+            Error("The optional argument must be derived from the triangle group tg.");
             return fail;
         fi;	
     fi;
@@ -189,7 +189,7 @@ function(fulltg, tg, tgquotient, args...)
     # check quotient equivalence via the translation groups
     if Length(args) > 0 then
         if not AsTGSubgroup(cellGamma) = AsTGSubgroup(TGTranslationGroup(tg, tgquotient)) then
-            Error("The optional argument must be derived from the third argument.");
+            Error("The optional argument must be derived from the quotient tgquotient.");
             return fail;
         fi;
     fi;
