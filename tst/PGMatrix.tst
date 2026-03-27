@@ -1,5 +1,21 @@
 gap> START_TEST("HyperCells: PGMatrix.tst");
 
+
+# Preliminary test: Triangle group (2,4,6)
+gap> fulltg := TriangleGroup( [ 2, 4, 6 ] );;
+gap> tg := ProperTriangleGroup( [ 2, 4, 6 ] );;
+gap> qpc := TGQuotient( 1, [ 2, 4, 6 ] );;
+gap> cell_graph := TGCellGraph( tg, qpc, 3 );;
+
+# Define known point-group matrix:
+gap> Mz := [ [ 0, 1, 0, 0 ], [ 0, 0, 1, 0 ], [ 0, 0, 0, 1 ], [ -1, 0, -1, 0 ] ];;
+
+# FpGroups and symmetry elements
+gap> sym := FpGroup(tg).3;
+gap> pgMatGs := PGMatricesOfGenerators(fulltg, tg, qpc, cell_graph);;
+gap> EvaluatePGMatrix(sym, pgMatGs) = Mz;
+true
+
 # Triangle group (2,8,8)
 gap> fulltg := TriangleGroup( [ 2, 8, 8 ] );;
 gap> tg := ProperTriangleGroup( [ 2, 8, 8 ] );;
