@@ -11,7 +11,7 @@ gap> cell_graph := TGCellGraph( tg, qpc, 3 );;
 gap> Mz := [ [ 0, 1, 0, 0 ], [ 0, 0, 1, 0 ], [ 0, 0, 0, 1 ], [ -1, 0, -1, 0 ] ];;
 
 # FpGroups and symmetry elements
-gap> sym := FpGroup(tg).3;
+gap> sym := FpGroup(tg).3;;
 gap> pgMatGs := PGMatricesOfGenerators(fulltg, tg, qpc, cell_graph);;
 gap> EvaluatePGMatrix(sym, pgMatGs) = Mz;
 true
