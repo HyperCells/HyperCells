@@ -74,9 +74,9 @@ end );
 
 
 InstallGlobalFunction( PGMatricesOfGenerators,
-function(fulltg, tg, tgquotient)
+function(fulltg, tg, tgquotient, args...)
     local signature, sparse, quotient, D, DELTA, symmetries, embDDELTA, G, rels,
-     relsfull, cellGamma, GAMMA, fpGAMMA, gensGamma, gensGammaABC, gensGammaFp, 
+     relsfull, cellGamma, fpGAMMA, gensGamma, gensGammaABC, gensGammaFp, 
      homDeltaG, kernDeltaG, isoGamma, PGMRawLst, PGMatrixRaw, transOp, trans1, 
      trans2, tempGroup, homtemp, PGMLst, lst, matInt, item, i, j, entry, 
      row, symNames, idn, F, tgFpObjs, cell, Gplus, pgMatsRec;
@@ -100,9 +100,23 @@ function(fulltg, tg, tgquotient)
     fi;
 
     if not  Signature(fulltg) = Signature(tg) or not  Signature(tg) = TriangleGroupSignature(tgquotient) then
-        Error("The arguments must have the same signatures.");
+   	Error("The arguments must have the same signatures.");
         return fail;
     fi;
+
+    # Check optional argument:
+    # ------------------------
+
+    if Length(args) > 0 then
+        if not (IsTGCellObj(args[1]) or IsTGCellGraphObj(args[1])) then
+            Error("The optional argument must be a TGCell or TGCellGraph object.");
+            return fail;
+	elif not GetProperTriangleGroup(args[1]) = tg then 
+            Error("The optional argument must be derived from the triangle group tg.");
+            return fail;
+        fi;	
+    fi;
+
 
     # --------------
     # Check options:
@@ -121,7 +135,16 @@ function(fulltg, tg, tgquotient)
     # ---------------
 
     signature := TriangleGroupSignature(tgquotient);
-    cell := TGCell(tg, tgquotient);
+
+    if Length(args) > 0 then
+        if IsTGCellGraphObj(args[1]) then
+            cell := GetTGCell(args[1]);
+        else
+            cell := args[1];
+        fi;
+    else
+        cell := TGCell(tg, tgquotient);
+    fi;
 
     # --------------------------------------------------
     # Construct groups, symmetry elements and embedding:
@@ -159,13 +182,20 @@ function(fulltg, tg, tgquotient)
     # ------------------
     # Perform embedding:
     # ------------------
-     
+
     # get point group and translation group obj.s
     cellGamma := TGCellTranslationGroup(cell); 
 
+    # check quotient equivalence via the translation groups
+    if Length(args) > 0 then
+        if not AsTGSubgroup(cellGamma) = AsTGSubgroup(TGTranslationGroup(tg, tgquotient)) then
+            Error("The optional argument must be derived from the quotient tgquotient.");
+            return fail;
+        fi;
+    fi;
+
     # construct translation group
-    GAMMA := AsTGSubgroup(cellGamma);
-    gensGamma := GeneratorsOfGroup(GAMMA);	
+    gensGamma := Generators(cellGamma);	
 
     # get translation op.'s in terms of reflection op.'s
     # Note: I explicitly want these generators (in x, y, z) s.t. the 

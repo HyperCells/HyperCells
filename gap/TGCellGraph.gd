@@ -164,7 +164,7 @@ DeclareOperation( "CellFacesWithCenter", [ IsTGCellGraphObj ] );
 #!   Each boundary is described by a list of the form `[ d1, d2, e, b, m, gam ]`,
 #!   where `d1`, `d2` are elements of $T_{\Delta^+}(\Gamma)\subset\Delta^+$ labeling
 #!   the Schwarz triangles this edge is a part of, `e` the position in the list of
-#!   edges `CellEdges(`<A>celgraph</A>`)`, `b` the index of the boundary (identical
+#!   edges `CellEdges(`<A>cellgraph</A>`)`, `b` the index of the boundary (identical
 #!   for identified boundaries), `m` either 0 or 1 indicating the orientation of the
 #!   triangle associated with this instance of the boundary (0 for gray and 1 for white),
 #!   and `gam` the translation relating the given to the identified boundary, as
